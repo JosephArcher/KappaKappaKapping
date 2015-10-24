@@ -10,7 +10,7 @@ const MyAwesomeReactComponent = React.createClass({
     return (
       
         <TextField
-          hintText="Hint Text" />
+          hintText="Hint Text100" />
     );
   },
 });
