@@ -52,7 +52,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "dea1af48e53310de35a0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2115d73e480b13d3a609"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -546,7 +546,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-  __webpack_require__(476);
+  __webpack_require__(477);
   module.exports = __webpack_require__(369);
 
 
@@ -25188,7 +25188,7 @@
             _react2['default'].createElement(
               'a',
               { className: 'Header-brand', href: '/', onClick: _Link2['default'].handleClick },
-              _react2['default'].createElement('img', { className: 'Header-brandImg', src: __webpack_require__(481), width: '55', height: '55', alt: 'React' }),
+              _react2['default'].createElement('img', { className: 'Header-brandImg', src: __webpack_require__(475), width: '55', height: '55', alt: 'React' }),
               _react2['default'].createElement(
                 'span',
                 { className: 'Header-brandTxt' },
@@ -37597,6 +37597,12 @@
 
 /***/ },
 /* 475 */
+/***/ function(module, exports, __webpack_require__) {
+
+  module.exports = __webpack_require__.p + "32eda0266cfca8c7e2f93d809e66ae20.png"
+
+/***/ },
+/* 476 */
 /***/ function(module, exports) {
 
   /*eslint-env browser*/
@@ -37638,7 +37644,7 @@
 
 
 /***/ },
-/* 476 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
   /*eslint-env browser*/
@@ -37710,11 +37716,11 @@
   
   }
   
-  var strip = __webpack_require__(477);
+  var strip = __webpack_require__(478);
   
   var overlay;
   if (options.overlay) {
-    overlay = __webpack_require__(475);
+    overlay = __webpack_require__(476);
   }
   
   function problems(type, obj) {
@@ -37732,7 +37738,7 @@
     if (overlay) overlay.clear();
   }
   
-  var processUpdate = __webpack_require__(479);
+  var processUpdate = __webpack_require__(480);
   
   function processMessage(obj) {
     if (obj.action == "building") {
@@ -37755,11 +37761,11 @@
 
 
 /***/ },
-/* 477 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
-  var ansiRegex = __webpack_require__(478)();
+  var ansiRegex = __webpack_require__(479)();
   
   module.exports = function (str) {
   	return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
@@ -37767,7 +37773,7 @@
 
 
 /***/ },
-/* 478 */
+/* 479 */
 /***/ function(module, exports) {
 
   'use strict';
@@ -37777,7 +37783,7 @@
 
 
 /***/ },
-/* 479 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
   /**
@@ -37875,13 +37881,6 @@
     }
   };
 
-
-/***/ },
-/* 480 */,
-/* 481 */
-/***/ function(module, exports, __webpack_require__) {
-
-  module.exports = __webpack_require__.p + "32eda0266cfca8c7e2f93d809e66ae20.png"
 
 /***/ }
 /******/ ]);
