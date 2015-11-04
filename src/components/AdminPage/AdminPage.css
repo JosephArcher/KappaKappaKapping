@@ -1,0 +1,8 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.css';
+
+.tabs-container {
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+}
