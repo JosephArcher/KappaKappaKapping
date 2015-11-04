@@ -7,3 +7,19 @@
   padding: 0 0 40px;
   max-width: var(--max-content-width);
 }
+
+.RegisterPage-left {
+	 margin: 50x;
+
+ display: inline-block;
+    
+}
+
+
+.RegisterPage-right {
+ margin: 50px;
+	 display: inline-block;
+
+
+}
+

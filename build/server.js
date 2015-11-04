@@ -669,7 +669,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */\n\n/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */\n\n:root {\n\n  /*\n   * Colors\n   * ======================================================================== */ /* #222 */   /* #404040 */ /* #555 */ /* #777 */ /* #eee */\n\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n\n  /*\n   * Animations\n   * ======================================================================== */\n\n}\n\n.RegisterPage-container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 1000px;\n}\n", ""]);
+  exports.push([module.id, "/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */\n\n/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */\n\n:root {\n\n  /*\n   * Colors\n   * ======================================================================== */ /* #222 */   /* #404040 */ /* #555 */ /* #777 */ /* #eee */\n\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n\n  /*\n   * Animations\n   * ======================================================================== */\n\n}\n\n.RegisterPage-container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 1000px;\n}\n\n.RegisterPage-left {\n\t margin: 50x;\n\n display: inline-block;\n    \n}\n\n\n.RegisterPage-right {\n margin: 50px;\n\t display: inline-block;\n\n\n}\n\n", ""]);
   
   // exports
 
@@ -1900,6 +1900,11 @@ module.exports =
     _createClass(LoginPage, [{
       key: 'render',
       value: function render() {
+  
+        var username = this.refs.yo;
+        console.log(username);
+        var usernameValue = username.value;
+  
         var title = 'Log In';
         this.context.onSetTitle(title);
         return _react2['default'].createElement(
@@ -1919,22 +1924,29 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 null,
-                _react2['default'].createElement(TextField, { floatingLabelText: 'Username' })
+                _react2['default'].createElement(TextField, { floatingLabelText: 'Username', ref: 'yo' })
               ),
               _react2['default'].createElement(
                 'div',
                 null,
-                _react2['default'].createElement(TextField, { floatingLabelText: 'Password' })
+                _react2['default'].createElement(TextField, { id: 'password', floatingLabelText: 'Password' })
               ),
               _react2['default'].createElement('br', null),
               _react2['default'].createElement(
                 'div',
                 null,
-                _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Submit' })
+                _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Submit', onClick: handleNav })
               )
             )
           )
         );
+        function handleNav() {
+  
+          console.log("x");
+          console.log(usernameValue);
+        };
+  
+        handleNav();
       }
     }], [{
       key: 'contextTypes',
@@ -2199,6 +2211,7 @@ module.exports =
   var _Link2 = _interopRequireDefault(_Link);
   
   var TextField = __webpack_require__(5);
+  var RaisedButton = __webpack_require__(7);
   
   var Profile = (function (_Component) {
     _inherits(Profile, _Component);
@@ -2224,11 +2237,6 @@ module.exports =
               'h1',
               null,
               title
-            ),
-            _react2['default'].createElement(
-              'a',
-              { className: 'Navigation-link', href: '/welcomepage', onClick: _Link2['default'].handleClick },
-              'Welcome Page'
             ),
             _react2['default'].createElement(
               'div',
@@ -2259,6 +2267,11 @@ module.exports =
               'div',
               null,
               _react2['default'].createElement(TextField, { hintText: 'Birthdate' })
+            ),
+            _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Save' })
             )
           )
         );
@@ -2317,9 +2330,18 @@ module.exports =
   
   var _RegisterPageCss2 = _interopRequireDefault(_RegisterPageCss);
   
+  var _Link = __webpack_require__(4);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  var _Welcome = __webpack_require__(39);
+  
+  var _Welcome2 = _interopRequireDefault(_Welcome);
+  
   var TextField = __webpack_require__(5);
   var RaisedButton = __webpack_require__(7);
   var DropDownMenu = __webpack_require__(59);
+  var injectTapEventPlugin = __webpack_require__(63);
   
   var RegisterPage = (function (_Component) {
     _inherits(RegisterPage, _Component);
@@ -2333,9 +2355,17 @@ module.exports =
     _createClass(RegisterPage, [{
       key: 'render',
       value: function render() {
+        injectTapEventPlugin();
+  
         var title = 'New User Registration';
         this.context.onSetTitle(title);
-        var menuItems = [{ payload: '1', text: 'Never' }, { payload: '2', text: 'Every Night' }, { payload: '3', text: 'Weeknights' }, { payload: '4', text: 'Weekends' }, { payload: '5', text: 'Weekly' }];
+        var intendedStartDates = [{ payload: '1', text: '' }, { payload: '2', text: 'Spring 2016' }, { payload: '3', text: 'Fall 2016' }, { payload: '4', text: 'Spring 2017' }, { payload: '5', text: 'Fall 2017' }, { payload: '6', text: 'Spring 2018' }];
+        var preferredMajors = [{ payload: '1', text: '' }, { payload: '2', text: 'Computer Science' }, { payload: '3', text: 'Math' }, { payload: '4', text: 'Physics' }, { payload: '5', text: 'Engineering' }];
+        var currentSchools = [{ payload: '1', text: '' }, { payload: '2', text: 'Dutchess Community College' }];
+  
+        function handleNav(event) {
+          console.log("yo");
+        };
   
         return _react2['default'].createElement(
           'div',
@@ -2350,44 +2380,87 @@ module.exports =
             ),
             _react2['default'].createElement(
               'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'First and Last Name' })
+              { className: 'RegisterPage-left' },
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'First and Last Name' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Current School' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Email' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Address' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Phone Number' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Birthdate' })
+              ),
+              _react2['default'].createElement('br', null)
             ),
             _react2['default'].createElement(
               'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Current School' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Email' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Address' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Phone Number' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Birthdate' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Submit' })
+              { className: 'RegisterPage-right' },
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  '      Intended Start Date'
+                ),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(DropDownMenu, { menuItems: intendedStartDates, onChange: this.handleNav })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  '      Preferred Major'
+                ),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(DropDownMenu, { menuItems: preferredMajors, onChange: this.handleNav })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  '      Current School'
+                ),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(DropDownMenu, { menuItems: currentSchools, onChange: this.handleNav })
+              ),
+              _react2['default'].createElement('br', null),
+              _react2['default'].createElement(
+                'div',
+                null,
+                '       ',
+                _react2['default'].createElement(
+                  'a',
+                  { className: 'Navigation-link', href: '/welcome', onClick: _Link2['default'].handleClick },
+                  _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Submit' })
+                )
+              )
             )
-          ),
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(DropDownMenu, { menuItems: menuItems, onChange: this.handleNav })
           )
         );
       }
@@ -3513,6 +3586,12 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "32eda0266cfca8c7e2f93d809e66ae20.png"
+
+/***/ },
+/* 63 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-tap-event-plugin");
 
 /***/ }
 /******/ ]);

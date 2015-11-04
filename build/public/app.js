@@ -52,7 +52,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a9abb58305b908b7416b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cacc6f0510296f5b6a2c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -19819,7 +19819,7 @@
   
   
   // module
-  exports.push([module.id, "/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */\n\n/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */\n\n:root {\n\n  /*\n   * Colors\n   * ======================================================================== */ /* #222 */   /* #404040 */ /* #555 */ /* #777 */ /* #eee */\n\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n\n  /*\n   * Animations\n   * ======================================================================== */\n\n}\n\n.RegisterPage-container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 1000px;\n}\n", ""]);
+  exports.push([module.id, "/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */\n\n/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */\n\n:root {\n\n  /*\n   * Colors\n   * ======================================================================== */ /* #222 */   /* #404040 */ /* #555 */ /* #777 */ /* #eee */\n\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n\n  /*\n   * Animations\n   * ======================================================================== */\n\n}\n\n.RegisterPage-container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 1000px;\n}\n\n.RegisterPage-left {\n\t margin: 50x;\n\n display: inline-block;\n    \n}\n\n\n.RegisterPage-right {\n margin: 50px;\n\t display: inline-block;\n\n\n}\n\n", ""]);
   
   // exports
 
@@ -27993,6 +27993,11 @@
     _createClass(LoginPage, [{
       key: 'render',
       value: function render() {
+  
+        var username = this.refs.yo;
+        console.log(username);
+        var usernameValue = username.value;
+  
         var title = 'Log In';
         this.context.onSetTitle(title);
         return _react2['default'].createElement(
@@ -28012,22 +28017,29 @@
               _react2['default'].createElement(
                 'div',
                 null,
-                _react2['default'].createElement(TextField, { floatingLabelText: 'Username' })
+                _react2['default'].createElement(TextField, { floatingLabelText: 'Username', ref: 'yo' })
               ),
               _react2['default'].createElement(
                 'div',
                 null,
-                _react2['default'].createElement(TextField, { floatingLabelText: 'Password' })
+                _react2['default'].createElement(TextField, { id: 'password', floatingLabelText: 'Password' })
               ),
               _react2['default'].createElement('br', null),
               _react2['default'].createElement(
                 'div',
                 null,
-                _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Submit' })
+                _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Submit', onClick: handleNav })
               )
             )
           )
         );
+        function handleNav() {
+  
+          console.log("x");
+          console.log(usernameValue);
+        };
+  
+        handleNav();
       }
     }], [{
       key: 'contextTypes',
@@ -28295,6 +28307,7 @@
   var _Link2 = _interopRequireDefault(_Link);
   
   var TextField = __webpack_require__(64);
+  var RaisedButton = __webpack_require__(102);
   
   var Profile = (function (_Component) {
     _inherits(Profile, _Component);
@@ -28320,11 +28333,6 @@
               'h1',
               null,
               title
-            ),
-            _react2['default'].createElement(
-              'a',
-              { className: 'Navigation-link', href: '/welcomepage', onClick: _Link2['default'].handleClick },
-              'Welcome Page'
             ),
             _react2['default'].createElement(
               'div',
@@ -28355,6 +28363,11 @@
               'div',
               null,
               _react2['default'].createElement(TextField, { hintText: 'Birthdate' })
+            ),
+            _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Save' })
             )
           )
         );
@@ -28414,9 +28427,18 @@
   
   var _RegisterPageCss2 = _interopRequireDefault(_RegisterPageCss);
   
+  var _Link = __webpack_require__(65);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  var _Welcome = __webpack_require__(398);
+  
+  var _Welcome2 = _interopRequireDefault(_Welcome);
+  
   var TextField = __webpack_require__(64);
   var RaisedButton = __webpack_require__(102);
   var DropDownMenu = __webpack_require__(352);
+  var injectTapEventPlugin = __webpack_require__(500);
   
   var RegisterPage = (function (_Component) {
     _inherits(RegisterPage, _Component);
@@ -28430,9 +28452,17 @@
     _createClass(RegisterPage, [{
       key: 'render',
       value: function render() {
+        injectTapEventPlugin();
+  
         var title = 'New User Registration';
         this.context.onSetTitle(title);
-        var menuItems = [{ payload: '1', text: 'Never' }, { payload: '2', text: 'Every Night' }, { payload: '3', text: 'Weeknights' }, { payload: '4', text: 'Weekends' }, { payload: '5', text: 'Weekly' }];
+        var intendedStartDates = [{ payload: '1', text: '' }, { payload: '2', text: 'Spring 2016' }, { payload: '3', text: 'Fall 2016' }, { payload: '4', text: 'Spring 2017' }, { payload: '5', text: 'Fall 2017' }, { payload: '6', text: 'Spring 2018' }];
+        var preferredMajors = [{ payload: '1', text: '' }, { payload: '2', text: 'Computer Science' }, { payload: '3', text: 'Math' }, { payload: '4', text: 'Physics' }, { payload: '5', text: 'Engineering' }];
+        var currentSchools = [{ payload: '1', text: '' }, { payload: '2', text: 'Dutchess Community College' }];
+  
+        function handleNav(event) {
+          console.log("yo");
+        };
   
         return _react2['default'].createElement(
           'div',
@@ -28447,44 +28477,87 @@
             ),
             _react2['default'].createElement(
               'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'First and Last Name' })
+              { className: 'RegisterPage-left' },
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'First and Last Name' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Current School' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Email' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Address' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Phone Number' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(TextField, { hintText: 'Birthdate' })
+              ),
+              _react2['default'].createElement('br', null)
             ),
             _react2['default'].createElement(
               'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Current School' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Email' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Address' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Phone Number' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(TextField, { hintText: 'Birthdate' })
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Submit' })
+              { className: 'RegisterPage-right' },
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  '      Intended Start Date'
+                ),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(DropDownMenu, { menuItems: intendedStartDates, onChange: this.handleNav })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  '      Preferred Major'
+                ),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(DropDownMenu, { menuItems: preferredMajors, onChange: this.handleNav })
+              ),
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  '      Current School'
+                ),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(DropDownMenu, { menuItems: currentSchools, onChange: this.handleNav })
+              ),
+              _react2['default'].createElement('br', null),
+              _react2['default'].createElement(
+                'div',
+                null,
+                '       ',
+                _react2['default'].createElement(
+                  'a',
+                  { className: 'Navigation-link', href: '/welcome', onClick: _Link2['default'].handleClick },
+                  _react2['default'].createElement(RaisedButton, { className: 'button', label: 'Submit' })
+                )
+              )
             )
-          ),
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(DropDownMenu, { menuItems: menuItems, onChange: this.handleNav })
           )
         );
       }
@@ -40670,6 +40743,240 @@
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "32eda0266cfca8c7e2f93d809e66ae20.png"
+
+/***/ },
+/* 498 */
+/***/ function(module, exports, __webpack_require__) {
+
+  /**
+   * Copyright 2013-2014 Facebook, Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   * http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *
+   * @providesModule TapEventPlugin
+   * @typechecks static-only
+   */
+  
+  "use strict";
+  
+  var EventConstants = __webpack_require__(39);
+  var EventPluginUtils = __webpack_require__(422);
+  var EventPropagators = __webpack_require__(67);
+  var SyntheticUIEvent = __webpack_require__(69);
+  var TouchEventUtils = __webpack_require__(499);
+  var ViewportMetrics = __webpack_require__(191);
+  
+  var keyOf = __webpack_require__(38);
+  var topLevelTypes = EventConstants.topLevelTypes;
+  
+  var isStartish = EventPluginUtils.isStartish;
+  var isEndish = EventPluginUtils.isEndish;
+  
+  var isTouch = function(topLevelType) {
+    var touchTypes = [
+      topLevelTypes.topTouchCancel,
+      topLevelTypes.topTouchEnd,
+      topLevelTypes.topTouchStart,
+      topLevelTypes.topTouchMove
+    ];
+    return touchTypes.indexOf(topLevelType) >= 0;
+  }
+  
+  /**
+   * Number of pixels that are tolerated in between a `touchStart` and `touchEnd`
+   * in order to still be considered a 'tap' event.
+   */
+  var tapMoveThreshold = 10;
+  var ignoreMouseThreshold = 750;
+  var startCoords = {x: null, y: null};
+  var lastTouchEvent = null;
+  
+  var Axis = {
+    x: {page: 'pageX', client: 'clientX', envScroll: 'currentPageScrollLeft'},
+    y: {page: 'pageY', client: 'clientY', envScroll: 'currentPageScrollTop'}
+  };
+  
+  function getAxisCoordOfEvent(axis, nativeEvent) {
+    var singleTouch = TouchEventUtils.extractSingleTouch(nativeEvent);
+    if (singleTouch) {
+      return singleTouch[axis.page];
+    }
+    return axis.page in nativeEvent ?
+      nativeEvent[axis.page] :
+      nativeEvent[axis.client] + ViewportMetrics[axis.envScroll];
+  }
+  
+  function getDistance(coords, nativeEvent) {
+    var pageX = getAxisCoordOfEvent(Axis.x, nativeEvent);
+    var pageY = getAxisCoordOfEvent(Axis.y, nativeEvent);
+    return Math.pow(
+      Math.pow(pageX - coords.x, 2) + Math.pow(pageY - coords.y, 2),
+      0.5
+    );
+  }
+  
+  var touchEvents = [
+    topLevelTypes.topTouchStart,
+    topLevelTypes.topTouchCancel,
+    topLevelTypes.topTouchEnd,
+    topLevelTypes.topTouchMove,
+  ];
+  
+  var dependencies = [
+    topLevelTypes.topMouseDown,
+    topLevelTypes.topMouseMove,
+    topLevelTypes.topMouseUp,
+  ].concat(touchEvents);
+  
+  var eventTypes = {
+    touchTap: {
+      phasedRegistrationNames: {
+        bubbled: keyOf({onTouchTap: null}),
+        captured: keyOf({onTouchTapCapture: null})
+      },
+      dependencies: dependencies
+    }
+  };
+  
+  var now = (function() {
+    if (Date.now) {
+      return Date.now;
+    } else {
+      // IE8 support: http://stackoverflow.com/questions/9430357/please-explain-why-and-how-new-date-works-as-workaround-for-date-now-in
+      return function () {
+        return +new Date;
+      }
+    }
+  })();
+  
+  var TapEventPlugin = {
+  
+    tapMoveThreshold: tapMoveThreshold,
+  
+    ignoreMouseThreshold: ignoreMouseThreshold,
+  
+    eventTypes: eventTypes,
+  
+    /**
+     * @param {string} topLevelType Record from `EventConstants`.
+     * @param {DOMEventTarget} topLevelTarget The listening component root node.
+     * @param {string} topLevelTargetID ID of `topLevelTarget`.
+     * @param {object} nativeEvent Native browser event.
+     * @return {*} An accumulation of synthetic events.
+     * @see {EventPluginHub.extractEvents}
+     */
+    extractEvents: function(
+        topLevelType,
+        topLevelTarget,
+        topLevelTargetID,
+        nativeEvent,
+        nativeEventTarget) {
+  
+      if (isTouch(topLevelType)) {
+        lastTouchEvent = now();
+      } else {
+        if (lastTouchEvent && (now() - lastTouchEvent) < ignoreMouseThreshold) {
+          return null;
+        }
+      }
+  
+      if (!isStartish(topLevelType) && !isEndish(topLevelType)) {
+        return null;
+      }
+      var event = null;
+      var distance = getDistance(startCoords, nativeEvent);
+      if (isEndish(topLevelType) && distance < tapMoveThreshold) {
+        event = SyntheticUIEvent.getPooled(
+          eventTypes.touchTap,
+          topLevelTargetID,
+          nativeEvent,
+          nativeEventTarget
+        );
+      }
+      if (isStartish(topLevelType)) {
+        startCoords.x = getAxisCoordOfEvent(Axis.x, nativeEvent);
+        startCoords.y = getAxisCoordOfEvent(Axis.y, nativeEvent);
+      } else if (isEndish(topLevelType)) {
+        startCoords.x = 0;
+        startCoords.y = 0;
+      }
+      EventPropagators.accumulateTwoPhaseDispatches(event);
+      return event;
+    }
+  
+  };
+  
+  module.exports = TapEventPlugin;
+
+
+/***/ },
+/* 499 */
+/***/ function(module, exports) {
+
+  /**
+   * Copyright 2013-2014 Facebook, Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   * http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *
+   * @providesModule TouchEventUtils
+   */
+  
+  var TouchEventUtils = {
+    /**
+     * Utility function for common case of extracting out the primary touch from a
+     * touch event.
+     * - `touchEnd` events usually do not have the `touches` property.
+     *   http://stackoverflow.com/questions/3666929/
+     *   mobile-sarai-touchend-event-not-firing-when-last-touch-is-removed
+     *
+     * @param {Event} nativeEvent Native event that may or may not be a touch.
+     * @return {TouchesObject?} an object with pageX and pageY or null.
+     */
+    extractSingleTouch: function(nativeEvent) {
+      var touches = nativeEvent.touches;
+      var changedTouches = nativeEvent.changedTouches;
+      var hasTouches = touches && touches.length > 0;
+      var hasChangedTouches = changedTouches && changedTouches.length > 0;
+  
+      return !hasTouches && hasChangedTouches ? changedTouches[0] :
+             hasTouches ? touches[0] :
+             nativeEvent;
+    }
+  };
+  
+  module.exports = TouchEventUtils;
+
+
+/***/ },
+/* 500 */
+/***/ function(module, exports, __webpack_require__) {
+
+  module.exports = function injectTapEventPlugin () {
+    __webpack_require__(66).injection.injectEventPluginsByName({
+      "TapEventPlugin":       __webpack_require__(498)
+    });
+  };
+
 
 /***/ }
 /******/ ]);
