@@ -14,8 +14,8 @@ class Header extends Component {
       <div className="Header">
         <div className="Header-container">
           <a className="Header-brand" href="/" onClick={Link.handleClick}>
-            <img className="Header-brandImg" src={require('./Marist__Seal.png')} width="38" height="38" alt="React" />
-            <span className="Header-brandTxt">Marist College Admissions</span>
+            <img className="Header-brandImg" src={require('./foxLogo.png')} width="55" height="55" alt="React" />
+            <span className="Header-brandTxt">Marist Transfer Credit Tracker</span>
           </a>
           <Navigation className="Header-nav" />
           <div className="Header-banner">
