@@ -2,13 +2,7 @@
 
 @import '../variables.css';
 
-.Welcome-container {
+.tabs-container {
   margin: 0 auto;
-  padding: 0 0 40px;
   max-width: var(--max-content-width);
 }
-a.list-group-item:hover {
-	background-color: #669999;
-	color: #FFFFFF;
-}
- /* #FF3333 #999999 #669999 #003333 */

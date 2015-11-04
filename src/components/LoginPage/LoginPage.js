@@ -16,6 +16,7 @@ class LoginPage extends Component {
   };
 
   render() {
+<<<<<<< HEAD
 
 
 var username = this.refs.yo;
@@ -23,6 +24,9 @@ console.log(username);
 var usernameValue = username.value;
 
     const title = 'Log In';
+=======
+    const title = 'Login';
+>>>>>>> master
     this.context.onSetTitle(title);
     return (
 
