@@ -3,6 +3,8 @@
 import React, { PropTypes, Component } from 'react';
 import styles from './LoginPage.css';
 import withStyles from '../../decorators/withStyles';
+const TextField = require('material-ui/lib/text-field');
+const RaisedButton = require('material-ui/lib/raised-button');
 
 @withStyles(styles)
 class LoginPage extends Component {
@@ -12,13 +14,21 @@ class LoginPage extends Component {
   };
 
   render() {
-    const title = 'Log In';
+    const title = 'Login';
     this.context.onSetTitle(title);
     return (
       <div className="LoginPage">
         <div className="LoginPage-container">
-          <h1>{title}</h1>
-          <p>Hello Alex</p>
+          <div className="LoginPage-components">
+            <h1 >{title}</h1>
+              <div >
+              <TextField floatingLabelText="Username" /></div>
+              <div >
+              <TextField floatingLabelText="Password" /></div>
+                <br></br>
+              <div >
+              <RaisedButton className="button" label="Submit" /></div>
+          </div>
         </div>
       </div>
     );
