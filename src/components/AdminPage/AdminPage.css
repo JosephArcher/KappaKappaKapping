@@ -2,19 +2,7 @@
 
 @import '../variables.css';
 
-.LoginPage-container {
+.tabs-container {
   margin: 0 auto;
-  padding: 0 0 40px;
   max-width: var(--max-content-width);
-}
-
-.center {
-    margin: auto;
-    width: 20%;
-    padding: 10px;
-}
-
-.button {
-     width: 1000px;
-     height: 30px;
 }
