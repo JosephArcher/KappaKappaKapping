@@ -21,8 +21,8 @@ class Welcome extends React.Component{
   };
 
  render() {
-
-    const title = 'Welcome';
+    const userName = "Joe";
+    const title = 'Welcome, ' + userName;
     this.context.onSetTitle(title);
     return (
       <div className="Welcome" desktop={true} width={320}>
