@@ -10,43 +10,30 @@
   margin-bottom: 25px;
 
 }
-.schoolSelection-container {
-	margin-top: 10px;
+.currentSchoolLabel {
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 1em;
+}
+.currentSchoolDropbox {
+	margin-bottom: 50px;
+}
+.centerButton {
+	text-align: center;
 	margin-bottom: 25px;
 }
-.center {
-	text-align: center;
+.testLeft {
+	text-align: left;
 }
-.column-left {
-   float: left;
-   width: 33%; 
-   background: #AAAAAA;
-}
-.column-right { 
-	float: right; 
-	width: 33%;
-	background: #AAAAAA;
-}
-.column-center {
-	display: inline-block;
-	width: 33%; 
-	background: #AAAAAA;
-}
-.red {
+.red{
 	background-color: red;
 }
-.leftSide{
-	padding-right: 25px;
-	padding-left: 25px;
+.blue{
+	background-color:blue;
 }
-.rightSide{
-	padding-right: 25px;
-	padding-left: 25px;
+.green{
+	background-color: green;
 }
-.centerArea {
-		padding-right: 25px;
-	padding-left: 25px;
-}
-.blue {
-	background: blue;
+.fontSizeFix {
+	font-size: 1em;
 }

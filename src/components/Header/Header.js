@@ -12,16 +12,17 @@ class Header extends Component {
   render() {
     return (
       <div className="Header">
-        <div className="Header-container">
+               <div className="Header-container">
           <a className="Header-brand" href="/" onClick={Link.handleClick}>
-            <img className="Header-brandImg" src={require('./foxLogo.png')} width="55" height="55" alt="React" />
-            <span className="Header-brandTxt">Marist Transfer Credit Tracker</span>
+            <img className="Header-brandImg" src={require('./foxLogo.png')} width="38" height="38"/>
+            <span className="Header-brandTxt">Marist College</span>
           </a>
           <Navigation className="Header-nav" />
           <div className="Header-banner">
-
+            <h1 className="Header-bannerTitle">Transfer Credit Tracker</h1>
+            <p className="Header-bannerDesc"> Easily calculate a transfer credit aproximation !</p>
           </div>
-        </div>
+      </div>
       </div>
     );
   }

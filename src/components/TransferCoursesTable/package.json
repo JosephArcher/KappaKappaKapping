@@ -1,0 +1,6 @@
+{
+  "name": "TransferCourseTable",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./TransferCourseTable.js"
+}

@@ -2,16 +2,20 @@ import React ,{ PropTypes, Component } from 'react';
 import styles from './CourseSelectionPage.css';
 import withStyles from '../../decorators/withStyles';
 const DropDownMenu  = require('material-ui/lib/drop-down-menu');
+const FloatingActionButton = require('material-ui/lib/floating-action-button');
+const RaisedButton = require('material-ui/lib/raised-button');
 const injectTapEventPlugin = require("react-tap-event-plugin");
 import {Grid} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
+import {Label} from 'react-bootstrap';
+import TransferCourseTable from '../TransferCoursesTable';
 
 @withStyles(styles)
 class CourseSelectionPage extends React.Component{
 
   static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired,
+    onSetTitle: PropTypes.func.isRequired, 
   };
  render() {
         const title = 'Course Selection Page';
@@ -22,23 +26,34 @@ class CourseSelectionPage extends React.Component{
        { payload: '2', text: 'Dutchess Community College'},
     ];
     return (
-    <div desktop={true} width={550}>
+    <div desktop={true} width={320}>
       <div className="CourseSelectionPage-container">   
-<Grid>
-    <Row>
-      <Col className="leftSide" xs={6} md={4}>
-
-        <p className="center"> Current School </p>
-        <DropDownMenu menuItems={transferSchoolList}/>
-        
+      <Grid>
+      <Col  xs={4} md={4} lg={4}>
+        <Row className="">
+          <TransferCourseTable></TransferCourseTable>
+        </Row>      
       </Col>
-      <Col className="centerArea red" xs={6} md={4}>
-        Center Area
+      <Col  xs={4} md={4} lg={4}>
+         <Row className="center">
+            <p className="currentSchoolLabel"> <strong> Current College/University </strong> </p>
+           <DropDownMenu className="currentSchoolDropbox" menuItems={transferSchoolList}/>
+          </Row>
+          <Row className="centerButton">
+           <RaisedButton label="Add Course" secondary={true} />
+          </Row>
+          <Row className="centerButton">
+            <RaisedButton label="Remove Course" secondary={true} />
+            </Row>
+          <Row className="centerButton">
+            <RaisedButton label="Submit Course List" secondary={true} />
+          </Row>
       </Col>
-      <Col className="rightSide red" xs={6} md={4}>
-        Right Area
+      <Col xs={4} md={4} lg={4}>
+        <Row className="">
+          <TransferCourseTable></TransferCourseTable>
+        </Row>
       </Col>
-    </Row>
   </Grid>
 
       </div>
