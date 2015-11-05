@@ -1,0 +1,52 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.css';
+
+.CourseSelectionPage-container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: var(--max-content-width);
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+}
+.schoolSelection-container {
+	margin-top: 10px;
+	margin-bottom: 25px;
+}
+.center {
+	text-align: center;
+}
+.column-left {
+   float: left;
+   width: 33%; 
+   background: #AAAAAA;
+}
+.column-right { 
+	float: right; 
+	width: 33%;
+	background: #AAAAAA;
+}
+.column-center {
+	display: inline-block;
+	width: 33%; 
+	background: #AAAAAA;
+}
+.red {
+	background-color: red;
+}
+.leftSide{
+	padding-right: 25px;
+	padding-left: 25px;
+}
+.rightSide{
+	padding-right: 25px;
+	padding-left: 25px;
+}
+.centerArea {
+		padding-right: 25px;
+	padding-left: 25px;
+}
+.blue {
+	background: blue;
+}
