@@ -5,6 +5,7 @@ import styles from './AdminPage.css';
 import withStyles from '../../decorators/withStyles';
 import {Tabs, Tab} from 'material-ui';
 import CreateNewAdmin from '../CreateNewAdmin';
+import StudentTable from '../StudentTable';
 
 @withStyles(styles)
 class AdminPage extends Component {
@@ -30,7 +31,7 @@ class AdminPage extends Component {
             (Tab content...) 2
           </Tab>
           <Tab label="Students" >
-            (Tab content...) 3
+            <StudentTable></StudentTable>
           </Tab>
           <Tab label="Administrators" >
             <CreateNewAdmin></CreateNewAdmin>
