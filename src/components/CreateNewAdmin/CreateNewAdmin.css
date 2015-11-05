@@ -3,9 +3,16 @@
 .NewAdminFields {
   text-align: center;
   max-width: var(--max-content-width);
-  padding-bottom: 20px;
+  padding-bottom: 50px;
 }
 
 .NewAdminPTag {
   font-size: x-large;
+}
+
+.submit-button {
+  padding-top: 10px;
+  width: 256px;
+  margin-left: auto;
+  margin-right: auto;
 }

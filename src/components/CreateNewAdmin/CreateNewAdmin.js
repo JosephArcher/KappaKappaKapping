@@ -25,9 +25,9 @@ class CreateNewAdmin extends Component {
               floatingLabelText="Password"
               type="password" />
           </div>
-        <div>
-          <RaisedButton className="button" label="Submit" />
-        </div>
+          <div className="submit-button">
+            <RaisedButton className="button" fullWidth="true" label="Submit" />
+          </div>
       </div>
     );
   }
