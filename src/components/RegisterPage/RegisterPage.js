@@ -64,13 +64,13 @@ console.log("yo");
        
 
           <div className="RegisterPage-left">
-            <div><TextField hintText="First and Last Name" /></div>
+            <div><TextField hintText="First Name" /></div>
+            <div><TextField hintText="Last Name" /></div>
             <div><TextField hintText="Current School" /></div>
             <div><TextField hintText="Email" /></div>
             <div><TextField hintText="Address" /></div>
             <div><TextField hintText="Phone Number" /></div>
             <div><TextField hintText="Birthdate" /></div>
-            <br></br>
 
           </div>
           

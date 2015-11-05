@@ -5,6 +5,7 @@ import styles from './LoginPage.css';
 import withStyles from '../../decorators/withStyles';
 const TextField = require('material-ui/lib/text-field');
 const RaisedButton = require('material-ui/lib/raised-button');
+import { findDOMNode } from 'react-dom';
 
 @withStyles(styles)
 class LoginPage extends Component {
@@ -13,29 +14,68 @@ class LoginPage extends Component {
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
+
   };
 
+  // var MyComponent = React.createClass({
+  //   propTypes: {
+  //     children: React.PropTypes.element.isRequired
+  //   },
+
+  // _createNewPirate(event) {
+  //   const pirateName = event.target.value,
+  //     randomBtn = findDOMNode(this._randomBtn);
+
+  //   if (pirateName !== '') {
+  //     randomBtn.setAttribute('disabled', 'true');
+  //   }
+  //   else {
+  //     randomBtn.removeAttribute('disabled');
+  //   }
+
+  //   fireAction(CREATE, pirateName);
+  // };
+
   render() {
-<<<<<<< HEAD
+
+           function handleNav() {
+var item = this.refs.myField.getValue();
+ console.log("x");
+console.log(item);
+ };
+
+    var myComponent = <myComponent />;
+    var myComponentElement = <myComponent />;
+// React.createClass({
+//     propTypes: {
+//       children: React.PropTypes.element.isRequired
+//     }
+//     });
 
 
-var username = this.refs.yo;
-console.log(username);
-var usernameValue = username.value;
+// var username = this.refs.yo;
+// console.log(username);
+// var usernameValue = username.value;
+//this.props.item = "";
+   
+var item = "yo";
 
-    const title = 'Log In';
-=======
     const title = 'Login';
->>>>>>> master
+
+    //var y = Component.getElementById("username").getValue();
+    //console.log(y);
+
+
     this.context.onSetTitle(title);
     return (
 
       <div className="LoginPage">
         <div className="LoginPage-container">
+          <h1 >{title}</h1>
           <div className="LoginPage-components">
-            <h1 >{title}</h1>
+          
               <div >
-              <TextField floatingLabelText="Username"  ref="yo" /></div>
+              <TextField id="username" floatingLabelText="Username" value={item} /></div>
               <div >
               <TextField id="password" floatingLabelText="Password" /></div>
                 <br></br>
@@ -45,17 +85,20 @@ var usernameValue = username.value;
         </div>
       </div>
     );
-        function handleNav() {
 
-console.log("x");
-console.log(usernameValue);
+
+function onChange(e) {
+  var value = e.target.value;
+  this.props.onChangeInputHandler( this.props.index, value );
+  this.item.onChangeInputHandler( value );
 };
 
-handleNav();
+
 
 
 
   }
+  
 
 }
 

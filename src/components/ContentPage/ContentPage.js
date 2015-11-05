@@ -17,15 +17,20 @@ class ContentPage extends Component {
     onSetTitle: PropTypes.func.isRequired,
   };
 
+ 
+        
+
   render() {
-    this.context.onSetTitle(this.props.title);
+    const title ="Credit Tracker";
+    this.context.onSetTitle(title);
     return (
       <div className="ContentPage">
         <div className="ContentPage-container">
-          {
-            this.props.path === '/' ? null : <h1>{this.props.title}</h1>
-          }
-          <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
+        <h1 className="title">{title}</h1>
+        <p className="descrip">Marist Transfer Credit Tracker allows users to select completed 
+        classes from their current University and receieve a full Marist College Transfer Credit Report. 
+        </p>
+         <img className="Header-brandImg" src={require('./campusgreen.jpg')}  alt="React" />
         </div>
       </div>
     );
