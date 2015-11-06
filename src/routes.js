@@ -8,6 +8,7 @@ import ContentPage from './components/ContentPage';
 import ContactPage from './components/ContactPage';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
+import AdminPage from './components/AdminPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 import Profile from './components/Profile';
@@ -28,6 +29,8 @@ const router = new Router(on => {
   on('/welcome', async () => <Welcome />);
 
   on('/register', async () => <RegisterPage />);
+
+  on('/admin', async () => <AdminPage />);
 
   on('*', async (state) => {
     const content = await http.get(`/api/content?path=${state.path}`);
