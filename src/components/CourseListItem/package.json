@@ -1,0 +1,6 @@
+{
+  "name": "CourseListItem",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CourseListItem.js"
+}

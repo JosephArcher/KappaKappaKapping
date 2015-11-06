@@ -31,7 +31,7 @@ class Welcome extends React.Component{
           <ListGroup>
               <ListGroupItem  className="list-group-item"
                               header="Select Classes"
-                              href="/profile"   
+                              href="/courseselectionpage"   
                               onClick={Link.handleClick}> 
                Check which classes that you took at your previous school for credit admissibility in Marist 
                </ListGroupItem> 
@@ -44,7 +44,7 @@ class Welcome extends React.Component{
     
            <ListGroupItem className="list-group-item" 
                           header="Log Out"        
-                          href="/profile" 
+                          href="/" 
                           onClick={Link.handleClick}>
               Log out the current user
             </ListGroupItem> 

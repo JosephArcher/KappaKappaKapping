@@ -10,23 +10,35 @@
   margin-bottom: 25px;
 
 }
+.stepHeading {
+	text-align: left;
+	font-size: 1.75em;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 .currentSchoolLabel {
 	text-align: center;
 	margin-bottom: 15px;
 	font-size: 1em;
 }
 .currentSchoolDropbox {
-	margin-bottom: 50px;
+	margin-left: 25px;
 }
-.centerButton {
+.centerText {
 	text-align: center;
-	margin-bottom: 25px;
+}
+.submitCourseSection {
+	margin-top: 25px;
+	
+}
+.leftText {
+	text-align: left;
 }
 .testLeft {
 	text-align: left;
 }
 .red{
-	background-color: red;
+	color: red;
 }
 .blue{
 	background-color:blue;
@@ -36,4 +48,13 @@
 }
 .fontSizeFix {
 	font-size: 1em;
+}
+.verticalLine {
+	 border-style: solid;
+     border-top: thick double #a41020;
+     background: #a41020;
+     color: #a41020;
+     background-color: #a41020;
+     margin-top: 15px;
+     margin-bottom: 10px;
 }
