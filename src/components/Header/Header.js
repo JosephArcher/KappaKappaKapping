@@ -19,8 +19,8 @@ class Header extends Component {
           </a>
           <Navigation className="Header-nav" />
           <div className="Header-banner">
-            <h1 className="Header-bannerTitle">Transfer Credit Tracker</h1>
-            <p className="Header-bannerDesc"> Easily calculate a transfer credit aproximation !</p>
+            <h1 className="Header-bannerTitle"> Transfer Tracker </h1>
+            <p className="Header-bannerDesc"> Easily generate a transfer credit report and see how compatiable you and Marist are !</p>
           </div>
       </div>
       </div>
