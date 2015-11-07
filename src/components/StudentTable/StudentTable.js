@@ -10,9 +10,9 @@ class StudentTable extends Component {
     injectTapEventPlugin();
 
     return (
-      <Table height="750px" fixedHeader="true" selectable="true">
+      <Table height="750px" fixedHeader={true} selectable={true}>
 
-        <TableHeader enableSelectAll="false">
+        <TableHeader enableSelectAll={false}>
           <TableRow>
             <TableHeaderColumn colSpan="4" tooltip='This table delineates information about prospective students.' style={{textAlign: 'center'}}>
               Student Information
@@ -26,7 +26,7 @@ class StudentTable extends Component {
           </TableRow>
         </TableHeader>
 
-        <TableBody showRowHover="true" stripedRows="true">
+        <TableBody showRowHover={true} stripedRows={true}>
 
           // Currently using dummy data until we set up database logic
 

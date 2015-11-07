@@ -26,7 +26,7 @@ class CreateNewAdmin extends Component {
               type="password" />
           </div>
           <div className="submit-button">
-            <RaisedButton className="button" fullWidth="true" label="Submit" />
+            <RaisedButton className="button" fullWidth={true} label="Submit" />
           </div>
       </div>
     );

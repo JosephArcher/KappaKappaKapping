@@ -1,0 +1,13 @@
+@import '../variables.css';
+
+.update-programs-container {
+  padding-top: 20px;
+}
+
+.descrip {
+  font-size: x-large;
+}
+
+.header {
+  text-align: center;
+}

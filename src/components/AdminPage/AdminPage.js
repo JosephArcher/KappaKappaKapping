@@ -6,6 +6,8 @@ import withStyles from '../../decorators/withStyles';
 import {Tabs, Tab} from 'material-ui';
 import CreateNewAdmin from '../CreateNewAdmin';
 import StudentTable from '../StudentTable';
+import UpdatePrograms from '../UpdatePrograms';
+var injectTapEventPlugin = require("react-tap-event-plugin");
 
 @withStyles(styles)
 class AdminPage extends Component {
@@ -16,7 +18,6 @@ class AdminPage extends Component {
 
   render() {
     // This makes the tabs
-    var injectTapEventPlugin = require("react-tap-event-plugin");
     injectTapEventPlugin();
 
     const title = 'Administrator Options';
@@ -25,10 +26,10 @@ class AdminPage extends Component {
       <div className="tabs-container">
         <Tabs>
           <Tab label="Courses" >
-            (Tab content...) 1
+
           </Tab>
           <Tab label="Programs" >
-            (Tab content...) 2
+            <UpdatePrograms></UpdatePrograms>
           </Tab>
           <Tab label="Students" >
             <StudentTable></StudentTable>
@@ -40,7 +41,6 @@ class AdminPage extends Component {
       </div>
     );
   }
-
 }
 
 export default AdminPage;
