@@ -11,8 +11,8 @@ export default class CourseListItem extends Component {
 
     return (
       <tr>
-        <td>Class Title</td>
-        <td>Class ID</td>
+        <td>{courseTitle}</td>
+        <td>{courseID}</td>
         <td>       
             <button
               type="button"
