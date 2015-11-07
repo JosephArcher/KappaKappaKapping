@@ -38,8 +38,8 @@ class TransferCourseTable extends Component {
       <Table striped hover responsive>
         <thead>
           <tr>
-            <th> Course Title </th>
-            <th> Course ID </th>
+            <th> Title </th>
+            <th> ID </th>
             <th> Completed ? </th>
           </tr>
         </thead>

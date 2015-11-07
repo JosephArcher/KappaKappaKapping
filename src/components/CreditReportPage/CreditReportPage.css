@@ -1,0 +1,85 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.css';
+
+.CreditReportPage-container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: var(--max-content-width);
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+}
+.slightLeftShift {
+	margin-right: 25px;
+}
+.stepHeading {
+	text-align: left;
+	font-size: 1.75em;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.currentSchoolLabel {
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 1em;
+}
+.currentSchoolDropbox {
+	margin-left: 25px;
+}
+.centerText {
+	text-align: center;
+}
+.submitCourseSection {
+	margin-top: 25px;	
+}
+.reportHeading {
+	font-size: 2.25em;
+	color: #000000;
+	text-align: center;
+	font-weight: bold;
+}
+.sectionHeading {
+	font-size: 1.5em;
+	color: #000000;
+	text-align: left;
+	font-weight: bold;
+}
+.otherHeading {
+	font-size: 2.25em;
+	color: #000000;
+	vertical-align: middle;
+	line-height: 100px;   
+	text-align: center;
+}
+.spinnerHeading {
+	font-size: 1em;
+	color: #000000;
+}
+.leftText {
+	text-align: left;
+}
+.rightText{
+	text-align: right;
+}
+.red{
+	color: red;
+}
+.blue{
+	background-color:blue;
+}
+.green{
+	background-color: green;
+}
+.fontSizeFix {
+	font-size: 1em;
+}
+.verticalLine {
+	 border-style: solid;
+     border-top: thick double #a41020;
+     background: #a41020;
+     color: #a41020;
+     background-color: #a41020;
+     margin-top: 15px;
+     margin-bottom: 10px;
+}
