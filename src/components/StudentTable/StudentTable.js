@@ -8,9 +8,11 @@ const injectTapEventPlugin = require("react-tap-event-plugin");
 class StudentTable extends Component {
   render() {
     injectTapEventPlugin();
+    // TODO: Add field that allows for searching of student by name
+    // TODO: We can do that by filtering the table, no need for multiple queries.
 
     return (
-      <Table height="750px" fixedHeader={true} selectable={true}>
+      <Table height="500px" fixedHeader={true} selectable={true}>
 
         <TableHeader enableSelectAll={false}>
           <TableRow>

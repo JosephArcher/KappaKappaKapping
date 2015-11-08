@@ -7,6 +7,7 @@ import {Tabs, Tab} from 'material-ui';
 import CreateNewAdmin from '../CreateNewAdmin';
 import StudentTable from '../StudentTable';
 import UpdatePrograms from '../UpdatePrograms';
+import UpdateCourseEquivalencies from '../UpdateCourseEquivalencies';
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
 @withStyles(styles)
@@ -25,16 +26,16 @@ class AdminPage extends Component {
     return (
       <div className="tabs-container">
         <Tabs>
-          <Tab label="Courses" >
-
+          <Tab label="Courses">
+            <UpdateCourseEquivalencies></UpdateCourseEquivalencies>
           </Tab>
-          <Tab label="Programs" >
+          <Tab label="Programs">
             <UpdatePrograms></UpdatePrograms>
           </Tab>
-          <Tab label="Students" >
+          <Tab label="Students">
             <StudentTable></StudentTable>
           </Tab>
-          <Tab label="Administrators" >
+          <Tab label="Administrators">
             <CreateNewAdmin></CreateNewAdmin>
           </Tab>
         </Tabs>
