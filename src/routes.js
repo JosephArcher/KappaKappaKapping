@@ -13,6 +13,7 @@ import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
+import CourseSelectionPage from './components/CourseSelection'; // Added Course Selection Page
 
 const router = new Router(on => {
   on('*', async (state, next) => {
@@ -31,6 +32,9 @@ const router = new Router(on => {
   on('/register', async () => <RegisterPage />);
 
   on('/admin', async () => <AdminPage />);
+
+  on('/courseselectionpage', async() => <CourseSelectionPage />);
+
 
   on('*', async (state) => {
     const content = await http.get(`/api/content?path=${state.path}`);

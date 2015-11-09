@@ -1,0 +1,6 @@
+{
+  "name": "FilterCourses",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./FilterCourses.js"
+}

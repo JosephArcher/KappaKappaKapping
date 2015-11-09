@@ -1,0 +1,6 @@
+{
+  "name": "CreditReportPage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CreditReportPage.js"
+}

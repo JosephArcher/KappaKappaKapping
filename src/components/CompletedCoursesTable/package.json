@@ -1,0 +1,6 @@
+{
+  "name": "CompletedCoursesTable",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CompletedCoursesTable.js"
+}
