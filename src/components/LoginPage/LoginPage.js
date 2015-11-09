@@ -16,17 +16,9 @@ class LoginPage extends Component {
   };
 
   render() {
-<<<<<<< HEAD
-
-
-var username = this.refs.yo;
-console.log(username);
-var usernameValue = username.value;
 
     const title = 'Log In';
-=======
-    const title = 'Login';
->>>>>>> master
+
     this.context.onSetTitle(title);
     return (
 
@@ -40,20 +32,11 @@ var usernameValue = username.value;
               <TextField id="password" floatingLabelText="Password" /></div>
                 <br></br>
               <div >
-              <RaisedButton className="button" label="Submit" onClick={handleNav} /></div>
+              <RaisedButton className="button" label="Submit"/></div>
           </div>
         </div>
       </div>
     );
-        function handleNav() {
-
-console.log("x");
-console.log(usernameValue);
-};
-
-handleNav();
-
-
 
   }
 

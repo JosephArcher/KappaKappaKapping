@@ -9,4 +9,9 @@ export default keyMirror({
   SEARCH_INPUT_CHANGED: null,
   MARK_CAUGHT: null
 
+  Course_CREATE: null,
+  Course_COMPLETE: null,
+  Course_DESTROY: null,
+  Course_DESTROY_COMPLETED: null
+  
 });

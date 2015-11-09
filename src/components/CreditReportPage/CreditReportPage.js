@@ -27,13 +27,13 @@ class CreditReportPage extends React.Component{
     const testdata = [
     {
         value: 75,
-        color: "#0A0",
-        highlight: "#0A0"
+        color: "#007fff",
+        highlight: "#00ffff"
     },
      {
         value: 25,
         color: "#FFFFFF",
-        highlight: "#FFFFFF"
+        highlight: "#ff0000"
     }
 ];
     return (

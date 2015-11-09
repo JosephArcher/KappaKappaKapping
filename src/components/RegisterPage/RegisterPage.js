@@ -78,7 +78,7 @@ console.log("yo");
             <div className="RegisterPage-right">
               <div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     Intended Start Date</span> 
-                    <br></br
+                    <br></br>
                     ><DropDownMenu menuItems={intendedStartDates} onChange={this.handleNav}/>
               </div>
               <div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

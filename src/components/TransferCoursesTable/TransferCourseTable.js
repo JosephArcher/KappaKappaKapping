@@ -10,74 +10,48 @@ import FilterCourses from '../FilterCourses';
 @withStyles(styles)
 class TransferCourseTable extends Component {
 
-
+  static propTypes = {
+     availableTransferCourses: PropTypes.array.isRequired
+  };
+ 
   render() {
-   injectTapEventPlugin();
-  this.state = {
-  fixedHeader: true,
-  fixedFooter: true,
-  stripedRows: true,
-  showRowHover: true,
-  selectable: true,
-  multiSelectable: true,
-  enableSelectAll: false,
-  displaySelectAll: false,
-  deselectOnClickaway: false,
-  adjustForCheckbox: false,
-  displayRowCheckbox: false,
-  height: '300px',
-};
+    const availableTransferCourses = this.props.availableTransferCourses;
+    const tableHeading = "Transferable Courses";
+    const title = "Title";
+    const id = "ID";
+    const completed = "Completed ?";
+
+    const FilterCoursesSection = (
+      <FilterCourses> </FilterCourses>
+    );
+
     return (
       <div>
       <div>
-      <h1 className="textCenter"> Transferable Courses </h1>
+      <h1 className="textCenter">{tableHeading}</h1>
       </div>
       <div>
-        <FilterCourses> </FilterCourses>
+        {FilterCoursesSection}
       </div>
       <Table striped hover responsive>
         <thead>
           <tr>
-            <th> Title </th>
-            <th> ID </th>
-            <th> Completed ? </th>
+            <th>{title}</th>
+            <th>{id}</th>
+            <th>{completed}</th>
           </tr>
         </thead>
         <tbody>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
+        {
+        this.props.availableTransferCourses.map(function(courseObject) {
+          return <CourseListItem  course={courseObject} ></CourseListItem>
+        })
+       }
         </tbody>
       </Table>
     </div>
    );
   }
 }
+
 export default TransferCourseTable; 

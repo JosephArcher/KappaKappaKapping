@@ -1,6 +1,9 @@
 node_modules
 build
+<<<<<<< HEAD
+=======
 KappaKappaKapping.iml
 .idea/
 npm-debug.log
 semantic
+>>>>>>> refs/remotes/origin/master

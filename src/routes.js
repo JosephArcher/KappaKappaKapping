@@ -13,7 +13,8 @@ import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
-import CourseSelectionPage from './components/CourseSelection'; // Added Course Selection Page
+import CourseSelectionPage from './components/CourseSelectionPage'; // Added Course Selection Page
+import CreditReportPage from './components/CreditReportPage'; // Added Credit Report Page
 
 const router = new Router(on => {
   on('*', async (state, next) => {
@@ -32,6 +33,11 @@ const router = new Router(on => {
   on('/register', async () => <RegisterPage />);
 
 <<<<<<< HEAD
+  on('/courseselectionpage', async() => <CourseSelectionPage/>);
+  
+  on('/creditreportpage', async() => <CreditReportPage />);
+=======
+<<<<<<< HEAD
   on('/admin', async () => <AdminPage />);
 
   on('/courseselectionpage', async() => <CourseSelectionPage />);
@@ -39,6 +45,7 @@ const router = new Router(on => {
 
 =======
   on('/courseselectionpage', async() => <CourseSelectionPage />);
+>>>>>>> refs/remotes/origin/master
 
 >>>>>>> master
   on('*', async (state) => {
