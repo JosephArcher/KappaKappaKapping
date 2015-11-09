@@ -12,7 +12,7 @@ import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
-import CourseSelectionPage from './components/CourseSelection'; // Added Course Selection Page
+import CourseSelectionPage from './components/CourseSelectionPage'; // Added Course Selection Page
 import CreditReportPage from './components/CreditReportPage'; // Added Credit Report Page
 
 const router = new Router(on => {
@@ -31,7 +31,7 @@ const router = new Router(on => {
 
   on('/register', async () => <RegisterPage />);
 
-  on('/courseselectionpage', async() => <CourseSelectionPage />);
+  on('/courseselectionpage', async() => <CourseSelectionPage/>);
   
   on('/creditreportpage', async() => <CreditReportPage />);
 

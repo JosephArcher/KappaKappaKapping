@@ -11,43 +11,47 @@ import FilterCourses from '../FilterCourses';
 class TransferCourseTable extends Component {
 
   static propTypes = {
-    courses: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+     availableTransferCourses: PropTypes.array.isRequired
   };
-
-
+ 
   render() {
+    const availableTransferCourses = this.props.availableTransferCourses;
+    const tableHeading = "Transferable Courses";
+    const title = "Title";
+    const id = "ID";
+    const completed = "Completed ?";
 
-   injectTapEventPlugin();
-
-   const {courses, actions} = this.props;
-
-   const Pokemon = [
-     { name : "Bulbasaur", type : "grass", stage : 0, caught : 0, species : "Seed Pokemon"}
-    ];
+    const FilterCoursesSection = (
+      <FilterCourses> </FilterCourses>
+    );
 
     return (
       <div>
       <div>
-      <h1 className="textCenter"> Transferable Courses </h1>
+      <h1 className="textCenter">{tableHeading}</h1>
       </div>
       <div>
-        <FilterCourses> </FilterCourses>
+        {FilterCoursesSection}
       </div>
       <Table striped hover responsive>
         <thead>
           <tr>
-            <th> Title </th>
-            <th> ID </th>
-            <th> Completed ? </th>
+            <th>{title}</th>
+            <th>{id}</th>
+            <th>{completed}</th>
           </tr>
         </thead>
         <tbody>
-         <CourseListItem course={Pokemon} > </CourseListItem>
+        {
+        this.props.availableTransferCourses.map(function(courseObject) {
+          return <CourseListItem  course={courseObject} ></CourseListItem>
+        })
+       }
         </tbody>
       </Table>
     </div>
    );
   }
 }
+
 export default TransferCourseTable; 

@@ -16,7 +16,6 @@ class CourseItem extends Component {
   static propTypes = {
     courseTitle: PropTypes.string.isRequired,
     courseID: PropTypes.string.isRequired,
-
   };
   render() {
 

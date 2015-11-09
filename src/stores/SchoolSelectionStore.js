@@ -6,23 +6,21 @@ import _ from 'underscore';
 
 var CHANGE_EVENT = 'change';
 
-var _avaliableTransferSChools = {};
+var _avaliableTransferSchools = {};
+var _currentlySelectedTransferSChool;
+
+var _allAvailableCourses = {};
+
+var _allCompletedCourseIds = {};
 
 
 // Extend ProductStore with EventEmitter to add eventing capabilities
 var CourseSelectionPageStore = _.extend({}, EventEmitter.prototype, {
 
-  // Return Product data
-  create: function() {
-    console.log("Created a course");
-  },
+  // Get all of the transfer schoosl based on the currently selected transfer school
+  getAllTransferSchools: function() {
 
-  // Return selected Product
-  complete: function(test) {
-
-    console.log("complted a course " + _courses[0]);
-
-  },
+  }
 
   // Emit Change event
   emitChange: function() {

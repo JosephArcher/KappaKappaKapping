@@ -10,32 +10,33 @@ import FilterCourses from '../FilterCourses';
 @withStyles(styles)
 class CompletedCoursesTable extends Component {
 
-static propTypes = {
-    tableTitle: PropTypes.string.isRequired,
+  static propTypes = {
+     CompletedCourses: PropTypes.array.isRequired
   };
 
+  update(){
+    
+  }
+ 
   render() {
-    const {tableTitle} = this.props;
 
- injectTapEventPlugin();
-  this.state = {
-  fixedHeader: true,
-  fixedFooter: true,
-  stripedRows: true,
-  showRowHover: true,
-  selectable: true,
-  multiSelectable: true,
-  enableSelectAll: false,
-  displaySelectAll: false,
-  deselectOnClickaway: false,
-  adjustForCheckbox: false,
-  displayRowCheckbox: false,
-  height: '300px',
-};
+    const CompletedCourses = this.props.CompletedCourses;
+    const tableHeading = "Completed Courses";
+    const title = "Title";
+    const id = "ID";
+    const completed = "Completed ?";
+
+       console.log("sup holmes");
+    console.log(CompletedCourses);
+
+    const FilterCoursesSection = (
+      <FilterCourses> </FilterCourses>
+    );
+
     return (
       <div>
       <div>
-      <h1 className="textCenter">  {tableTitle} </h1>
+      <h1 className="textCenter"> Completed Courses </h1>
       </div>
       <Table striped hover responsive>
         <thead>
@@ -45,13 +46,16 @@ static propTypes = {
           </tr>
         </thead>
         <tbody>
-         <tr>
-          <CompletedCourseListItem courseTitle="Intro to Programming"> </CompletedCourseListItem>
-         </tr>
+         
+         {CompletedCourses.map(function(courseObject) {
+          return  <CompletedCourseListItem course={courseObject}> </CompletedCourseListItem>  
+        })
+       }
         </tbody>
       </Table>
     </div>
    );
   }
 }
+
 export default CompletedCoursesTable; 

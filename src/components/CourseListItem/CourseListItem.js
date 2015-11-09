@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import actionCourse from '../../actions/actionCourse';
-import CourseStore from '../../Stores/CourseStore';
+import CourseSelectionPageActions from '../../actions/CourseSelectionPageActions';
 
 
 class CourseListItem extends Component {
@@ -26,25 +25,24 @@ class CourseListItem extends Component {
     // ...
   }
 
+
   render() {
 
     const course = this.props.course;
 
-    function markCompleted() {
-
-      console.log('Button Was clicked');
-       actionCourse.complete({course});
-    };
+   function markCompleted(course){ 
+      CourseSelectionPageActions.create(course);
+  }
 
     return (
        <tr>
-        <td></td>
-        <td></td>
+        <td>{course.title}</td>
+        <td>{course.id}</td>
         <td>       
             <button
               type="button"
               className="btn btn-primary"
-              onClick={markCompleted}>
+              onClick={e => markCompleted(this.props.course)}>
               Completed
             </button>         
         </td>
