@@ -8,6 +8,7 @@ import express from 'express';
 import ReactDOM from 'react-dom/server';
 import Router from './routes';
 import transferSchoolsApi from './api/transferSchoolsApi';
+import adminApi from './api/adminApi';
 
 const server = global.server = express();
 
@@ -18,6 +19,7 @@ server.use(express.static(path.join(__dirname, 'public')));
 // Register API middleware
 // -----------------------------------------------------------------------------
 server.use('/api/getTransferSchools', transferSchoolsApi);
+server.use('/api/adminApi', adminApi);
 server.use('/api/content', require('./api/content'));
 
 //

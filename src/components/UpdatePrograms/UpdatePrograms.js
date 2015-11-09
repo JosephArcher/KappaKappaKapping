@@ -6,6 +6,7 @@ import withStyles from '../../decorators/withStyles';
 import { DropDownMenu, RaisedButton } from 'material-ui';
 import { Avatar, Card, CardActions, CardHeader, CardText, Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn } from 'material-ui';
 let Colors = require('material-ui/lib/styles/colors');
+import AdminActions from '../../actions/AdminActions';
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
@@ -43,6 +44,11 @@ class UpdatePrograms extends Component {
 
     injectTapEventPlugin();
 
+    //<Typeahead
+    //  options={['Compilers', 'Operating Systems', 'Database Management', 'Introduction to Programming', 'C++ (lol not really)', 'Software Development', 'Language Study']}
+    //  maxVisible={5}
+    ///>
+    //
 
     // TODO: Tried breaking this table out into its component, got module not found error.
     // TODO: Worth fixing past prototype stage.
@@ -67,13 +73,10 @@ class UpdatePrograms extends Component {
               showExpandableButton={true}>
             </CardHeader>
             <CardText expandable={true}>
-              Marist Course: <Typeahead
-                options={['Compilers', 'Operating Systems', 'Database Management', 'Introduction to Programming', 'C++ (lol not really)', 'Software Development', 'Language Study']}
-                maxVisible={5}
-              />
+              Marist Course: <input id="course" type="text" name="course" />
             </CardText>
             <CardActions expandable={true}>
-              <RaisedButton label="Submit" backgroundColor={ Colors.green700 }/>
+              <RaisedButton label="Submit" backgroundColor={ Colors.green700 } onClick={this.addCourseToProgram}/>
             </CardActions>
           </Card>
 
@@ -191,6 +194,15 @@ class UpdatePrograms extends Component {
 
 
     );
+  }
+
+  addCourseToProgram() {
+    var program = '99999'; // Hard coded CS major for now.
+    console.log("Add course to program called.");
+
+    var course = document.getElementById("course").value;
+    console.log("Trying to add course with ID: " + course);
+    AdminActions.addCourseToProgram(program, course);
   }
 }
 

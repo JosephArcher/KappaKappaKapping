@@ -8,6 +8,8 @@ import CreateNewAdmin from '../CreateNewAdmin';
 import StudentTable from '../StudentTable';
 import UpdatePrograms from '../UpdatePrograms';
 import UpdateCourseEquivalencies from '../UpdateCourseEquivalencies';
+import AdminStore from '../../stores/adminStore';
+
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
 @withStyles(styles)
