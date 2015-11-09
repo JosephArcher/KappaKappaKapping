@@ -34,6 +34,9 @@ var DatePicker = React.createClass({
   },
 
   propTypes: {
+    DateTimeFormat: React.PropTypes.func,
+    locale: React.PropTypes.string,
+    wordings: React.PropTypes.object,
     autoOk: React.PropTypes.bool,
     defaultDate: React.PropTypes.object,
     formatDate: React.PropTypes.func,
@@ -86,6 +89,9 @@ var DatePicker = React.createClass({
 
   render: function render() {
     var _props = this.props;
+    var DateTimeFormat = _props.DateTimeFormat;
+    var locale = _props.locale;
+    var wordings = _props.wordings;
     var autoOk = _props.autoOk;
     var defaultDate = _props.defaultDate;
     var formatDate = _props.formatDate;
@@ -101,7 +107,7 @@ var DatePicker = React.createClass({
     var textFieldStyle = _props.textFieldStyle;
     var valueLink = _props.valueLink;
 
-    var other = _objectWithoutProperties(_props, ['autoOk', 'defaultDate', 'formatDate', 'maxDate', 'minDate', 'mode', 'onDismiss', 'onFocus', 'onShow', 'onTouchTap', 'showYearSelector', 'style', 'textFieldStyle', 'valueLink']);
+    var other = _objectWithoutProperties(_props, ['DateTimeFormat', 'locale', 'wordings', 'autoOk', 'defaultDate', 'formatDate', 'maxDate', 'minDate', 'mode', 'onDismiss', 'onFocus', 'onShow', 'onTouchTap', 'showYearSelector', 'style', 'textFieldStyle', 'valueLink']);
 
     return React.createElement(
       'div',
@@ -114,6 +120,9 @@ var DatePicker = React.createClass({
         onTouchTap: this._handleInputTouchTap })),
       React.createElement(DatePickerDialog, {
         ref: 'dialogWindow',
+        DateTimeFormat: DateTimeFormat,
+        locale: locale,
+        wordings: wordings,
         mode: mode,
         initialDate: this.state.dialogDate,
         onAccept: this._handleDialogAccept,

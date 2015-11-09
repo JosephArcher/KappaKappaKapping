@@ -16,6 +16,7 @@ var Dialog = require('../dialog');
 var FlatButton = require('../flat-button');
 var DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
 var ThemeManager = require('../styles/theme-manager');
+var DateTime = require('../utils/date-time');
 
 var DatePickerDialog = React.createClass({
   displayName: 'DatePickerDialog',
@@ -38,6 +39,9 @@ var DatePickerDialog = React.createClass({
   },
 
   propTypes: {
+    DateTimeFormat: React.PropTypes.func,
+    locale: React.PropTypes.string,
+    wordings: React.PropTypes.object,
     disableYearSelection: React.PropTypes.bool,
     initialDate: React.PropTypes.object,
     maxDate: React.PropTypes.object,
@@ -61,6 +65,17 @@ var DatePickerDialog = React.createClass({
     };
   },
 
+  getDefaultProps: function getDefaultProps() {
+    return {
+      DateTimeFormat: DateTime.DateTimeFormat,
+      locale: 'en-US',
+      wordings: {
+        ok: 'OK',
+        cancel: 'Cancel'
+      }
+    };
+  },
+
   windowListeners: {
     keyup: '_handleWindowKeyUp'
   },
@@ -81,11 +96,14 @@ var DatePickerDialog = React.createClass({
 
   render: function render() {
     var _props = this.props;
+    var DateTimeFormat = _props.DateTimeFormat;
+    var locale = _props.locale;
+    var wordings = _props.wordings;
     var initialDate = _props.initialDate;
     var onAccept = _props.onAccept;
     var style = _props.style;
 
-    var other = _objectWithoutProperties(_props, ['initialDate', 'onAccept', 'style']);
+    var other = _objectWithoutProperties(_props, ['DateTimeFormat', 'locale', 'wordings', 'initialDate', 'onAccept', 'style']);
 
     var _constructor$getRelevantContextKeys = this.constructor.getRelevantContextKeys(this.state.muiTheme);
 
@@ -112,7 +130,7 @@ var DatePickerDialog = React.createClass({
 
     var actions = [React.createElement(FlatButton, {
       key: 0,
-      label: 'Cancel',
+      label: wordings.cancel,
       secondary: true,
       style: styles.actions,
       onTouchTap: this._handleCancelTouchTap })];
@@ -120,7 +138,7 @@ var DatePickerDialog = React.createClass({
     if (!this.props.autoOk) {
       actions.push(React.createElement(FlatButton, {
         key: 1,
-        label: 'OK',
+        label: wordings.ok,
         secondary: true,
         disabled: this.refs.calendar !== undefined && this.refs.calendar.isSelectedDateDisabled(),
         style: styles.actions,
@@ -140,6 +158,8 @@ var DatePickerDialog = React.createClass({
         onClickAway: this._handleDialogClickAway,
         repositionOnUpdate: false }),
       React.createElement(Calendar, {
+        DateTimeFormat: DateTimeFormat,
+        locale: locale,
         ref: 'calendar',
         onDayTouchTap: this._onDayTouchTap,
         initialDate: this.props.initialDate,

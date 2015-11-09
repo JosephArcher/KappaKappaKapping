@@ -9,7 +9,7 @@ var _warning = require('warning');
 var _warning2 = _interopRequireDefault(_warning);
 
 function extractPath(string) {
-  var match = string.match(/https?:\/\/[^\/]*/);
+  var match = string.match(/^https?:\/\/[^\/]*/);
 
   if (match == null) return string;
 

@@ -120,6 +120,9 @@ var ToolbarGroup = React.createClass({
       if (!currentChild) {
         return null;
       }
+      if (!currentChild.type) {
+        return currentChild;
+      }
       switch (currentChild.type.displayName) {
         case 'DropDownMenu':
           return React.cloneElement(currentChild, {

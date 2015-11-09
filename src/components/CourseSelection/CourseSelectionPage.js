@@ -8,16 +8,37 @@ import {Col} from 'react-bootstrap';
 import {Label} from 'react-bootstrap';
 import {MenuItem} from 'react-bootstrap';
 import {DropdownButton} from 'react-bootstrap';
+
 const injectTapEventPlugin = require("react-tap-event-plugin");
 import TransferCoursesTable from '../TransferCoursesTable';
 import CompletedCoursesTable from '../CompletedCoursesTable';
+import CourseSelectionPageStore from '../../Stores/CourseSelectionPageStore';
 
+/**
+ * Get the Current School options from the Store
+ *
+ */
+function getAllTransferSchools() {
+  return {
+    allTransferSchools: CourseSelectionPageStore.getAllTransferSchools()
+  };
+}
+
+/**
+* Get the initial state from the Store
+*
+*/
 
 @withStyles(styles)
-class CourseSelectionPage extends React.Component{
+class CourseSelectionPage extends React.Component {
+
+
+
+
 
   static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired, 
+    onSetTitle: PropTypes.func.isRequired,
+    currentSchool: PropTypes.string
   };
 
  render() {
@@ -26,7 +47,7 @@ class CourseSelectionPage extends React.Component{
        { payload: '2', text: 'Dutchess Community College' },
     ];
     const title = 'Course Selection Pag';
-    const step1 =  'Step 1: Choose your current school';
+    const step1 = 'Step 1: Choose your current school';
     const step2 = 'Step 2: Select the courses you have completed';
     const step3 =  'Step 3: Calculate your transferable credits';
 

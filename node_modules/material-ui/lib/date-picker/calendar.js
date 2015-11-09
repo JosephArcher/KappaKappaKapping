@@ -36,6 +36,8 @@ var Calendar = React.createClass({
   },
 
   propTypes: {
+    DateTimeFormat: React.PropTypes.func.isRequired,
+    locale: React.PropTypes.string.isRequired,
     disableYearSelection: React.PropTypes.bool,
     initialDate: React.PropTypes.object,
     isActive: React.PropTypes.bool,
@@ -129,11 +131,16 @@ var Calendar = React.createClass({
     };
 
     var weekTitleDayStyle = this.prepareStyles(styles.weekTitleDay);
+    var _props = this.props;
+    var DateTimeFormat = _props.DateTimeFormat;
+    var locale = _props.locale;
 
     return React.createElement(
       ClearFix,
       { style: this.mergeStyles(styles.root) },
       React.createElement(DateDisplay, {
+        DateTimeFormat: DateTimeFormat,
+        locale: locale,
         disableYearSelection: this.props.disableYearSelection,
         style: styles.dateDisplay,
         selectedDate: this.state.selectedDate,
@@ -146,6 +153,8 @@ var Calendar = React.createClass({
         'div',
         { style: this.prepareStyles(styles.calendarContainer) },
         React.createElement(CalendarToolbar, {
+          DateTimeFormat: DateTimeFormat,
+          locale: locale,
           displayDate: this.state.displayDate,
           onMonthChange: this._handleMonthChange,
           prevMonth: toolbarInteractions.prevMonth,

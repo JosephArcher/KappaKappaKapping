@@ -10,9 +10,14 @@ import FilterCourses from '../FilterCourses';
 @withStyles(styles)
 class CompletedCoursesTable extends Component {
 
+static propTypes = {
+    tableTitle: PropTypes.string.isRequired,
+  };
 
   render() {
-   injectTapEventPlugin();
+    const {tableTitle} = this.props;
+
+ injectTapEventPlugin();
   this.state = {
   fixedHeader: true,
   fixedFooter: true,
@@ -30,7 +35,7 @@ class CompletedCoursesTable extends Component {
     return (
       <div>
       <div>
-      <h1 className="textCenter"> Completed Courses </h1>
+      <h1 className="textCenter">  {tableTitle} </h1>
       </div>
       <Table striped hover responsive>
         <thead>

@@ -10,23 +10,22 @@ import FilterCourses from '../FilterCourses';
 @withStyles(styles)
 class TransferCourseTable extends Component {
 
+  static propTypes = {
+    courses: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
+  };
+
 
   render() {
+
    injectTapEventPlugin();
-  this.state = {
-  fixedHeader: true,
-  fixedFooter: true,
-  stripedRows: true,
-  showRowHover: true,
-  selectable: true,
-  multiSelectable: true,
-  enableSelectAll: false,
-  displaySelectAll: false,
-  deselectOnClickaway: false,
-  adjustForCheckbox: false,
-  displayRowCheckbox: false,
-  height: '300px',
-};
+
+   const {courses, actions} = this.props;
+
+   const Pokemon = [
+     { name : "Bulbasaur", type : "grass", stage : 0, caught : 0, species : "Seed Pokemon"}
+    ];
+
     return (
       <div>
       <div>
@@ -44,36 +43,7 @@ class TransferCourseTable extends Component {
           </tr>
         </thead>
         <tbody>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
-         <tr>
-          <CourseListItem courseTitle="Intro to Programming" courseID="420"> </CourseListItem>
-         </tr>
+         <CourseListItem course={Pokemon} > </CourseListItem>
         </tbody>
       </Table>
     </div>
