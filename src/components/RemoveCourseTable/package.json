@@ -1,0 +1,6 @@
+{
+  "name": "UpdateCourseTable",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./UpdateCourseTable.js"
+}

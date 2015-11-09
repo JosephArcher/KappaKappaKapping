@@ -1,0 +1,11 @@
+@import '../variables.css';
+
+.NewAdminFields {
+  text-align: center;
+  max-width: var(--max-content-width);
+  padding-bottom: 50px;
+}
+
+.NewAdminPTag {
+  font-size: x-large;
+}
