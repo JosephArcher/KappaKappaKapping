@@ -31,11 +31,16 @@ const router = new Router(on => {
 
   on('/register', async () => <RegisterPage />);
 
+<<<<<<< HEAD
   on('/admin', async () => <AdminPage />);
 
   on('/courseselectionpage', async() => <CourseSelectionPage />);
 
 
+=======
+  on('/courseselectionpage', async() => <CourseSelectionPage />);
+
+>>>>>>> master
   on('*', async (state) => {
     const content = await http.get(`/api/content?path=${state.path}`);
     return content && <ContentPage {...content} />;
