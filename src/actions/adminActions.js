@@ -17,7 +17,11 @@ var AdminActions = {
   },
 
   getStudents: function() {
+    console.log("Getting those students!");
 
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.GET_STUDENTS
+    });
   },
 
   addCourseToProgram: function(program, course) {

@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './StudentTable.css';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn } from 'material-ui';
+import AdminActions from '../../actions/AdminActions';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 
 @withStyles(styles)
@@ -30,8 +31,6 @@ class StudentTable extends Component {
 
         <TableBody showRowHover={true} stripedRows={true}>
 
-          // Currently using dummy data until we set up database logic
-
           <TableRow>
             <TableRowColumn>Joseph</TableRowColumn>
             <TableRowColumn>Archer</TableRowColumn>
@@ -136,11 +135,16 @@ class StudentTable extends Component {
             <TableRowColumn>Marist College</TableRowColumn>
             <TableRowColumn>john@marist.edu</TableRowColumn>
           </TableRow>
+
 
         </TableBody>
 
       </Table>
     );
+  }
+
+  getStudents() {
+    AdminActions.getStudents();
   }
 }
 

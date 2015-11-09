@@ -4,7 +4,7 @@ import AdminStore from '../stores/AdminStore';
 var bodyParser = require('body-parser');
 let router = new Router();
 router.use(bodyParser.json());
-let conString = "postgres://priscoj:alpha29avalon@localhost/capping";
+let conString = "postgres://priscoj:alpha29@localhost/capping";
 
 router.post('/register', function(req, res) {
   var username = req.body.username;
@@ -47,7 +47,6 @@ router.get('/getStudents', function(req, res) {
 });
 
 router.post('/addCourseToProgram', function(req, res) {
-  var program = req.body.program;
   var course = req.body.course;
   pg.connect(conString, function(err, client, done) {
     if (err) {
@@ -60,10 +59,6 @@ router.post('/addCourseToProgram', function(req, res) {
     client.query('INSERT INTO program_requirements(program_id, marist_crn) ' +
                  'VALUES($1, $2)',
                   ['99999', course]);
-
-    //query.on('end', function() {
-    //  done();
-    //});
 
   });
 });
@@ -80,10 +75,6 @@ router.post('/removeCourseFromProgram', function(req, res) {
 
     client.query('DELETE FROM program_requirements WHERE program_id = $1 AND marist_crn = $2',
                  [data.program, data.course]);
-
-    //query.on('end', function() {
-    //  done();
-    //});
   });
 });
 
@@ -99,10 +90,6 @@ router.post('/addCourseEquivalency', function(req, res) {
 
     client.query('INSERT INTO course_equivalents(marist_crn, transfer_course_id, number_of_credts) ' +
                  'VALUES($1, $2, $3)', [data.program, data.transfer, data.credits]);
-
-    //query.on('end', function() {
-    //  done();
-    //});
   });
 });
 
@@ -117,10 +104,6 @@ router.post('/removeCourseEquivalency', function(req, res) {
     }
 
     client.query('DELETE FROM course_equivalents WHERE marist_crn = $1', data);
-
-    //query.on('end', function() {
-    //  done();
-    //});
   });
 });
 

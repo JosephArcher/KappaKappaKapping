@@ -5,6 +5,8 @@ import _ from 'underscore';
 var request = require('superagent');
 var prefix = require('superagent-prefix')('/static');
 
+var _students = {};
+
 function registerAdmin(user, pw) {
   // This is where we use the superagent stuff.
   console.log("Logging username from admin store: " + username);
@@ -39,9 +41,20 @@ function addCourseToProgram(program, course) {
     });
 }
 
+function getStudents() {
+  request
+    .get('/api/adminApi/getStudents')
+    .end(function(err, res) {
+      if (err) {
+        console.log("There's been an error.");
+        console.log(err);
+      } else {
+        return res;
+      }
+    });
+}
+
 var AdminStore = _.extend({}, EventEmitter.prototype, {
-  username: "",
-  password: "",
 
   emitChange: function() {
     this.emit('change');
