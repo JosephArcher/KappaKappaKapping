@@ -1,0 +1,6 @@
+{
+  "name": "StudentTable",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./StudentTable.js"
+}
