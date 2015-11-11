@@ -7,8 +7,7 @@ export default keyMirror({
   ADD_COURSE_TO_PROGRAM: null,
   GET_STUDENTS: null,
   SEARCH_INPUT_CHANGED: null,
-  MARK_CAUGHT: null
-
+  MARK_CAUGHT: null,
   Course_CREATE: null,
   Course_COMPLETE: null,
   Course_DESTROY: null,

@@ -32,22 +32,12 @@ const router = new Router(on => {
 
   on('/register', async () => <RegisterPage />);
 
-<<<<<<< HEAD
+  on('/admin', async () => <AdminPage />);
+
   on('/courseselectionpage', async() => <CourseSelectionPage/>);
   
   on('/creditreportpage', async() => <CreditReportPage />);
-=======
-<<<<<<< HEAD
-  on('/admin', async () => <AdminPage />);
 
-  on('/courseselectionpage', async() => <CourseSelectionPage />);
-
-
-=======
-  on('/courseselectionpage', async() => <CourseSelectionPage />);
->>>>>>> refs/remotes/origin/master
-
->>>>>>> master
   on('*', async (state) => {
     const content = await http.get(`/api/content?path=${state.path}`);
     return content && <ContentPage {...content} />;
