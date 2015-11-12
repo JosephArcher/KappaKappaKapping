@@ -7,9 +7,9 @@ import path from 'path';
 import express from 'express';
 import ReactDOM from 'react-dom/server';
 import Router from './routes';
-import transferSchoolsApi from './api/transferSchoolsApi';
 import adminApi from './api/adminApi';
 import transferSchoolsApi from './api/transferSchoolsApi';
+import transferSchoolCoursesApi from './api/transferSchoolCoursesApi';
 import registerStudentApi from './api/registerStudentApi';
 import creditReportApi from './api/creditReportApi';
 
