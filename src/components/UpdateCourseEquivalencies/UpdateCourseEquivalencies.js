@@ -4,7 +4,8 @@
 import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './UpdateCourseEquivalencies.css';
-import { Avatar, Card, CardHeader, CardText, CardActions, Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, RaisedButton, FlatButton } from 'material-ui';
+import { Table } from 'react-bootstrap';
+import { Avatar, Card, CardHeader, CardText, CardActions, RaisedButton, FlatButton } from 'material-ui';
 let Colors = require('material-ui/lib/styles/colors');
 const injectTapEventPlugin = require("react-tap-event-plugin");
 
@@ -53,109 +54,42 @@ class UpdateCourseEquivalencies extends Component {
           </Card>
         </div>
 
-        <div className="table">
-          <Table height={this.state.height} fixedHeader={this.state.fixedHeader} selectable={this.state.selected}>
+        <div className="table" style={{paddingTop: "15px"}}>
 
-            <TableHeader>
-              <TableRow>
-                <TableHeaderColumn colSpan="4" tooltip="This table lists Marist courses and their equivalent DCC courses." style={{textAlign: 'center'}}>
-                  Course Information
-                </TableHeaderColumn>
-              </TableRow>
-              <TableRow>
-                <TableHeaderColumn>Marist Course</TableHeaderColumn>
-                <TableHeaderColumn>Transfer Course</TableHeaderColumn>
-                <TableHeaderColumn>Transfer School</TableHeaderColumn>
-                <TableHeaderColumn>Remove Equivalency</TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
+          <Table striped hover responsive>
 
-            <TableBody showRowHover={this.state.showRowHover} stripedRows={this.state.stripedRows}>
-              <TableRow>
-                <TableRowColumn>Software Development II</TableRowColumn>
-                <TableRowColumn>Computer Science II</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
+            <thead>
+              <tr>
+                <th>Marist Course</th>
+                <th>Transfer Course</th>
+                <th>Transfer School</th>
+                <th>Remove Equivalency</th>
+              </tr>
+            </thead>
 
-              <TableRow>
-                <TableRowColumn>Systems Design</TableRowColumn>
-                <TableRowColumn>Systems Design</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
+            <tbody>
+            <tr>
+              <td>Software Development II</td>
+              <td>Computer Science II</td>
+              <td>DCC</td>
+              <td>
+                <button type="button" className="btn btn-danger">
+                  Remove
+                </button>
+              </td>
+            </tr>
 
-              <TableRow>
-                <TableRowColumn>Introduction to Programming</TableRowColumn>
-                <TableRowColumn>Introduction to Programming</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Operation Systems</TableRowColumn>
-                <TableRowColumn>Introduction to OS</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Software Development II</TableRowColumn>
-                <TableRowColumn>Computer Science II</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Systems Design</TableRowColumn>
-                <TableRowColumn>Systems Design</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Introduction to Programming</TableRowColumn>
-                <TableRowColumn>Introduction to Programming</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Operation Systems</TableRowColumn>
-                <TableRowColumn>Introduction to OS</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Software Development II</TableRowColumn>
-                <TableRowColumn>Computer Science II</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Systems Design</TableRowColumn>
-                <TableRowColumn>Systems Design</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Introduction to Programming</TableRowColumn>
-                <TableRowColumn>Introduction to Programming</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>Operation Systems</TableRowColumn>
-                <TableRowColumn>Introduction to OS</TableRowColumn>
-                <TableRowColumn>DCC</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-            </TableBody>
+            <tr>
+              <td>Software Development II</td>
+              <td>Computer Science II</td>
+              <td>DCC</td>
+              <td>
+                <button type="button" className="btn btn-danger">
+                  Remove
+                </button>
+              </td>
+            </tr>
+            </tbody>
 
           </Table>
         </div>

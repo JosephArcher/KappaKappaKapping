@@ -4,7 +4,8 @@ import React, { PropTypes, Component } from 'react';
 import styles from './UpdatePrograms.css';
 import withStyles from '../../decorators/withStyles';
 import { DropDownMenu, RaisedButton } from 'material-ui';
-import { Avatar, Card, CardActions, CardHeader, CardText, Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn } from 'material-ui';
+import { Avatar, Card, CardActions, CardHeader, CardText } from 'material-ui';
+import { Table } from 'react-bootstrap';
 let Colors = require('material-ui/lib/styles/colors');
 import AdminActions from '../../actions/AdminActions';
 
@@ -83,110 +84,54 @@ class UpdatePrograms extends Component {
 
         </div>
 
-        <div className="table">
-          <Table height={this.state.height} fixedHeader={this.state.fixedHeader} selectable={this.state.selected}>
+        <div className="table" style={{paddingTop: "15px"}}>
 
-            <TableHeader>
-              <TableRow>
-                <TableHeaderColumn colSpan="4" tooltip="This table lists the requirements for the selected course and lets you update them." style={{textAlign: 'center'}}>
-                  Course Information
-                </TableHeaderColumn>
-              </TableRow>
-              <TableRow>
-                <TableHeaderColumn>CRN</TableHeaderColumn>
-                <TableHeaderColumn>Title</TableHeaderColumn>
-                <TableHeaderColumn>Number of Credits</TableHeaderColumn>
-                <TableHeaderColumn>Remove Requirement</TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
+          <Table striped hover responsive>
 
-            <TableBody showRowHover={this.state.showRowHover} stripedRows={this.state.stripedRows}>
+            <thead>
+              <tr>
+                <th>CRN</th>
+                <th>Title</th>
+                <th>Number of Credits</th>
+                <th>Remove Requirement</th>
+              </tr>
+            </thead>
 
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>5</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
+            <tbody>
+              <tr>
+                <td>10101</td>
+                <td>Computer Science II</td>
+                <td>3</td>
+                <td>
+                  <button type="button" className="btn btn-danger">
+                    Remove
+                  </button>
+                </td>
+              </tr>
 
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>4</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
+              <tr>
+                <td>10101</td>
+                <td>Computer Science II</td>
+                <td>3</td>
+                <td>
+                  <button type="button" className="btn btn-danger">
+                    Remove
+                  </button>
+                </td>
+              </tr>
 
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>2</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
+              <tr>
+                <td>10101</td>
+                <td>Computer Science II</td>
+                <td>3</td>
+                <td>
+                  <button type="button" className="btn btn-danger">
+                    Remove
+                  </button>
+                </td>
+              </tr>
 
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>3</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>5</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>4</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>2</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>3</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>5</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>4</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>2</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-              <TableRow>
-                <TableRowColumn>10690</TableRowColumn>
-                <TableRowColumn>Compilers</TableRowColumn>
-                <TableRowColumn>3</TableRowColumn>
-                <TableRowColumn><RaisedButton label="Remove" backgroundColor={ this.state.color } /></TableRowColumn>
-              </TableRow>
-
-            </TableBody>
+            </tbody>
 
           </Table>
         </div>
