@@ -6,20 +6,30 @@
   margin: 0 auto;
   padding: 0 0 40px;
   max-width: var(--max-content-width);
-}
-
-.RegisterPage-left {
-	 margin: 50x;
-
- display: inline-block;
-    
-}
-
-
-.RegisterPage-right {
- margin: 50px;
-	 display: inline-block;
-
 
 }
+
+.centeredLoginForm {
+
+	margin-top: 50px;
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+.chart {
+
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.percentageCompleteLabel{
+
+	font-size: 1.50em;
+	vertical-align: middle;
+	line-height: 75px;
+	text-align: center;
+
+}
+
 

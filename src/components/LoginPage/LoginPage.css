@@ -4,17 +4,14 @@
 
 .LoginPage-container {
   margin: 0 auto;
-  padding: 0 0 40px;
+  padding: 0 0 0 0;
   max-width: var(--max-content-width);
 }
 
-.center {
-    margin: auto;
-    width: 20%;
-    padding: 10px;
+.test {
+	width: 50%;
 }
-
-.button {
-     width: 1000px;
-     height: 30px;
+.centeredLoginForm{
+	margin-top: 45px;
+	margin-bottom: 50px;
 }
