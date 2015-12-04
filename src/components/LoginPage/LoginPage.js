@@ -3,8 +3,14 @@
 import React, { PropTypes, Component } from 'react';
 import styles from './LoginPage.css';
 import withStyles from '../../decorators/withStyles';
-const TextField = require('material-ui/lib/text-field');
-const RaisedButton = require('material-ui/lib/raised-button');
+import {Form} from 'react-bootstrap';
+import {Input} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
+import {Grid} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
+import {MenuItem} from 'react-bootstrap';
+
 
 @withStyles(styles)
 class LoginPage extends Component {
@@ -19,21 +25,29 @@ class LoginPage extends Component {
 
     const title = 'Log In';
 
+   const inputSizeInstance = (
+   <div>
+    <Grid>
+      <Row>
+        <Col xs={12} sm={12} md={12} lg={12} xsPush={3} smPush={3} mdPush={3} lgPush={3}> 
+          <form className="centeredLoginForm">
+            <h1> {title} </h1>
+            <Input className="test" type="text" bsSize="large" placeholder="Username" />
+            <Input className="test"type="text" bsSize="large" placeholder="Password" />
+            <Button className="test"bsStyle="primary" block bsSize="large">Submit</Button>
+          </form>
+      </Col>
+    </Row>
+   </Grid>
+  </div>
+   
+);
+
     this.context.onSetTitle(title);
     return (
-
-      <div className="LoginPage">
+       <div desktop={true} width={320}>
         <div className="LoginPage-container">
-          <div className="LoginPage-components">
-            <h1 >{title}</h1>
-              <div >
-              <TextField floatingLabelText="Username"  ref="yo" /></div>
-              <div >
-              <TextField id="password" floatingLabelText="Password" /></div>
-                <br></br>
-              <div >
-              <RaisedButton className="button" label="Submit"/></div>
-          </div>
+            {inputSizeInstance}
         </div>
       </div>
     );

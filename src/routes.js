@@ -13,6 +13,7 @@ import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 import Profile from './components/Profile';
 import Welcome from './components/Welcome';
+import AboutPage from './components/AboutPage';
 import CourseSelectionPage from './components/CourseSelectionPage'; // Added Course Selection Page
 import CreditReportPage from './components/CreditReportPage'; // Added Credit Report Page
 
@@ -37,6 +38,8 @@ const router = new Router(on => {
   on('/courseselectionpage', async() => <CourseSelectionPage/>);
   
   on('/creditreportpage', async() => <CreditReportPage />);
+
+  on('/aboutpage', async() => <AboutPage/>);
 
   on('*', async (state) => {
     const content = await http.get(`/api/content?path=${state.path}`);

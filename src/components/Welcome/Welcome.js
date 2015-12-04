@@ -4,14 +4,14 @@ import React ,{ PropTypes, Component } from 'react';
 
 import styles from './Welcome.css';
 import withStyles from '../../decorators/withStyles';
-const TextField = require('material-ui/lib/text-field');
-const RaisedButton = require('material-ui/lib/raised-button');
 import { Button } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
-const ButtonToolbar = require('react-bootstrap/lib/ButtonToolbar');
 import Link from '../Link';
 import Profile from '../profile';
+import {Grid} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 
 @withStyles(styles)
 class Welcome extends React.Component{
@@ -27,6 +27,9 @@ class Welcome extends React.Component{
     return (
       <div className="Welcome" desktop={true} width={320}>
         <div className="Welcome-container">
+          <Grid>
+            <Row>
+             <Col xs={12} sm={12} md={12} lg={12}> 
           <h1>{title}</h1>
           <ListGroup>
               <ListGroupItem  className="list-group-item"
@@ -49,6 +52,9 @@ class Welcome extends React.Component{
               Log out the current user
             </ListGroupItem> 
           </ListGroup>
+            </Col>
+          </Row>
+          </Grid>
         </div>
       </div>
     );
