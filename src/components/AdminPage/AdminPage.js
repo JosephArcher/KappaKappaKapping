@@ -3,7 +3,7 @@
 import React, { PropTypes, Component } from 'react';
 import styles from './AdminPage.css';
 import withStyles from '../../decorators/withStyles';
-import {Tabs, Tab} from 'material-ui';
+import { Tabs, Tab } from 'react-bootstrap';
 import CreateNewAdmin from '../CreateNewAdmin';
 import StudentTable from '../StudentTable';
 import UpdatePrograms from '../UpdatePrograms';
@@ -26,18 +26,18 @@ class AdminPage extends Component {
     const title = 'Administrator Options';
     this.context.onSetTitle(title);
     return (
-      <div className="tabs-container">
-        <Tabs>
-          <Tab label="Courses">
+      <div className="tabs-container" style={{paddingTop: "15px"}}>
+        <Tabs defaultActiveKey={1} animation={false}>
+          <Tab eventKey={1} title="Courses">
             <UpdateCourseEquivalencies></UpdateCourseEquivalencies>
           </Tab>
-          <Tab label="Programs">
+          <Tab eventKey={2} title="Programs">
             <UpdatePrograms></UpdatePrograms>
           </Tab>
-          <Tab label="Students">
+          <Tab eventKey={3} title="Students">
             <StudentTable></StudentTable>
           </Tab>
-          <Tab label="Administrators">
+          <Tab eventKey={4} title="Administrators">
             <CreateNewAdmin></CreateNewAdmin>
           </Tab>
         </Tabs>
