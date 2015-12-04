@@ -3,15 +3,16 @@
 @import '../variables.css';
 
 .LoginPage-container {
+  text-align: center;
   margin: 0 auto;
-  padding: 0 0 0 0;
   max-width: var(--max-content-width);
 }
 
 .test {
-	width: 50%;
+
 }
-.centeredLoginForm{
+.centeredLoginForm {
+
 	margin-top: 45px;
 	margin-bottom: 50px;
 }

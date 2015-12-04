@@ -3,6 +3,7 @@ import styles from './CourseSelectionPage.css';
 import withStyles from '../../decorators/withStyles';
 import {Button} from 'react-bootstrap';
 import {Grid} from 'react-bootstrap';
+import {Input} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Label} from 'react-bootstrap';
@@ -25,6 +26,7 @@ class CourseSelectionPage extends React.Component {
 
   constructor() {
     super();
+    this._onChange = this._onChange.bind(this);
     this.state = CourseSelectionStore.getCourseSelectionState();
   }
   componentDidMount() {
@@ -33,13 +35,10 @@ class CourseSelectionPage extends React.Component {
   componentWillUnmount() {
    CourseSelectionStore.removeChangeListener(this._onChange);
   }
-  update() {
-    this.setState( getCourseSelectionState() );
-  }
    _onChange () {
     console.log("A CHANGE HAS OCCURED");
-      this.state = CourseSelectionStore.getCourseSelectionState();
-  } 
+      this.setState( { CompletedCoursesTable: CourseSelectionStore.getCourseSelectionState() } );
+  }
   render() {
     console.log("THE PAGE IS BEING RE RENDERED");
     const title = 'Course Selection Pag';
@@ -53,14 +52,23 @@ class CourseSelectionPage extends React.Component {
     console.log(this.state.completedCourses);
     const schoolSelection =  (
       <Col xs={12} md={12} lg={12}> 
-        <div>
-         <span className="stepHeading">  {step1} </span>
-          <DropdownButton bsSize="large" title="School / University" id="dropdown-size-large" className="currentSchoolDropbox">
-            <MenuItem> {DCC} </MenuItem>
-          </DropdownButton>
+       <Row>
+        <Col xs={6} md={6} lg={6}>
+         <p className="stepHeading">  {step1}   </p>
+        </Col>
+        <Col xs={6} md={6} lg={6}>
+          <Input bsSize="large" type="select" className="schoolPicker">
+              <option value="select">Current School</option>
+              <option value="other">Dutchess Community College</option>
+            </Input>
+        </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={12} lg={12}>
           <div className="verticalLine">
           </div>
-        </div>
+        </Col>     
+        </Row>
       </Col>
     );
     const courseSelection = (
@@ -76,8 +84,8 @@ class CourseSelectionPage extends React.Component {
             </Col>
             <Col xs={2} md={2} lg={2}>
             </Col>
-            <Col xs={5} md={5} lg={5}>
-              <CompletedCoursesTable CompletedCourses={this.state.completedCourses}></CompletedCoursesTable>
+            <Col xs={5} md={5} lg={5} className = "testsize" >
+              <CompletedCoursesTable CompletedCourses={this.state.completedCourses}  ></CompletedCoursesTable>
             </Col>
           </Row>
           <div className="verticalLine">
