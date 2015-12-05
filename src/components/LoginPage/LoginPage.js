@@ -26,10 +26,8 @@ class LoginPage extends Component {
     const title = 'Log In';
 
    const inputSizeInstance = (
-   <div>
     <Grid>
-      <Row>
-        <Col xs={12} sm={12} md={12} lg={12} xsPush={3} smPush={3} mdPush={3} lgPush={3}> 
+        <Col xs={12} sm={12} md={12} lg={12}> 
           <form className="centeredLoginForm">
             <h1> {title} </h1>
             <Input className="test" type="text" bsSize="large" placeholder="Username" />
@@ -37,20 +35,30 @@ class LoginPage extends Component {
             <Button className="test"bsStyle="primary" block bsSize="large">Submit</Button>
           </form>
       </Col>
-    </Row>
-   </Grid>
-  </div>
-   
+   </Grid>  
 );
 
     this.context.onSetTitle(title);
-    return (
-       <div desktop={true} width={320}>
-        <div className="LoginPage-container">
-            {inputSizeInstance}
-        </div>
-      </div>
-    );
+    // return (
+    //    <div desktop={true} width={320}>
+    //     <div className="LoginPage-container">
+    //         {inputSizeInstance}
+    //     </div>
+    //   </div>
+    // );
+return (
+
+ <Grid>
+        <Col xs={12} sm={12} md={12} lg={12}> 
+          <form className="centeredLoginForm">
+            <h1> {title} </h1>
+            <Input className="test" type="text" bsSize="large" placeholder="Username" />
+            <Input className="test"type="text" bsSize="large" placeholder="Password" />
+            <Button className="test"bsStyle="primary" block bsSize="large">Submit</Button>
+          </form>
+      </Col>
+   </Grid>  
+   );
 
   }
 

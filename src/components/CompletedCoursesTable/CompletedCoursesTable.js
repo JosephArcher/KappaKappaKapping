@@ -46,9 +46,9 @@ class CompletedCoursesTable extends Component {
           </tr>
         </thead>
         <tbody>
-         
-         {CompletedCourses.map(function(courseObject) {
-          return  <CompletedCourseListItem course={courseObject}> </CompletedCourseListItem>  
+        {
+        this.props.CompletedCourses.map(function(courseObject) {
+          return <CompletedCourseListItem  course={courseObject} ></CompletedCourseListItem>
         })
        }
         </tbody>

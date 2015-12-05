@@ -84,10 +84,6 @@ var CourseSelectionStore = _.extend({}, EventEmitter.prototype, {
     completedCourses: this.getAllCompletedCourses()
   };
   }
-
-    
-  
-
 });
 
 // Register callback with AppDispatcher

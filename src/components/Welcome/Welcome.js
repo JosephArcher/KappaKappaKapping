@@ -25,7 +25,7 @@ class Welcome extends React.Component{
     const title = 'Welcome, ' + userName;
     this.context.onSetTitle(title);
     return (
-      <div className="Welcome" desktop={true} width={320}>
+   
         <div className="Welcome-container">
           <Grid>
             <Row>
@@ -56,7 +56,6 @@ class Welcome extends React.Component{
           </Row>
           </Grid>
         </div>
-      </div>
     );
   }
 }
