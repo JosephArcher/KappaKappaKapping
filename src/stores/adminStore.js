@@ -5,7 +5,8 @@ import _ from 'underscore';
 var request = require('superagent');
 var prefix = require('superagent-prefix')('/static');
 
-var _students = {};
+var _students = [];
+
 
 function registerAdmin(user, pw) {
   // This is where we use the superagent stuff.
@@ -46,7 +47,7 @@ function getStudents() {
     .get('/api/adminApi/getStudents')
     .end(function(err, res) {
       if (err) {
-        console.log("There's been an error.");
+        console.log("There's been an error: getting students.");
         console.log(err);
       } else {
         return res;
@@ -73,6 +74,24 @@ var AdminStore = _.extend({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
     this.removeListener('change', callback);
   }
+  
+  // getStudents: function() {
+  // request
+  //   .get('/api/adminApi/getStudents')
+  //   .end(function(err, res) {
+  //     if (err) {
+  //       console.log("There's been an error: getting students.");
+  //       console.log(err);
+  //     } else {
+  //       for (var i = 0; i < res.length; i++) {
+  //         console.log("res[" + i + "]: " + res[i]);
+  //         _students.push(res[i]);
+  //       }
+  //     }
+  //   });
+  //   //console.log("_students: " + _students);
+  //   return _students;
+  // }
 });
 
 AppDispatcher.register(function(action) {
@@ -83,8 +102,12 @@ AppDispatcher.register(function(action) {
       break;
 
     case ActionTypes.ADD_COURSE_TO_PROGRAM:
-          addCourseToProgram(action.program, action.course);
-          break;
+      addCourseToProgram(action.program, action.course);
+      break;
+
+    case ActionTypes.GET_STUDENTS:
+      getStudents();
+      break;      
 
     default:
           break;
