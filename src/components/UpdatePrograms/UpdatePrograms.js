@@ -5,7 +5,7 @@ import styles from './UpdatePrograms.css';
 import withStyles from '../../decorators/withStyles';
 import { DropDownMenu, RaisedButton } from 'material-ui';
 import { Avatar, Card, CardActions, CardHeader, CardText } from 'material-ui';
-import { Table } from 'react-bootstrap';
+import { Table, DropdownButton, MenuItem } from 'react-bootstrap';
 let Colors = require('material-ui/lib/styles/colors');
 import AdminActions from '../../actions/AdminActions';
 
@@ -61,8 +61,12 @@ class UpdatePrograms extends Component {
       <div className="update-programs-container">
         <div className="header">
           <h1>Update Program Requirements</h1>
-          Update requirements for:
-          <DropDownMenu menuItems={programs} />
+          Update requirements for:  
+          <DropdownButton title="Computer Science">
+            <MenuItem eventKey="1">Computer Science</MenuItem>
+            <MenuItem eventKey="2">Information Technology</MenuItem>
+            <MenuItem eventKey="3">Information Systems</MenuItem>
+          </DropdownButton>
         </div>
 
         <div className="course-search">

@@ -4,7 +4,7 @@ import AdminStore from '../stores/AdminStore';
 var bodyParser = require('body-parser');
 let router = new Router();
 router.use(bodyParser.json());
-let conString = "postgres://priscoj:alpha29@localhost/capping";
+let conString = "postgres://priscoj:alpha29@localhost:5432/capping";
 
 router.post('/register', function(req, res) {
   var username = req.body.username;
@@ -27,12 +27,13 @@ router.get('/getStudents', function(req, res) {
 
   pg.connect(conString, function(err, client, done) {
     if (err) {
+      console.log("error in pgconnect");
       done();
       console.log(err);
       return res.status(500).json({success: false, data: err});
     }
 
-    var query = client.query('SELECT * FROM students');
+    var query = client.query('SELECT first_name, last_name, email FROM students');
 
     query.on('row', function(row) {
       console.log("Querying for students.");
@@ -41,6 +42,7 @@ router.get('/getStudents', function(req, res) {
 
     query.on('end', function() {
       done();
+      console.log("Ending getStudents");
       return res.json(results);
     });
   });
