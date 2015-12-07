@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import CourseSelectionPageActions from '../../actions/CourseSelectionPageActions';
 
 export default class CompletedCourseListItem extends Component {
+
   static propTypes = {
     course: PropTypes.object.isRequired
   };
 
   render() {
   const course = this.props.course;
-
   function _deleteClass() {
     console.log("delete button clicked for course: " + course.title  ) ;
     CourseSelectionPageActions.delete(course);
@@ -18,7 +18,7 @@ export default class CompletedCourseListItem extends Component {
     return (
       <tr>
         <td>{course.title}</td>
-        <td>{course.ID}</td>
+        
         <td>       
             <button
               type="button"
@@ -29,7 +29,5 @@ export default class CompletedCourseListItem extends Component {
         </td>
       </tr>
     );
-  }
-
-  
+  } 
 }

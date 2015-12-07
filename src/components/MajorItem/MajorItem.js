@@ -26,32 +26,23 @@ class MajorItem extends Component {
 
   static propTypes = {
     majorTitle: PropTypes.string.isRequired,
+    majorPercent: PropTypes.number.isRequired
   };
 
   render() {
 
-    const {majorTitle} = this.props;
-	 
+    const majorTitle = this.props.majorTitle;
+	  const majorPercent = this.props.majorPercent;
     return (
 
     	<Row className='majorItems'>
-        <Col xs={12} sm={12} md={12}>
-
-         <Col xs={6} sm={6} md={6}>
-             <p className="majorTitle"> {majorTitle} </p>  
-          </Col>
-
-          <Col xs={6} sm={6} md={6} lg={6} xsPush={5} smPush={5} mdPush={5} lgPush={5} >
-          
-              <Button onClick={ ()=> this.setState({ open: !this.state.open })  }>
-               <span className="downArrowIcon"> <Glyphicon glyph="glyphicon glyphicon-chevron-down" /> </span>
-              </Button>
-           </Col>
+        <Col xs={12} sm={12} md={12} lg={12}>
+         <p className="majorTitle"> {majorTitle} <span className="downArrowIcon"> <a onClick={ ()=> this.setState({ open: !this.state.open })  }> <Glyphicon glyph="glyphicon glyphicon-chevron-down" />  </a> </span> </p>        
         </Col>
 
 
           <Col xs={12} sm={12} md={12}>
-           <ProgressBar striped bsStyle="success" now={75} label="%(percent)s%" /> 
+           <ProgressBar striped bsStyle="success" now={majorPercent} label="%(percent)s%" /> 
            <Collapse in={this.state.open}>
             <div>
             <Well>

@@ -27,6 +27,18 @@ class AboutPage extends Component {
   
   render() {
 
+    const johnBlurb = (
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. 
+            Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.
+             Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, 
+             iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti 
+             sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscin.
+        </div>
+
+
+    );
+
     const title = 'About Us';
     this.context.onSetTitle(title);
 
@@ -47,7 +59,6 @@ class AboutPage extends Component {
         					<div className="verticalLine"> </div>
         					<p>Email:  <span> <a href="Joseph.Archer1@Marist.edu" /> Joseph.Archer1@Marist.edu </span> </p>
         					<p>GitHub:    <span> <a href="https://github.com/JosephArcher" /> Joseph.Archer1@Marist.edu </span> </p>
-        					<p>Facebook: <span> <a href="https://www.facebook.com/Joseph.Ellison.Archer" /> Joseph.Archer1@Marist.edu </span> </p>
         					<p>linkedin: <span> <a href="https://www.linkedin.com/" /> Joseph.Archer1@Marist.edu </span> </p>
         				</Col>
         			</Row>
@@ -57,9 +68,7 @@ class AboutPage extends Component {
      			<Card>
      			<p className="memberName"> About Joe </p>
      			<div className="verticalLine"> </div>
-     			<div>
-     			<p> Joe is currently a Senior at Marist College studying Computer Science. He is currently working at IBM </p>
-     			</div>
+     			   {johnBlurb}
      			</Card>
      		</Col>	
      	</Row>
@@ -68,6 +77,7 @@ class AboutPage extends Component {
      			<Card>
      			<p className="memberName"> About John </p>
      			<div className="verticalLine"> </div>
+                {johnBlurb}
      			</Card>
      		</Col>
      		 <Col xs={6} md={6} lg={6}> 
@@ -83,7 +93,6 @@ class AboutPage extends Component {
 						
         					<p>Email:  <span> <a href="John.Priso1@Marist.edu" /> John.Prisco1@Marist.edu </span> </p>
         					<p>GitHub:    <span> <a href="https://github.com/JohnPrisco" /> https:\/\/github.com/JohnPrisco </span> </p>
-        					<p>Facebook: <span> <a href="https://www.facebook.com/johnprisco" /> https:\/\/www.facebook.com/johnprisco </span> </p>
         					<p>linkedin: <span> <a href="https://www.linkedin.com/johnprisco" /> www.linkedin.com/johnprisco</span> </p>
         				</Col>
         			</Row>
@@ -104,9 +113,8 @@ class AboutPage extends Component {
         					</div>
 						
         					<p>Email:  <span> <a href="Joseph.Archer1@Marist.edu" /> Alex.Hochberg1@Marist.edu </span> </p>
-        					<p>GitHub:    <span> <a href="https://github.com/JosephArcher" /> https:\/\/github.com/AlexHochberg </span> </p>
-        					<p>Facebook: <span> <a href="https://www.facebook.com/Joseph.Ellison.Archer" /> https:\/\/www.facebook.com/alex.hochberg.52 </span> </p>
-        					<p>linkedin: <span> <a href="https://www.linkedin.com/" />  www.linkedin.com/AlexHochberg</span> </p>
+        					<p>GitHub:    <span> <a href="https://github.com/JosephArcher" /> https:\\github.com\AlexHochberg </span> </p>
+        					<p>linkedin: <span> <a href="https://www.linkedin.com/" />  www.linkedin.com\AlexHochberg</span> </p>
         				</Col>
         			</Row>
      			</Card>
@@ -115,7 +123,7 @@ class AboutPage extends Component {
      			<Card>
      			<p className="memberName"> About Alex </p>
      			<div className="verticalLine"> </div>
-
+                   {johnBlurb}
      			</Card>
      		</Col>	
      	</Row> 	
@@ -125,6 +133,7 @@ class AboutPage extends Component {
      			<Card>
      			<p className="memberName"> About Justin </p>
      			<div className="verticalLine"> </div>
+                   {johnBlurb}
      			</Card>
      		</Col>
      		 <Col xs={6} md={6} lg={6}> 
@@ -140,7 +149,6 @@ class AboutPage extends Component {
 						
         					<p>Email:  <span> <a href="John.Priso1@Marist.edu" /> Justin.Esposito1@Marist.edu </span> </p>
         					<p>GitHub:    <span> <a href="https://github.com/JohnPrisco" /> https:\/\/github.com/JustinEsposito </span> </p>
-        					<p>Facebook: <span> <a href="https://www.facebook.com/johnprisco" /> https:\/\/www.facebook.com/JustinEsposito </span> </p>
         					<p>linkedin: <span> <a href="https://www.linkedin.com/johnprisco" /> www.linkedin.com/Justin Esposito</span> </p>
         				</Col>
         			</Row>
@@ -161,7 +169,6 @@ class AboutPage extends Component {
         					</div>
         					<p>Email:  <span> <a href="John.Priso1@Marist.edu" /> Chris.DellaDonna1@Marist.edu </span> </p>
         					<p>GitHub:  <span> <a href="https://github.com/JohnPrisco" /> https:\/\/github.com/ChrisDellaDonna </span> </p>
-        					<p>Facebook: <span> <a href="https://www.facebook.com/johnprisco" /> https:\/\/www.facebook.com/ChrisDellaDonna </span> </p>
         					<p>linkedin: <span> <a href="https://www.linkedin.com/johnprisco" /> www.linkedin.com/ChrisDellaDonna</span> </p>
         				</Col>
         			</Row>
@@ -171,6 +178,7 @@ class AboutPage extends Component {
      			<Card>
      			<p className="memberName"> About Chris </p>
      			<div className="verticalLine"> </div>
+                   {johnBlurb}
      			</Card>
      		</Col>	
      	</Row>

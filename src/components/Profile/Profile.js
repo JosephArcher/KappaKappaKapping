@@ -11,6 +11,9 @@ import {Grid} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {MenuItem} from 'react-bootstrap';
+import {Popover} from 'react-bootstrap';
+import {OverlayTrigger} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 import Link from '../Link';
@@ -30,8 +33,10 @@ class Profile extends Component {
 
      const inputSizeInstance = (
     <div>
-     <Grid>
-       <h1>{title}</h1>
+     <Grid>  
+     <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+           <p className="topMargin"> <span className="stepHeading">{title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
+           </OverlayTrigger>
         <div>
         <form className="centeredLoginForm">
         <Row>

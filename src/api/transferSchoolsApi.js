@@ -5,7 +5,7 @@ import pg from 'pg';
 import Router from 'express';
 
 let router = new Router();
-let conString = "postgres://priscoj:alpha29avalon@localhost/capping";
+let conString = "postgres://postgres:ja5125@localhost/postgres";
 
 // If the route matches /api/getTransferSchools...
 router.get('/', function(req, res) {

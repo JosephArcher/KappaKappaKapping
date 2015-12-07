@@ -12,9 +12,12 @@ class CourseTable extends Component {
 
 static propTypes = {
     tableTitle: PropTypes.string.isRequired,
+    courseList: PropTypes.array.isRequired
   };
 
   render() {
+
+    console.log(this.props.courseList);
     const {tableTitle} = this.props;
 
  injectTapEventPlugin();
@@ -45,9 +48,11 @@ static propTypes = {
           </tr>
         </thead>
         <tbody>
-         <tr>
-          <CourseItem courseTitle="Intro to Programming" courseID= "#12312" > </CourseItem>
-         </tr>
+         {
+          this.props.courseList.map(function(courseObject) {
+          return <CourseItem  course={courseObject} ></CourseItem>
+        })
+       }
         </tbody>
       </Table>
     </div>

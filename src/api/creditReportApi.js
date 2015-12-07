@@ -5,7 +5,7 @@ import pg from 'pg';
 import Router from 'express';
  
 let router = new Router();
-let conString = "postgres://postgres:wumbo100@localhost/kap";
+let conString = "postgres://postgres:ja5125@localhost/postgres";
  
 //var results = [];
  
@@ -14,9 +14,7 @@ let conString = "postgres://postgres:wumbo100@localhost/kap";
  
 // // Grab data from http request
 // var data = {text: req.body.text, complete: req.body.complete};
- 
- 
- 
+
 let _selected_course_ids = ['00001','00002', '00003', '00004', '00009'];
 let _total_credits = 0;
 let _credits_transfered = 0;

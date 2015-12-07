@@ -4,7 +4,8 @@ import AdminStore from '../stores/AdminStore';
 var bodyParser = require('body-parser');
 let router = new Router();
 router.use(bodyParser.json());
-let conString = "postgres://priscoj:alpha29@localhost:5432/capping";
+let conString = "postgres://postgres:ja5125@localhost/postgres";
+
 
 router.post('/register', function(req, res) {
   var username = req.body.username;

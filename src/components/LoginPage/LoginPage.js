@@ -10,7 +10,9 @@ import {Grid} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {MenuItem} from 'react-bootstrap';
-
+import {Popover} from 'react-bootstrap';
+import {OverlayTrigger} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
 
 @withStyles(styles)
 class LoginPage extends Component {
@@ -27,9 +29,10 @@ class LoginPage extends Component {
 
    const inputSizeInstance = (
     <Grid>
+
         <Col xs={12} sm={12} md={12} lg={12}> 
           <form className="centeredLoginForm">
-            <h1> {title} </h1>
+            
             <Input className="test" type="text" bsSize="large" placeholder="Username" />
             <Input className="test"type="text" bsSize="large" placeholder="Password" />
             <Button className="test"bsStyle="primary" block bsSize="large">Submit</Button>
@@ -50,8 +53,11 @@ return (
 
  <Grid>
         <Col xs={12} sm={12} md={12} lg={12}> 
+            <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+           <p className="topMargin"> <span className="stepHeading">{title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
+           </OverlayTrigger>
           <form className="centeredLoginForm">
-            <h1> {title} </h1>
+         
             <Input className="test" type="text" bsSize="large" placeholder="Username" />
             <Input className="test"type="text" bsSize="large" placeholder="Password" />
             <Button className="test"bsStyle="primary" block bsSize="large">Submit</Button>

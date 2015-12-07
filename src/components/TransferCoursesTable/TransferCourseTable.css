@@ -7,3 +7,21 @@
 .textCenter {
 	text-align: center;
 }
+.completedTable {
+	height: 400px;
+	overflow: auto;
+}
+.first {
+width: 50%;
+}
+.second {
+width: 30%;
+}
+.third {
+width: 20%;
+}
+.missingCourse {
+	text-align: center;
+	color: red;
+	font-size: 15pt;
+}

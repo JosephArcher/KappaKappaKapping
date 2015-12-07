@@ -10,9 +10,8 @@
   margin-bottom: 25px;
 
 }
-.testsize {
-	max-height: 700px;
-	overflow: auto;
+body {
+	padding: 50px,50px,50px,50px; 
 }
 .stepHeading {
 	text-align: left;
@@ -21,7 +20,8 @@
 	margin-bottom: 10px;
 }
 .schoolPicker {
-	text-align: right;
+	width: 50%;
+	text-align: center;
 }
 .currentSchoolLabel {
 	text-align: center;
@@ -64,4 +64,10 @@
      background-color: #a41020;
      margin-top: 15px;
      margin-bottom: 10px;
+}
+.helpIcon{
+	font-size: 20px;
+}
+.centerDiv{
+	text-align: center;
 }
