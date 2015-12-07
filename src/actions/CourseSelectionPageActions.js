@@ -14,7 +14,13 @@ var CourseSelectionPageActions = {
       course: theCourse
     })
   },
-
+  searchTermChanged: function(theSearchTerm) {
+    console.log("Actions Search Term Changed was Found");
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.Course_Filter,
+      searchTerm: theSearchTerm
+    })
+  },
  delete: function(theCourse) {
   	console.log("actions delete was found");
   	AppDispatcher.dispatch({
@@ -22,7 +28,6 @@ var CourseSelectionPageActions = {
   		course: theCourse
   	})
   }
-
 };
 
 module.exports = CourseSelectionPageActions;

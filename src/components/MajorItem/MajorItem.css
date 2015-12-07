@@ -47,6 +47,10 @@
     font-size: 1.75em;
     color: #000000;
     text-align: center;
+    margin-bottom: 50px;
+}
+.downArrowButton{
+    text-align: right;
 }
 .centerText {
    text-align: center;
@@ -54,5 +58,8 @@
 .downArrowIcon:hover {
     color: red;
 }
-
+.downArrowIcon {
+   text-align: right;
+   float: right;
+}
 /* @end Package */

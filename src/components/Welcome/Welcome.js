@@ -12,6 +12,9 @@ import Profile from '../profile';
 import {Grid} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
+import {Popover} from 'react-bootstrap';
+import {OverlayTrigger} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
 
 @withStyles(styles)
 class Welcome extends React.Component{
@@ -28,9 +31,12 @@ class Welcome extends React.Component{
    
         <div className="Welcome-container">
           <Grid>
-            <Row>
+  
              <Col xs={12} sm={12} md={12} lg={12}> 
-          <h1>{title}</h1>
+                     <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+           <p className="topMargin"> <span className="stepHeading">  {title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
+           </OverlayTrigger>
+      
           <ListGroup>
               <ListGroupItem  className="list-group-item"
                               header="Select Classes"
@@ -53,7 +59,6 @@ class Welcome extends React.Component{
             </ListGroupItem> 
           </ListGroup>
             </Col>
-          </Row>
           </Grid>
         </div>
     );

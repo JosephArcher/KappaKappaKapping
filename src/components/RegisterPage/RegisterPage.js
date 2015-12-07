@@ -15,7 +15,9 @@ const injectTapEventPlugin = require("react-tap-event-plugin");
 import Link from '../Link';
 import Welcome from '../Welcome';
 const DoughnutChart = require("react-chartjs").Doughnut;
-
+import {Popover} from 'react-bootstrap';
+import {OverlayTrigger} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
 
 @withStyles(styles)
 class RegisterPage extends Component {
@@ -24,37 +26,21 @@ class RegisterPage extends Component {
     onSetTitle: PropTypes.func.isRequired,
   };
   
-
-
-
-
   render() {
 
     const title = 'Student Registration';
     this.context.onSetTitle(title);
 
-  const percentageComplete = [
-    {
-        value: 75,
-        color: "#007fff",
-        highlight: "#00ffff"
-    },
-     {
-        value: 25,
-        color: "#FFFFFF",
-        highlight: "#FFFFFF"
-    }
-];
-    
-
-  
     return (
      <div desktop={true} width={320}>
       <div className="RegisterPage-container ">   
       <Grid>
+      <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+           <p className="topMargin"> <span className="stepHeading">{title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
+           </OverlayTrigger>
         <div>
         <form className="centeredLoginForm">
-        <h1>{title}</h1>
+        
         <Row>
           <Col xs={6} md={6} lg={6}> 
        
@@ -90,16 +76,6 @@ class RegisterPage extends Component {
                      <option value="select">Current School</option>
                      <option value="other">Dutchess Community College</option>
                   </Input>
-
-                <Row>
-                  <Col xs={12} sm ={12} md={4} lg={4}> 
-                    <DoughnutChart data={percentageComplete} width="75" height="75" />
-                  </Col>
-
-                  <Col xs={12} sm ={12} md={8} lg={8} > 
-                    <span className="percentageCompleteLabel">Percent Complete</span>
-                  </Col>
-              </Row>
           </Col>
       </Row>
        <Button bsStyle="primary" block bsSize="large">Submit</Button>

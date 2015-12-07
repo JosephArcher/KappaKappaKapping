@@ -17,7 +17,10 @@ class CompletedCoursesTable extends Component {
   update(){
     
   }
- 
+  _onChange () {
+    console.log("A CHANGE HAS OCCURED");
+      this.setState(CourseSelectionStore.getCourseSelectionState());
+  } 
   render() {
 
     const CompletedCourses = this.props.CompletedCourses;
@@ -34,10 +37,7 @@ class CompletedCoursesTable extends Component {
     );
 
     return (
-      <div>
-      <div>
-      <h1 className="textCenter"> Completed Courses </h1>
-      </div>
+     <div className="completedTable">
       <Table striped hover responsive>
         <thead>
           <tr>

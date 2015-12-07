@@ -12,7 +12,17 @@
 
 }
 .centeredLoginForm {
-
-	margin-top: 45px;
 	margin-bottom: 50px;
+}
+.helpIcon{
+	font-size: 20px;
+}
+.stepHeading {
+	text-align: left;
+	font-size: 1.75em;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.topMargin {
+	margin-top: 10px;
 }

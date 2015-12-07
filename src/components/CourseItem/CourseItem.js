@@ -13,18 +13,28 @@ import CompletedCoursesTable from '../CompletedCoursesTable';
 const PieChart = require("react-chartjs").Pie;
 
 class CourseItem extends Component {
-  static propTypes = {
-    courseTitle: PropTypes.string.isRequired,
-    courseID: PropTypes.string.isRequired,
+
+ static propTypes = {
+    course: PropTypes.object.isRequired
   };
+
   render() {
 
-    const {courseTitle, courseID} = this.props;
+  const course = this.props.course;
+
+  let alex = "";
+
+  if(course.marist_crn == null){
+    alex = course.transfer_course_id;
+  }
+  else{
+    alex= course.marist_crn;
+  }
 	
     return (
     	 <tr>
-        <td>{courseTitle}</td>
-        <td>{courseID}</td>
+        <td>{course.course_title}</td>
+        <td>{alex}</td>
       </tr>
     );
   }

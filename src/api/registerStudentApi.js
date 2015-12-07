@@ -5,7 +5,7 @@ import pg from 'pg';
 import Router from 'express';
 
 let router = new Router();
-let conString = "postgres://postgres:wumbo100@localhost/kap";
+let conString = "postgres://postgres:ja5125@localhost/postgres";
 
 //var results = [];
 

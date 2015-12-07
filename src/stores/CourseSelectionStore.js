@@ -15,22 +15,57 @@ var CHANGE_EVENT = 'change';
   loadCourses();
 
   function loadCourses() {
-  console.log("load");
     availableTransferCourses =  Courses;
-    //console.log("avavasdfasdf" + availableTransferCourses.length);
   } 
-
 
  // Will add the course to the completed course list
 function  markCourseAsCompleted(course) {
-  console.log("Joe the course " + course.title + "was added to the completed list  " + completedCourses.length);
-  var length = completedCourses.length;
-  completedCourses.push(course);
 
+  console.log("Joe the course " + course.title + "was added to the completed list  " + completedCourses.length);
+
+  // Initalize the variables
+  var nextCourse;
+  var indexToRemove;
+
+  // Loop over each item in the transfer courses array and search for the index with the given name
+  for(var i = 0; i < availableTransferCourses.length; i++){
+
+    nextCourse = availableTransferCourses[i];
+   
+    // Compare
+    if(course.title == nextCourse.title) {
+      // Save the index to remove later
+      indexToRemove = i;
+      break;
+    }
  }
+
+ // Add the course to the completed courses array
+  completedCourses.push(course);
+ // Remove the transerfable course
+
+ console.log("BEFORE " + availableTransferCourses.length);
+  availableTransferCourses.splice(indexToRemove,1);
+   console.log("AFTER " + availableTransferCourses.length);
+}
  // Will remove the course from the completed course list
  function deleteCourseFromCompleted(course) {
 
+  var nextCourse;
+  // Loop over each item in the completed courses array and search for the index with the given name
+  for(var i = 0; i < completedCourses.length; i++){
+
+    nextCourse = completedCourses[i];
+    console.log("THE COURSE TITLE IS ... " + course.title);
+    console.log("THE NEXT COURSE TITLE IS ... " + nextCourse.title);
+    // Compare
+    if(course.title == nextCourse.title) {
+      console.log("JOE THE DELETE MATCH WAS FOUND");
+      completedCourses.splice(i,1);
+      break;
+    }
+  }
+  availableTransferCourses.push(course);
   console.log("Joe the course " + course.title + " has made it to the store ");
  }
  function numberOfCompletedCourses() {

@@ -1,1 +1,11 @@
 @import '../variables.css';
+
+.first {
+width: 40%;
+}
+.second {
+width: 30%;
+}
+.third {
+width: 30%;
+}

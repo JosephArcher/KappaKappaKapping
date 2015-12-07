@@ -10,7 +10,7 @@ export default class FilterCourses extends Component {
     const {searchTerm, actions} = this.props;
 
     return (
-      <form>
+      <form className="test">
         <div className="form-group">
           <input
             className="form-control"

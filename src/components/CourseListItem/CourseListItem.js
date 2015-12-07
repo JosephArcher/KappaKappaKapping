@@ -2,54 +2,35 @@ import React, { Component, PropTypes } from 'react';
 import CourseSelectionPageActions from '../../actions/CourseSelectionPageActions';
 
 
-class CourseListItem extends Component {
+export default class CourseListItem extends Component {
 
-  static propTypes = { 
+  static propTypes = {
     course: PropTypes.object.isRequired
   };
 
-  constructor() {
-    super();
-    this.state = {};
-  }
-
-  componentDidMount() {
-    // ...
-  }
-
-  componentWillUnmount() {
-    // ...
-  }
-
-  shouldComponentUpdate() {
-    // ...
-  }
-
-
   render() {
-
     const course = this.props.course;
-
-   function markCompleted(course){ 
+    console.log("broke");
+    console.log(course);
+   function _markCompleted(){ 
       CourseSelectionPageActions.create(course);
   }
 
     return (
        <tr>
-        <td>{course.title}</td>
-        <td>{course.id}</td>
-        <td>       
+        <td className="first">{course.title}</td>
+        <td className="second">{course.ID}</td>
+        <td className="third">       
             <button
               type="button"
               className="btn btn-primary"
-              onClick={e => markCompleted(this.props.course)}>
-              Completed
+              onClick={_markCompleted}>
+              Select
             </button>         
         </td>
       </tr>
     );
   }
-
 }
 
 export default CourseListItem;
