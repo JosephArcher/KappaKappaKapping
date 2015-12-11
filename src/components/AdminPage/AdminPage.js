@@ -22,7 +22,7 @@ class AdminPage extends React.Component {
 
   constructor() {
     super();
-    this.state = { students: [], courses: [] };
+    this.state = { students: [], courses: [], equivalents: [] };
   }
 
   componentDidMount() {
@@ -52,6 +52,20 @@ class AdminPage extends React.Component {
           });
         }
       }.bind(this));
+
+    request
+      .get('api/adminApi/getCourseEquivalents')
+      .end(function(err, res) {
+        if (err) {
+          console.log("There's been an error: getting Course Equivalents.");
+          console.log(err);
+        } else {
+          this.setState({
+            equivalents: res.body
+          });
+        }
+      }.bind(this));
+
   }
 
   render() {
@@ -64,7 +78,7 @@ class AdminPage extends React.Component {
       <div className="tabs-container" style={{paddingTop: "15px"}}>
         <Tabs defaultActiveKey={1} animation={false}>
           <Tab eventKey={1} title="Courses">
-            <UpdateCourseEquivalencies></UpdateCourseEquivalencies>
+            <UpdateCourseEquivalencies equivalents={this.state.equivalents}></UpdateCourseEquivalencies>
           </Tab>
           <Tab eventKey={2} title="Programs">
             <UpdatePrograms courses={this.state.courses}></UpdatePrograms>

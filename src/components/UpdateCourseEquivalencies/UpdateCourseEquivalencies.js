@@ -8,12 +8,18 @@ import { Table, OverlayTrigger, Glyphicon, Popover, Input } from 'react-bootstra
 import { Avatar, Card, CardHeader, CardText, CardActions } from 'material-ui';
 let Colors = require('material-ui/lib/styles/colors');
 const injectTapEventPlugin = require("react-tap-event-plugin");
+import CourseEquivalentItem from '../CourseEquivalentItem';
 
 @withStyles(styles)
 class UpdateCourseEquivalencies extends Component {
+  static contextTypes = {
+    equivalents: PropTypes.array.isRequired
+  };
+
   render() {
     injectTapEventPlugin();
-    var Typeahead = require('react-typeahead').Typeahead;
+
+
 
     this.state = {
       fixedHeader: true,
@@ -50,7 +56,7 @@ class UpdateCourseEquivalencies extends Component {
             <CardText expandable={true}>
               <div className="course-fields">
                 <Input type="text" placeholder="Marist Course" id="marist-course" name="marist-course" />
-                <Input type="text" placeholder="Transfer Course" id="transerf-course" name="transfer-course" />
+                <Input type="text" placeholder="Transfer Course" id="transfer-course" name="transfer-course" />
               </div>
             </CardText>
             <CardActions expandable={true}>
@@ -78,27 +84,11 @@ class UpdateCourseEquivalencies extends Component {
             </thead>
 
             <tbody>
-            <tr>
-              <td>Software Development II</td>
-              <td>Computer Science II</td>
-              <td>DCC</td>
-              <td>
-                <button type="button" className="btn btn-danger">
-                  Remove
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Software Development II</td>
-              <td>Computer Science II</td>
-              <td>DCC</td>
-              <td>
-                <button type="button" className="btn btn-danger">
-                  Remove
-                </button>
-              </td>
-            </tr>
+            {
+              this.props.equivalents.map(function (item) {
+                return <CourseEquivalentItem item={ item }></CourseEquivalentItem>
+              })
+            }
             </tbody>
 
           </Table>

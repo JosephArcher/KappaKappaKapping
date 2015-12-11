@@ -61,7 +61,7 @@ class UpdatePrograms extends Component {
         <div className="course-search">
           <Card initiallyExpanded={false}>
             <CardHeader
-              title="Search for courses you want to add to the program."
+              title="Enter the courses you want to add to the program."
               avatar={<Avatar style={{color:'red'}}>A</Avatar>}
               actAsExpander={true}
               showExpandableButton={true}>
