@@ -141,4 +141,35 @@ router.get('/getProgramRequirements', function(req, res) {
   });
 });
 
+router.get('/getCourseEquivalents', function(req, res) {
+  var results = [];
+
+  pg.connect(conString, function(err, client, done) {
+    if (err) {
+      console.log("error in pgconnect");
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    var query = client.query('select marist_courses.course_title as marist_course, ' +
+                             'transfer_courses.course_title as transfer_course ' +
+                             'from marist_courses ' +
+                             'inner join course_equivalents ' +
+                             'on course_equivalents.marist_crn = marist_courses.marist_crn ' +
+                             'inner join transfer_courses ' +
+                             'on transfer_courses.transfer_course_id = course_equivalents.transfer_course_id;');
+
+    query.on('row', function(row) {
+      console.log("Querying for course equivalents.");
+      results.push(row);
+    });
+
+    query.on('end', function() {
+      done();
+      console.log("Ending getCourseEquivalents");
+      return res.json(results);
+    });
+  });
+});
+
 export default router;
