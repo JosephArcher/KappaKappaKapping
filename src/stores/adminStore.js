@@ -5,7 +5,7 @@ import _ from 'underscore';
 var request = require('superagent');
 var prefix = require('superagent-prefix')('/static');
 
-var _students = [];
+let students = [];
 
 
 function registerAdmin(user, pw) {
@@ -18,10 +18,10 @@ function registerAdmin(user, pw) {
     .send({ username: user, password: pw })
     .end(function(err, res){
       if (err) {
-        console.log("There's been an error.");
+        console.log("There's been an error registering an admin.");
         console.log(err);
       } else {
-        console.log("No error.");
+        console.log("Registering admin");
         console.log(res);
       }
     });
@@ -42,18 +42,37 @@ function addCourseToProgram(program, course) {
     });
 }
 
-function getStudents() {
+function getProgramRequirements() {
   request
-    .get('/api/adminApi/getStudents')
+    .get('/api/adminApi/getProgramRequirements')
     .end(function(err, res) {
       if (err) {
-        console.log("There's been an error: getting students.");
+        console.log("There's been an error: geting program reqs.");
         console.log(err);
       } else {
         return res;
       }
     });
 }
+
+function removeCourseFromProgram(course, program) {
+
+}
+
+ function getStudents() {
+   request
+     .get('http://localhost:3000/api/adminApi/getStudents')
+     .set('Accept', 'application/json')
+     .end(function(err, res) {
+       if (err) {
+         console.log("There's been an error: getting students. ");
+         console.log(err);
+       } else {
+         console.log("In upper function");
+         return res;
+       }
+     });
+ }
 
 var AdminStore = _.extend({}, EventEmitter.prototype, {
 
@@ -73,31 +92,52 @@ var AdminStore = _.extend({}, EventEmitter.prototype, {
    */
   removeChangeListener: function(callback) {
     this.removeListener('change', callback);
+  },
+
+  getAdminState: function() {
+    //this.getStudents();
+
+    return {
+      students: this.getStudents()
+      //programReqCourses: this.getProgramRequirements()
+
+    }
+  },
+
+  getProgramRequirements: function() {
+    request
+      .get('/api/adminApi/getProgramRequirements')
+      .end(function(err, res) {
+        if (err) {
+          console.log("There's been an error: getting Program Requirements.");
+          console.log(err);
+        } else {
+          return res;
+        }
+      });
+  },
+
+  getStudents: function() {
+    request
+      .get('http://localhost:3000/api/adminApi/getStudents')
+      .end(function(err, res) {
+        if (err) {
+          console.log("There's been an error: getting students. 2");
+          console.log(err);
+        } else {
+          //console.log("In AdminStore function.");
+          console.log(res.body);
+          return res.body;
+        }
+      });
   }
-  
-  // getStudents: function() {
-  // request
-  //   .get('/api/adminApi/getStudents')
-  //   .end(function(err, res) {
-  //     if (err) {
-  //       console.log("There's been an error: getting students.");
-  //       console.log(err);
-  //     } else {
-  //       for (var i = 0; i < res.length; i++) {
-  //         console.log("res[" + i + "]: " + res[i]);
-  //         _students.push(res[i]);
-  //       }
-  //     }
-  //   });
-  //   //console.log("_students: " + _students);
-  //   return _students;
-  // }
 });
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
 
     case ActionTypes.REGISTER_ADMIN:
+      console.log("ActionTypes.REGISTER_ADMIN");
       registerAdmin(action.username, action.password);
       break;
 
@@ -105,9 +145,13 @@ AppDispatcher.register(function(action) {
       addCourseToProgram(action.program, action.course);
       break;
 
+    case ActionTypes.REMOVE_COURSE_FROM_PROGRAM:
+      removeCourseFromProgram(action.course, action.program);
+      break;
+
     case ActionTypes.GET_STUDENTS:
-      getStudents();
-      break;      
+          getStudents();
+          break;
 
     default:
           break;

@@ -1,0 +1,6 @@
+{
+  "name": "ProgramReqCourse",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ProgramReqCourse.js"
+}

@@ -14,7 +14,6 @@ class StudentTable extends Component {
 
   render() {
     injectTapEventPlugin();
-    const students = this.props.students;
     return (
       <Table striped hover responsive>
         <thead>

@@ -4,7 +4,7 @@ import AdminStore from '../stores/AdminStore';
 var bodyParser = require('body-parser');
 let router = new Router();
 router.use(bodyParser.json());
-let conString = "postgres://postgres:ja5125@localhost/postgres";
+let conString = "postgres://priscoj:alpha29@localhost/capping";
 
 
 router.post('/register', function(req, res) {
@@ -17,9 +17,9 @@ router.post('/register', function(req, res) {
       return res.status(500).json({ success: false, data: err});
     }
 
-    client.query('INSERT INTO people(user_id, password, is_admin, last_sign_in) ' +
-                 'values($1, $2, $3, $4)',
-                 [username, password, true, '2011-11-11']);
+    client.query('INSERT INTO people(user_id, password, is_admin) ' +
+                 'values($1, $2, $3)',
+                 [username, password, true]);
   });
 });
 
@@ -107,6 +107,37 @@ router.post('/removeCourseEquivalency', function(req, res) {
     }
 
     client.query('DELETE FROM course_equivalents WHERE marist_crn = $1', data);
+  });
+});
+
+router.get('/getProgramRequirements', function(req, res) {
+  var results = [];
+
+  pg.connect(conString, function(err, client, done) {
+    if (err) {
+      console.log("error in pgconnect");
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+
+    var query = client.query('select program_requirements.marist_crn, ' +
+                             'marist_courses.course_title, ' +
+                             'marist_courses.number_of_credits ' +
+                             'from marist_courses ' +
+                             'inner join program_requirements on marist_courses.marist_crn = program_requirements.marist_crn ' +
+                             'and program_requirements.program_id = \'99999\'');
+
+    query.on('row', function(row) {
+      console.log("Querying for CS courses.");
+      results.push(row);
+    });
+
+    query.on('end', function() {
+      done();
+      console.log("Ending getProgramRequirements");
+      return res.json(results);
+    });
   });
 });
 

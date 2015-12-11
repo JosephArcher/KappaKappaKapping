@@ -4,8 +4,8 @@
 import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './UpdateCourseEquivalencies.css';
-import { Table } from 'react-bootstrap';
-import { Avatar, Card, CardHeader, CardText, CardActions, RaisedButton, FlatButton } from 'material-ui';
+import { Table, OverlayTrigger, Glyphicon, Popover, Input } from 'react-bootstrap';
+import { Avatar, Card, CardHeader, CardText, CardActions } from 'material-ui';
 let Colors = require('material-ui/lib/styles/colors');
 const injectTapEventPlugin = require("react-tap-event-plugin");
 
@@ -31,7 +31,14 @@ class UpdateCourseEquivalencies extends Component {
     return (
       <div className="update-equivalencies-container">
         <div className="header">
-          <h1>Update Course Equivalencies</h1>
+          <h1>
+            Update Course Equivalencies
+            <span style={{paddingLeft: "10px"}}>
+              <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="Update Courses">Here you can remove equivalencies by clicking the remove button below or add equivalencies by entering the CRN of the Marist course and the Course ID of the Transfer School course.</Popover>}>
+                <Glyphicon glyph="glyphicon glyphicon-question-sign" />
+              </OverlayTrigger>
+            </span>
+          </h1>
 
           <Card initiallyExpanded={false}>
             <CardHeader
@@ -41,15 +48,18 @@ class UpdateCourseEquivalencies extends Component {
               showExpandableButton={true}>
             </CardHeader>
             <CardText expandable={true}>
-              Marist Course: <Typeahead
-              options={['Compilers', 'Operating Systems', 'Database Management', 'Introduction to Programming', 'C++ (lol not really)', 'Software Development', 'Language Study']}
-              maxVisible={5} />
-              Transfer Course: <Typeahead
-              options={['Compilers', 'Operating Systems', 'Database Management', 'Introduction to Programming', 'C++ (lol not really)', 'Software Development', 'Language Study']}
-              maxVisible={5} />
+              <div className="course-fields">
+                <Input type="text" placeholder="Marist Course" id="marist-course" name="marist-course" />
+                <Input type="text" placeholder="Transfer Course" id="transerf-course" name="transfer-course" />
+              </div>
             </CardText>
             <CardActions expandable={true}>
-              <RaisedButton label="Submit" backgroundColor={ Colors.green700 }/>
+              <button
+                type="button"
+                className="btn btn-default"
+                onClick={this.addCourseToProgram}>
+                Submit
+              </button>
             </CardActions>
           </Card>
         </div>

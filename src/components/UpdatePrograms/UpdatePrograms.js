@@ -5,29 +5,21 @@ import styles from './UpdatePrograms.css';
 import withStyles from '../../decorators/withStyles';
 import { DropDownMenu, RaisedButton } from 'material-ui';
 import { Avatar, Card, CardActions, CardHeader, CardText } from 'material-ui';
-import { Table, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Table, DropdownButton, MenuItem, OverlayTrigger, Glyphicon, Popover, Input } from 'react-bootstrap';
 let Colors = require('material-ui/lib/styles/colors');
 import AdminActions from '../../actions/AdminActions';
-
+import ProgramReqCourse from '../ProgramReqCourse';
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
 @withStyles(styles)
 class UpdatePrograms extends Component {
 
   static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired
+    onSetTitle: PropTypes.func.isRequired,
+    courses: PropTypes.array.isRequired
   };
 
   render() {
-    let courses = ['Compilers', 'Operating Systems', 'Database Management', 'Introduction to Programming', 'C++ (lol not really)', 'Software Development', 'Language Study'];
-
-    var programs = [
-      { payload: '1', text: 'Computer Science' },
-      { payload: '2', text: 'Something' },
-      { payload: '3', text: 'Something' },
-      { payload: '4', text: 'Something' },
-      { payload: '5', text: 'Something' },
-    ];
 
     this.state = {
       fixedHeader: true,
@@ -41,31 +33,28 @@ class UpdatePrograms extends Component {
       height: '500px',
       color: Colors.red700
     };
-    var Typeahead = require('react-typeahead').Typeahead;
 
     injectTapEventPlugin();
-
-    //<Typeahead
-    //  options={['Compilers', 'Operating Systems', 'Database Management', 'Introduction to Programming', 'C++ (lol not really)', 'Software Development', 'Language Study']}
-    //  maxVisible={5}
-    ///>
-    //
 
     // TODO: Tried breaking this table out into its component, got module not found error.
     // TODO: Worth fixing past prototype stage.
     // TODO: Also its ugly and needs to be changed.
-    // TODO: Material-ui tables are broken and their styling sucks
     // TODO: div.course-search: This needs better styling.
 
     return (
       <div className="update-programs-container">
         <div className="header">
-          <h1>Update Program Requirements</h1>
-          Update requirements for:  
+          <h1>
+            Update Program Requirements
+            <span style={{paddingLeft: "10px"}}>
+              <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="Update Programs">Here you can remove requirements from a program or add a requirement by entering its CRN in the menu below.</Popover>}>
+                <Glyphicon glyph="glyphicon glyphicon-question-sign" />
+              </OverlayTrigger>
+            </span>
+          </h1>
+          Update requirements for:
           <DropdownButton title="Computer Science">
             <MenuItem eventKey="1">Computer Science</MenuItem>
-            <MenuItem eventKey="2">Information Technology</MenuItem>
-            <MenuItem eventKey="3">Information Systems</MenuItem>
           </DropdownButton>
         </div>
 
@@ -78,10 +67,17 @@ class UpdatePrograms extends Component {
               showExpandableButton={true}>
             </CardHeader>
             <CardText expandable={true}>
-              Marist Course: <input id="course" type="text" name="course" />
+              <div className="course-fields">
+                <Input type="text" placeholder="Marist Course" id="course" name="course" />
+              </div>
             </CardText>
             <CardActions expandable={true}>
-              <RaisedButton label="Submit" backgroundColor={ Colors.green700 } onClick={this.addCourseToProgram}/>
+              <button
+                type="button"
+                className="btn btn-default"
+                onClick={this.addCourseToProgram}>
+                Submit
+              </button>
             </CardActions>
           </Card>
 
@@ -102,39 +98,11 @@ class UpdatePrograms extends Component {
             </thead>
 
             <tbody>
-              <tr>
-                <td>10101</td>
-                <td>Computer Science II</td>
-                <td>3</td>
-                <td>
-                  <button type="button" className="btn btn-danger">
-                    Remove
-                  </button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>10101</td>
-                <td>Computer Science II</td>
-                <td>3</td>
-                <td>
-                  <button type="button" className="btn btn-danger">
-                    Remove
-                  </button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>10101</td>
-                <td>Computer Science II</td>
-                <td>3</td>
-                <td>
-                  <button type="button" className="btn btn-danger">
-                    Remove
-                  </button>
-                </td>
-              </tr>
-
+            {
+              this.props.courses.map(function (course) {
+                return <ProgramReqCourse course={ course }></ProgramReqCourse>
+              })
+            }
             </tbody>
 
           </Table>
