@@ -19,6 +19,8 @@ class TransferCourseTable extends Component {
   } 
   render() {
     const availableTransferCourses = this.props.availableTransferCourses;
+    console.log("SIDE OF IT");
+    console.log(availableTransferCourses);
     const tableHeading = "Transferable Courses";
     const title = "Title";
     const id = "ID";
@@ -30,9 +32,6 @@ class TransferCourseTable extends Component {
 
     return (
       <div styles="">
-      <div>
-        {FilterCoursesSection}
-      </div>
       <div className="completedTable">
       <Table striped hover responsive>
         <thead>

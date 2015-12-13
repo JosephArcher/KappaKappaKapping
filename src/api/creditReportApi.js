@@ -3,8 +3,9 @@
  */
 import pg from 'pg';
 import Router from 'express';
- 
+var bodyParser = require('body-parser');
 let router = new Router();
+router.use(bodyParser.json());
 let conString = "postgres://postgres:ja5125@localhost/postgres";
  
 //var results = [];
@@ -15,7 +16,7 @@ let conString = "postgres://postgres:ja5125@localhost/postgres";
 // // Grab data from http request
 // var data = {text: req.body.text, complete: req.body.complete};
 
-let _selected_course_ids = ['00001','00002', '00003', '00004', '00009'];
+//let _selected_course_ids = ['00001','00002', '00003', '00004', '00009'];
 let _total_credits = 0;
 let _credits_transfered = 0;
 let _transferable_course_ids = [];
@@ -32,7 +33,10 @@ let topThree=[];
 let _pprs_lengths = [];
  
 // If the route matches /api/getTransferSchools...
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
+   console.log(req.body);
+     var _selected_course_ids = req.body.cl;
+     console.log(_selected_course_ids);
   // Set up the connection
   var results = [];
   var prettyResults = [];
@@ -50,7 +54,7 @@ router.get('/', function(req, res) {
  
     // Define the query
     var query = client.query('SELECT * FROM transfer_courses');
- 
+  console.log("hey3");
     // This query.on() call will run as many times as rows there are
     query.on('row', function(row, result) {
  
@@ -184,7 +188,9 @@ router.get('/', function(req, res) {
     //End query
     query.on('end', function() {
  
- 
+ console.log("tests");
+
+ console.log(_possible_program_requirements)
     
     //compares IDs from program list and _possible_program_requirements 
     //to make an array of program requirements separted by programs
@@ -199,8 +205,9 @@ router.get('/', function(req, res) {
              _possible_program_requirements_separated.push(tempArray);
       }
  
+ console.log("yo");
     
- 
+  console.log(_possible_program_requirements_separated);
     //creates array of amount fufilled of each program
      for (var i = 0; i < _possible_program_requirements_separated.length; i++) {
      _pprs_lengths.push(_possible_program_requirements_separated[i].length);
@@ -248,12 +255,23 @@ router.get('/', function(req, res) {
  
       }
   };
-    
+
+  //if topThree doesn't have three programs
+    if(topThree.length<3){
+      while(topThree.length < 3){
+        console.log(topThree);
+        topThree.push("No more programs.")
+      }
+    }
+    console.log(topThree);
 //formats top three programs to add details/percent complete
  for(var i = 0; i < topThree.length; i++){
+
    //initializes 
     var program= topThree[i];
+    if(!(topThree[i][0]==null)){
     var programID= topThree[i][0].program_id;
+  }
     var courseList =[];
     var programName = "";
     var program_num_class_required = "";

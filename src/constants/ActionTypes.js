@@ -12,6 +12,9 @@ export default keyMirror({
   Course_COMPLETE: null,
   Course_DESTROY: null,
   searchTermChanged: null,
-  Course_DESTROY_COMPLETED: null
+  Course_DESTROY_COMPLETED: null,
+  REMOVE_COURSE_FROM_PROGRAM: null,
+  ADD_COURSE_EQUIVALENCY: null,
+  REMOVE_COURSE_EQUIVALENCY: null
   
 });

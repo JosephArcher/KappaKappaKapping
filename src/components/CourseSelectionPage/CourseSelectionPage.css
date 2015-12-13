@@ -19,6 +19,10 @@ body {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+.spaceMeBB {
+margin: 25px;
+text-align: left;
+}
 .schoolPicker {
 	width: 50%;
 	text-align: center;
@@ -29,7 +33,7 @@ body {
 	font-size: 1em;
 }
 .currentSchoolDropbox {
-	margin-left: 25px;
+	margin-left: 35px;
 }
 .centerText {
 	text-align: center;

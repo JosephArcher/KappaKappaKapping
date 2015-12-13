@@ -13,29 +13,35 @@ import CourseItem from '../CourseItem';
 import MajorItem from '../MajorItem';
 const DoughnutChart = require("react-chartjs").Doughnut;
 
+import CourseSelectionStore from '../../Stores/CourseSelectionStore';
+import CourseSelectionPageActions from '../../actions/CourseSelectionPageActions';
+
 
 @withStyles(styles)
 class CreditReportPage extends React.Component {
 
   static propTypes = {
 
-      CompletedCourses: PropTypes.array.isRequired
+     // CompletedCourses: PropTypes.array.isRequired
      };
 
  
 
  render() {
     // This is the response object from the API Call
-    const Response = this.props.CompletedCourses;
+  //  const Response = this.props.CompletedCourses;
 
     // Break Apart the Response object then use it to populate the report
     const title = "Credit Report";
-
-    const totalNumberOfCredits        = Response[0].Total_Credits;
-    const numberOfTransferableCredits = Response[1].Credits_Transfered;
-    const transferableCourses         = Response[2].Transferable_Courses;
-    const nonTransferableCourses      = Response[3].Non_Transferable_Courses;
-    const topThreeMajors               = Response[4].Top_Three_Programs;
+ 
+  var Response = CourseSelectionStore.getCourseReport();
+  const Response2 = Response.cl;
+  const Response3 = JSON.parse(Response2);
+    const totalNumberOfCredits        = Response3[0].Total_Credits;
+    const numberOfTransferableCredits = Response3[1].Credits_Transfered;
+    const transferableCourses         = Response3[2].Transferable_Courses;
+    const nonTransferableCourses      = Response3[3].Non_Transferable_Courses;
+    const topThreeMajors               = Response3[4].Top_Three_Programs;
     
     const testCalc =  Math.round((numberOfTransferableCredits / totalNumberOfCredits) * 100);
 

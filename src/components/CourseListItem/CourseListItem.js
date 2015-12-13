@@ -18,8 +18,8 @@ export default class CourseListItem extends Component {
 
     return (
        <tr>
-        <td className="first">{course.title}</td>
-        <td className="second">{course.ID}</td>
+        <td className="first">{course.course_title}</td>
+        <td className="second">{course.transfer_course_id}</td>
         <td className="third">       
             <button
               type="button"
