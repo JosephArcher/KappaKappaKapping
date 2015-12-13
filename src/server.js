@@ -12,12 +12,26 @@ import transferSchoolsApi from './api/transferSchoolsApi';
 import transferSchoolCoursesApi from './api/transferSchoolCoursesApi';
 import registerStudentApi from './api/registerStudentApi';
 import creditReportApi from './api/creditReportApi';
+var passport = require('passport');
+var session = require('express-session');
+
+var authenticate = require('./authenticate')(passport);
 
 const server = global.server = express();
 
 server.set('port', (process.env.PORT || 5000));
-server.use(express.static(path.join(__dirname, 'public')));
 
+server.use(express.static(path.join(__dirname, 'public')));
+server.use(session({
+    secret: 'HELLO PABLO'
+}));
+
+server.use(passport.initialize());
+server.use(passport.session());
+
+/// Initalize passport
+var initPassport = require('./passport-init');
+initPassport(passport);
 //
 // Register API middleware
 // -----------------------------------------------------------------------------
@@ -27,7 +41,7 @@ server.use('/api/postRegisterStudent', registerStudentApi);
 server.use('/api/getCreditReport', creditReportApi);
 server.use('/api/getTransferSchoolCourses', transferSchoolCoursesApi);
 server.use('/api/content', require('./api/content'));
-
+server.use('/auth', authenticate);
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------

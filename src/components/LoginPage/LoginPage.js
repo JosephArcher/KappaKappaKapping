@@ -10,9 +10,9 @@ import {Grid} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {MenuItem} from 'react-bootstrap';
-import {Popover} from 'react-bootstrap';
-import {OverlayTrigger} from 'react-bootstrap';
-import {Glyphicon} from 'react-bootstrap';
+import UserActions from '../../actions/UserActions';
+import userStore from '../../stores/userStore';
+
 
 @withStyles(styles)
 class LoginPage extends Component {
@@ -25,47 +25,46 @@ class LoginPage extends Component {
 
   render() {
 
-    const title = 'Log In';
+  const title = 'Log In';
+ 
 
    const inputSizeInstance = (
+   <div>
     <Grid>
-
-        <Col xs={12} sm={12} md={12} lg={12}> 
+      <Row>
+        <Col xs={12} sm={12} md={12} lg={12} > 
           <form className="centeredLoginForm">
-            
-            <Input className="test" type="text" bsSize="large" placeholder="Username" />
-            <Input className="test"type="text" bsSize="large" placeholder="Password" />
-            <Button className="test"bsStyle="primary" block bsSize="large">Submit</Button>
+            <h1> {title} </h1>
+            <Input className="test" type="text" bsSize="large" placeholder="Username" id="userID" />
+            <Input className="test"type="text" bsSize="large" placeholder="Password" id="userPassword" />
+            <Button className="test"bsStyle="primary" block bsSize="large" onClick={this.logUser}>Submit</Button>
           </form>
       </Col>
-   </Grid>  
+    </Row>
+   </Grid>
+  </div>
+   
 );
 
     this.context.onSetTitle(title);
-    // return (
-    //    <div desktop={true} width={320}>
-    //     <div className="LoginPage-container">
-    //         {inputSizeInstance}
-    //     </div>
-    //   </div>
-    // );
-return (
+    return (
+       <div desktop={true} width={320}>
+        <div className="LoginPage-container">
+            {inputSizeInstance}
+        </div>
+      </div>
+    );
 
- <Grid>
-        <Col xs={12} sm={12} md={12} lg={12}> 
-            <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Log In"> Please enter your email and password and then click the <strong> Submit </strong> button </Popover>}>
-           <p className="topMargin"> <span className="stepHeading">{title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
-           </OverlayTrigger>
-          <form className="centeredLoginForm">
-         
-            <Input className="test" type="text" bsSize="large" placeholder="Username" />
-            <Input className="test"type="text" bsSize="large" placeholder="Password" />
-            <Button className="test"bsStyle="primary" block bsSize="large">Submit</Button>
-          </form>
-      </Col>
-   </Grid>  
-   );
+  }
 
+
+  logUser() {
+    console.log("THIS WORKS")
+     var un = document.getElementById("userID").value;
+     var up   = document.getElementById("userPassword").value;
+     UserActions.logUser(un, up);
+    console.log(un);
+    console.log(up);
   }
 
 }
