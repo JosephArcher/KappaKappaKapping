@@ -1,12 +1,12 @@
 import React, { PropTypes, Component } from 'react';
+import ReactDOM from 'react-dom';
 import withStyles from '../../decorators/withStyles';
 import styles from './CreateNewAdmin.css';
 import * as types from '../../constants/ActionTypes';
-const TextField = require('material-ui/lib/text-field');
-const RaisedButton = require('material-ui/lib/raised-button');
 const injectTapEventPlugin = require("react-tap-event-plugin");
 import AdminActions from '../../actions/AdminActions';
 import AdminStore from '../../stores/AdminStore';
+import { OverlayTrigger, Popover, Glyphicon, Input, Button, Alert } from 'react-bootstrap';
 
 @withStyles(styles)
 class CreateNewAdmin extends Component {
@@ -15,32 +15,54 @@ class CreateNewAdmin extends Component {
     actions: PropTypes.object
   };
 
-
   render() {
 
     injectTapEventPlugin();
 
     return (
-      <div className="NewAdminFields">
-        <h1>Register New Administrator</h1>
+      <div className="NewAdminFields" id="NewAdminFields">
+        <div id="registration-msg" style={{margin: "0 auto", width: "550px"}}></div>
+        <h1>
+          Register New Administrator
+          <span style={{paddingLeft: "10px"}}>
+            <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="Admin Registration">Enter the username and password in the appropriate fields to register a new admin.</Popover>}>
+              <Glyphicon glyph="glyphicon glyphicon-question-sign" />
+            </OverlayTrigger>
+          </span>
+        </h1>
         <p className="NewAdminPTag">Create a new administrator by filling out the fields below.</p>
-          <div>
-            <input id="username" type="text" name="username" />
-          </div>
-          <div>
-           <input id="password" type="password" name="password" />
+          <div className="admin-fields">
+            <Input type="text" placeholder="Username" id="username" />
+            <Input type="password" placeholder="Password" id="password" />
           </div>
           <div className="submit-button">
-            <RaisedButton className="button" fullWidth={true} label="Submit" onClick={this.registerAdmin} />
+            <Button onClick={this.registerAdmin}>Submit</Button>
           </div>
       </div>
     );
   };
 
   registerAdmin() {
+    var successfulRegistration = (
+      <Alert bsStyle="success" dismissAfter={2000}>
+        <strong>Success!</strong> The administrator has been registered.
+      </Alert>
+    );
+
+    var unsuccessfulRegistration = (
+      <Alert bsStyle="danger" dismissAfter={2000}>
+        <strong>Oops...</strong> The administrator could not be registered.
+      </Alert>
+    );
+
     var user = document.getElementById("username").value;
-    var pw   = document.getElementById("password").value;
+    var pw = document.getElementById("password").value;
+
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+
     AdminActions.registerAdmin(user, pw);
+    ReactDOM.render(successfulRegistration, document.getElementById('registration-msg'));
   }
 }
 

@@ -8,13 +8,17 @@ class Student extends Component {
   render() {
 
     const student = this.props.student;
-
+    const emailStr = "mailto:" + student.email;
     return (
       <tr>
         <td>{student.first_name}</td>
         <td>{student.last_name}</td>
-        <td>DCC</td>
-        <td>{student.email}</td>
+        <td>Dutchess County Community College</td>
+        <td>
+          <a href={emailStr}>
+            {student.email}
+          </a>
+        </td>
       </tr>
     );
   }

@@ -5,17 +5,28 @@ import _ from 'underscore';
 var request = require('superagent');
 var prefix = require('superagent-prefix')('/static');
 
-var _students = [];
-
-
 function registerAdmin(user, pw) {
-  // This is where we use the superagent stuff.
-  console.log("Logging username from admin store: " + username);
-  console.log("Logging password from admin store: " + password);
-
   request
     .post('/api/adminApi/register')
     .send({ username: user, password: pw })
+    .end(function(err, res){
+      if (err) {
+        console.log("There's been an error registering an admin.");
+        console.log(err);
+        AdminStore.registrationSuccess = false;
+
+      } else {
+        console.log("Registering admin");
+        console.log(res);
+        AdminStore.registrationSuccess = true;
+      }
+    });
+}
+
+function addCourseToProgram(course) {
+  request
+    .post('/api/adminApi/addCourseToProgram')
+    .send({ course: course })
     .end(function(err, res){
       if (err) {
         console.log("There's been an error.");
@@ -27,10 +38,23 @@ function registerAdmin(user, pw) {
     });
 }
 
-function addCourseToProgram(program, course) {
+function getProgramRequirements() {
   request
-    .post('/api/adminApi/addCourseToProgram')
-    .send({ program: program, course: course })
+    .get('/api/adminApi/getProgramRequirements')
+    .end(function(err, res) {
+      if (err) {
+        console.log("There's been an error: geting program reqs.");
+        console.log(err);
+      } else {
+        return res;
+      }
+    });
+}
+
+function removeCourseFromProgram(course) {
+  request
+    .post('/api/adminApi/removeCourseFromProgram')
+    .send({ course: course })
     .end(function(err, res){
       if (err) {
         console.log("There's been an error.");
@@ -43,19 +67,55 @@ function addCourseToProgram(program, course) {
 }
 
 function getStudents() {
+   request
+     .get('http://localhost:3000/api/adminApi/getStudents')
+     .set('Accept', 'application/json')
+     .end(function(err, res) {
+       if (err) {
+         console.log("There's been an error: getting students. ");
+         console.log(err);
+       } else {
+         console.log("In upper function");
+         return res;
+       }
+     });
+ }
+
+function addCourseEquivalency(maristCourse, transferCourse, credits) {
   request
-    .get('/api/adminApi/getStudents')
+    .post('/api/adminApi/addCourseEquivalency')
+    .send({ maristCourse: maristCourse, transferCourse: transferCourse, credits: credits })
     .end(function(err, res) {
       if (err) {
-        console.log("There's been an error: getting students.");
+        console.log("There's been an error adding an equivalency.");
         console.log(err);
       } else {
-        return res;
+        console.log("Adding equivalency.");
+        console.log(res);
+      }
+    });
+}
+
+function removeCourseEquivalency(maristCourse, transferCourse) {
+  request
+    .post('/api/adminApi/removeCourseEquivalency')
+    .send({ maristCourse: maristCourse, transferCourse: transferCourse })
+    .end(function(err, res) {
+      if (err) {
+        console.log("There's been an error removing an equivalency.");
+        console.log(err);
+      } else {
+        console.log("Removing equivalency.");
+        console.log(res);
       }
     });
 }
 
 var AdminStore = _.extend({}, EventEmitter.prototype, {
+
+  registrationSuccess: null,
+
+  equivalencySuccess: null,
 
   emitChange: function() {
     this.emit('change');
@@ -74,24 +134,6 @@ var AdminStore = _.extend({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
     this.removeListener('change', callback);
   }
-  
-  // getStudents: function() {
-  // request
-  //   .get('/api/adminApi/getStudents')
-  //   .end(function(err, res) {
-  //     if (err) {
-  //       console.log("There's been an error: getting students.");
-  //       console.log(err);
-  //     } else {
-  //       for (var i = 0; i < res.length; i++) {
-  //         console.log("res[" + i + "]: " + res[i]);
-  //         _students.push(res[i]);
-  //       }
-  //     }
-  //   });
-  //   //console.log("_students: " + _students);
-  //   return _students;
-  // }
 });
 
 AppDispatcher.register(function(action) {
@@ -102,15 +144,27 @@ AppDispatcher.register(function(action) {
       break;
 
     case ActionTypes.ADD_COURSE_TO_PROGRAM:
-      addCourseToProgram(action.program, action.course);
+      addCourseToProgram(action.course);
+      break;
+
+    case ActionTypes.REMOVE_COURSE_FROM_PROGRAM:
+      removeCourseFromProgram(action.course);
       break;
 
     case ActionTypes.GET_STUDENTS:
       getStudents();
-      break;      
+      break;
+
+    case ActionTypes.REMOVE_COURSE_EQUIVALENCY:
+      removeCourseEquivalency(action.maristCourse, action.transferCourse);
+      break;
+
+    case ActionTypes.ADD_COURSE_EQUIVALENCY:
+      addCourseEquivalency(action.maristCourse, action.transferCourse, action.credits);
+      break;
 
     default:
-          break;
+      break;
   }
 });
 

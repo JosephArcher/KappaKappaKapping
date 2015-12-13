@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './StudentTable.css';
 import { Table } from 'react-bootstrap';
-import AdminStore from '../../stores/adminStore';
+import AdminStore from '../../stores/AdminStore';
 import Student from '../Student';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 
@@ -14,7 +14,6 @@ class StudentTable extends Component {
 
   render() {
     injectTapEventPlugin();
-    const students = this.props.students;
     return (
       <Table striped hover responsive>
         <thead>
