@@ -112,7 +112,7 @@ static  progressPercent = 0;
       //if fields are not input
       var pc   = parseInt(document.getElementById("pc").value);
       if(pc > 0 ){
-      var us = document.getElementById("firstName").value;
+      var us = document.getElementById("userName").value;
       var fn = document.getElementById("firstName").value;
       var ln   = document.getElementById("lastName").value;
       var pw = document.getElementById("password").value;

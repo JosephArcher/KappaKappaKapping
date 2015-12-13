@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
   //fn: fn,ln: ln, pw: pw, em: em, pn: pn, bd: bd
    var _first_name = req.body.fn;
    var _last_name = req.body.ln;
-   var _userId = (req.body.fn + req.body.fn).slice(0,10);
+   var _userId = req.body.us;
    var _password = req.body.pw;
    var _phone_number = req.body.pn;
    //fix db constraints
