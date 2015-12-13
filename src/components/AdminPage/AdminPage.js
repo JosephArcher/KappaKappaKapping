@@ -8,6 +8,7 @@ import CreateNewAdmin from '../CreateNewAdmin';
 import StudentTable from '../StudentTable';
 import UpdatePrograms from '../UpdatePrograms';
 import UpdateCourseEquivalencies from '../UpdateCourseEquivalencies';
+import StudentSubmissionsTable from '../StudentSubmissionsTable';
 import AdminStore from '../../stores/AdminStore';
 import AdminActions from '../../actions/AdminActions';
 var request = require('superagent');
@@ -22,7 +23,7 @@ class AdminPage extends React.Component {
 
   constructor() {
     super();
-    this.state = { students: [], courses: [], equivalents: [] };
+    this.state = { students: [], courses: [], equivalents: [], student_submissions: [] };
   }
 
   componentDidMount() {
@@ -66,15 +67,28 @@ class AdminPage extends React.Component {
         }
       }.bind(this));
 
+    request
+      .get('api/adminApi/getSubmittedCourses')
+      .end(function(err, res) {
+        if (err) {
+          console.log("There's been an error: getting student submitted courses.");
+          console.log(err);
+        } else {
+          this.setState({
+            student_submissions: res.body
+          });
+        }
+      }.bind(this));
   }
 
   render() {
     // This makes the tabs
     injectTapEventPlugin();
-    const courses  = <UpdateCourseEquivalencies equivalents={this.state.equivalents}></UpdateCourseEquivalencies>;
-    const programs = <UpdatePrograms courses={this.state.courses}></UpdatePrograms>;
-    const students = <StudentTable students={this.state.students}></StudentTable>;
-    const admins   = <CreateNewAdmin></CreateNewAdmin>;
+    const courses     = <UpdateCourseEquivalencies equivalents={this.state.equivalents}></UpdateCourseEquivalencies>;
+    const programs    = <UpdatePrograms courses={this.state.courses}></UpdatePrograms>;
+    const students    = <StudentTable students={this.state.students}></StudentTable>;
+    const admins      = <CreateNewAdmin></CreateNewAdmin>;
+    const submissions = <StudentSubmissionsTable submissions ={this.state.student_submissions}></StudentSubmissionsTable>
     const title = 'Administrator Options';
     this.context.onSetTitle(title);
     return (
@@ -89,7 +103,10 @@ class AdminPage extends React.Component {
           <Tab eventKey={3} title="Students">
             {students}
           </Tab>
-          <Tab eventKey={4} title="Administrators">
+          <Tab eventKey={4} title="Submitted Courses">
+            {submissions}
+          </Tab>
+          <Tab eventKey={5} title="Administrators">
             {admins}
           </Tab>
         </Tabs>

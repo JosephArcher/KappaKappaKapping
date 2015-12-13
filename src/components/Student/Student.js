@@ -13,7 +13,7 @@ class Student extends Component {
       <tr>
         <td>{student.first_name}</td>
         <td>{student.last_name}</td>
-        <td>DCC</td>
+        <td>Dutchess County Community College</td>
         <td>
           <a href={emailStr}>
             {student.email}
