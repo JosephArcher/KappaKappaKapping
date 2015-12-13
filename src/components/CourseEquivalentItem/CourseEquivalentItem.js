@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import AdminActions from '../../actions/adminActions';
+import AdminActions from '../../actions/AdminActions';
 
-class CourseEquivalentItem extends Component {
+export default class CourseEquivalentItem extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired
   };
@@ -10,11 +10,13 @@ class CourseEquivalentItem extends Component {
 
     const item = this.props.item;
     function _removeCourseEquivalency() {
-      AdminActions.removeCourseEquivalency();
+      AdminActions.removeCourseEquivalency(item.marist_crn, item.transfer_id);
+      var row = document.getElementById(item.marist_course + item.transfer_course);
+      row.style.display = 'none';
     }
 
     return (
-      <tr>
+      <tr id={item.marist_course + item.transfer_course}>
         <td>{item.marist_course}</td>
         <td>{item.transfer_course}</td>
         <td>DCC</td>

@@ -1,11 +1,12 @@
 import React, { PropTypes, Component } from 'react';
+import ReactDOM from 'react-dom';
 import withStyles from '../../decorators/withStyles';
 import styles from './CreateNewAdmin.css';
 import * as types from '../../constants/ActionTypes';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 import AdminActions from '../../actions/AdminActions';
 import AdminStore from '../../stores/AdminStore';
-import { OverlayTrigger, Popover, Glyphicon, Input, Button } from 'react-bootstrap';
+import { OverlayTrigger, Popover, Glyphicon, Input, Button, Alert } from 'react-bootstrap';
 
 @withStyles(styles)
 class CreateNewAdmin extends Component {
@@ -14,13 +15,13 @@ class CreateNewAdmin extends Component {
     actions: PropTypes.object
   };
 
-
   render() {
 
     injectTapEventPlugin();
 
     return (
-      <div className="NewAdminFields">
+      <div className="NewAdminFields" id="NewAdminFields">
+        <div id="registration-msg" style={{margin: "0 auto", width: "550px"}}></div>
         <h1>
           Register New Administrator
           <span style={{paddingLeft: "10px"}}>
@@ -42,13 +43,26 @@ class CreateNewAdmin extends Component {
   };
 
   registerAdmin() {
+    var successfulRegistration = (
+      <Alert bsStyle="success" dismissAfter={2000}>
+        <strong>Success!</strong> The administrator has been registered.
+      </Alert>
+    );
+
+    var unsuccessfulRegistration = (
+      <Alert bsStyle="danger" dismissAfter={2000}>
+        <strong>Oops...</strong> The administrator could not be registered.
+      </Alert>
+    );
+
     var user = document.getElementById("username").value;
-    var pw   = document.getElementById("password").value;
+    var pw = document.getElementById("password").value;
 
     document.getElementById("username").value = "";
     document.getElementById("password").value = "";
 
     AdminActions.registerAdmin(user, pw);
+    ReactDOM.render(successfulRegistration, document.getElementById('registration-msg'));
   }
 }
 

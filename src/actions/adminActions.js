@@ -24,25 +24,39 @@ var AdminActions = {
     });
   },
 
-  addCourseToProgram: function(program, course) {
+  addCourseToProgram: function(course) {
     AppDispatcher.dispatch({
       actionType: ActionTypes.ADD_COURSE_TO_PROGRAM,
-      program: program,
       course: course
     });
   },
 
-  removeCourseFromProgram: function() {
-
+  removeCourseFromProgram: function(course) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.REMOVE_COURSE_FROM_PROGRAM,
+      course: course
+    });
   },
 
-  addCourseEquivalency: function() {
-
+  addCourseEquivalency: function(maristCourse, transferCourse, credits) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.ADD_COURSE_EQUIVALENCY,
+      maristCourse: maristCourse,
+      transferCourse: transferCourse,
+      credits: credits
+    });
   },
 
-  removeCourseEquivalency: function() {
-
+  removeCourseEquivalency: function(maristCourse, transferCourse) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.REMOVE_COURSE_EQUIVALENCY,
+      maristCourse: maristCourse,
+      transferCourse: transferCourse
+    });
   }
+
+
+
 
 };
 

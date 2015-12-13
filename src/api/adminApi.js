@@ -6,12 +6,22 @@ let router = new Router();
 router.use(bodyParser.json());
 let conString = "postgres://priscoj:alpha29@localhost/capping";
 
-
 router.post('/register', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
   pg.connect(conString, function(err, client, done) {
+    var handleError = function(err) {
+      // no error occurred, continue with the request
+      if(!err) return false;
+
+      if(client){
+        done(client);
+      }
+      res.end('An error occurred');
+      return true;
+    };
+
     if (err) {
       done();
       return res.status(500).json({ success: false, data: err});
@@ -19,7 +29,10 @@ router.post('/register', function(req, res) {
 
     client.query('INSERT INTO people(user_id, password, is_admin) ' +
                  'values($1, $2, $3)',
-                 [username, password, true]);
+                 [username, password, true], function(err, result) {
+        if (handleError(err)) return;
+      });
+    done();
   });
 });
 
@@ -28,7 +41,6 @@ router.get('/getStudents', function(req, res) {
 
   pg.connect(conString, function(err, client, done) {
     if (err) {
-      console.log("error in pgconnect");
       done();
       console.log(err);
       return res.status(500).json({success: false, data: err});
@@ -37,13 +49,11 @@ router.get('/getStudents', function(req, res) {
     var query = client.query('SELECT first_name, last_name, email FROM students');
 
     query.on('row', function(row) {
-      console.log("Querying for students.");
       results.push(row);
     });
 
     query.on('end', function() {
       done();
-      console.log("Ending getStudents");
       return res.json(results);
     });
   });
@@ -51,25 +61,47 @@ router.get('/getStudents', function(req, res) {
 
 router.post('/addCourseToProgram', function(req, res) {
   var course = req.body.course;
+
   pg.connect(conString, function(err, client, done) {
+    var handleError = function(err) {
+      // no error occurred, continue with the request
+      if(!err) return false;
+
+      if(client){
+        done(client);
+      }
+      res.end('An error occurred');
+      return true;
+    };
+
+
     if (err) {
       done();
       console.log(err);
       return res.status(500).json({success: false, data: err});
     }
-    console.log("Connected and trying to add course: " + course);
 
     client.query('INSERT INTO program_requirements(program_id, marist_crn) ' +
                  'VALUES($1, $2)',
                   ['99999', course]);
-
+      done();
   });
 });
 
 router.post('/removeCourseFromProgram', function(req, res) {
-  var data = { program: req.body.program, course: req.body.course };
-
+  var course = req.body.course;
   pg.connect(conString, function(err, client, done) {
+    var handleError = function(err) {
+      // no error occurred, continue with the request
+      if(!err) return false;
+
+      if(client){
+        done(client);
+      }
+      res.end('An error occurred');
+      return true;
+    };
+
     if (err) {
       done();
       console.log(err);
@@ -77,36 +109,70 @@ router.post('/removeCourseFromProgram', function(req, res) {
     }
 
     client.query('DELETE FROM program_requirements WHERE program_id = $1 AND marist_crn = $2',
-                 [data.program, data.course]);
+                 ['99999', course], function(err, result) {
+        if (handleError(err)) return;
+      });
+    done();
   });
 });
 
 router.post('/addCourseEquivalency', function(req, res) {
-  var data = { program: req.body.marist_crn, transfer: req.body.transfer, credits: req.body.credits };
+  var program = req.body.maristCourse;
+  var transfer = req.body.transferCourse;
+  var credits = req.body.credits;
 
   pg.connect(conString, function(err, client, done) {
+    var handleError = function(err) {
+      // no error occurred, continue with the request
+      if(!err) return false;
+
+      if(client){
+        done(client);
+      }
+      res.end('An error occurred');
+      return true;
+    };
+
     if (err) {
       done();
       console.log(err);
       return res.status(500).json({success: false, data: err});
     }
 
-    client.query('INSERT INTO course_equivalents(marist_crn, transfer_course_id, number_of_credts) ' +
-                 'VALUES($1, $2, $3)', [data.program, data.transfer, data.credits]);
+    client.query('INSERT INTO course_equivalents(marist_crn, transfer_course_id, number_of_credits) ' +
+                 'VALUES($1, $2, $3)', [program.toString(), transfer.toString(), credits.toString()], function(err, result) {
+      if (handleError(err)) return;
+    });
+    done();
   });
 });
 
 router.post('/removeCourseEquivalency', function(req, res) {
-  var data = req.body.course;
+  var marist = req.body.maristCourse;
+  var transfer = req.body.transferCourse;
 
   pg.connect(conString, function(err, client, done) {
+    var handleError = function(err) {
+      // no error occurred, continue with the request
+      if(!err) return false;
+
+      if(client){
+        done(client);
+      }
+      res.end('An error occurred');
+      return true;
+    };
+
     if (err) {
       done();
       console.log(err);
       return res.status(500).json({success: false, data: err});
     }
 
-    client.query('DELETE FROM course_equivalents WHERE marist_crn = $1', data);
+    client.query('DELETE FROM course_equivalents WHERE marist_crn = $1 and transfer_course_id = $2', [marist, transfer], function(err, result) {
+      if (handleError(err)) return;
+    });
+    done();
   });
 });
 
@@ -115,7 +181,6 @@ router.get('/getProgramRequirements', function(req, res) {
 
   pg.connect(conString, function(err, client, done) {
     if (err) {
-      console.log("error in pgconnect");
       done();
       console.log(err);
       return res.status(500).json({success: false, data: err});
@@ -129,13 +194,11 @@ router.get('/getProgramRequirements', function(req, res) {
                              'and program_requirements.program_id = \'99999\'');
 
     query.on('row', function(row) {
-      console.log("Querying for CS courses.");
       results.push(row);
     });
 
     query.on('end', function() {
       done();
-      console.log("Ending getProgramRequirements");
       return res.json(results);
     });
   });
@@ -152,7 +215,9 @@ router.get('/getCourseEquivalents', function(req, res) {
       return res.status(500).json({success: false, data: err});
     }
     var query = client.query('select marist_courses.course_title as marist_course, ' +
-                             'transfer_courses.course_title as transfer_course ' +
+                             'transfer_courses.course_title as transfer_course, ' +
+                             'marist_courses.marist_crn as marist_crn, ' +
+                             'transfer_courses.transfer_course_id as transfer_id ' +
                              'from marist_courses ' +
                              'inner join course_equivalents ' +
                              'on course_equivalents.marist_crn = marist_courses.marist_crn ' +
@@ -160,13 +225,11 @@ router.get('/getCourseEquivalents', function(req, res) {
                              'on transfer_courses.transfer_course_id = course_equivalents.transfer_course_id;');
 
     query.on('row', function(row) {
-      console.log("Querying for course equivalents.");
       results.push(row);
     });
 
     query.on('end', function() {
       done();
-      console.log("Ending getCourseEquivalents");
       return res.json(results);
     });
   });

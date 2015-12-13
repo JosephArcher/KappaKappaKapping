@@ -1,20 +1,27 @@
 import React, { Component, PropTypes } from 'react';
-import AdminActions from '../../actions/adminActions';
+import Modal from 'react-bootstrap';
+import AdminActions from '../../actions/AdminActions';
 
 class ProgramReqCourse extends Component {
   static propTypes = {
     course: PropTypes.object.isRequired
   };
 
+  showModal() {
+    this.setState({ showModal: true });
+  }
+
   render() {
 
     const course = this.props.course;
     function _removeProgramRequirement() {
-        AdminActions.removeCourseFromProgram();
+      AdminActions.removeCourseFromProgram(course.marist_crn);
+      var row = document.getElementById(course.marist_crn);
+      row.style.display = 'none';
     }
 
     return (
-      <tr>
+      <tr id={course.marist_crn}>
         <td>{course.marist_crn}</td>
         <td>{course.course_title}</td>
         <td>{course.number_of_credits}</td>
@@ -27,6 +34,8 @@ class ProgramReqCourse extends Component {
           </button>
         </td>
       </tr>
+
+
     );
   }
 }

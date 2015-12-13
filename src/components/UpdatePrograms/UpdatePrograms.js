@@ -1,11 +1,12 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { PropTypes, Component } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './UpdatePrograms.css';
 import withStyles from '../../decorators/withStyles';
 import { DropDownMenu, RaisedButton } from 'material-ui';
 import { Avatar, Card, CardActions, CardHeader, CardText } from 'material-ui';
-import { Table, DropdownButton, MenuItem, OverlayTrigger, Glyphicon, Popover, Input } from 'react-bootstrap';
+import { Table, DropdownButton, MenuItem, OverlayTrigger, Glyphicon, Popover, Input, Alert } from 'react-bootstrap';
 let Colors = require('material-ui/lib/styles/colors');
 import AdminActions from '../../actions/AdminActions';
 import ProgramReqCourse from '../ProgramReqCourse';
@@ -68,7 +69,8 @@ class UpdatePrograms extends Component {
             </CardHeader>
             <CardText expandable={true}>
               <div className="course-fields">
-                <Input type="text" placeholder="Marist Course" id="course" name="course" />
+                <div id="msg-add"></div>
+                <Input type="text" placeholder="Marist Course" id="new-course" name="course" />
               </div>
             </CardText>
             <CardActions expandable={true}>
@@ -114,12 +116,16 @@ class UpdatePrograms extends Component {
   }
 
   addCourseToProgram() {
-    var program = '99999'; // Hard coded CS major for now.
-    console.log("Add course to program called.");
+    var success = (
+      <Alert bsStyle="success" dismissAfter={2000}>
+        <strong>Success!</strong> The course has to be added to the program.
+      </Alert>
+    );
 
-    var course = document.getElementById("course").value;
-    console.log("Trying to add course with ID: " + course);
-    AdminActions.addCourseToProgram(program, course);
+    var course = document.getElementById("new-course").value;
+    document.getElementById('new-course').value = "";
+    AdminActions.addCourseToProgram(course);
+    ReactDOM.render(success, document.getElementById('msg-add'));
   }
 }
 
