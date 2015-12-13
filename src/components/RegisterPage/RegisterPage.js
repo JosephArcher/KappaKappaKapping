@@ -35,9 +35,10 @@ class RegisterPage extends Component {
      <div desktop={true} width={320}>
       <div className="RegisterPage-container ">   
       <Grid>
-      <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+      <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Registration"> Fill out the following fields and then click the <strong> Submit </strong> button </Popover>}>
            <p className="topMargin"> <span className="stepHeading">{title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
            </OverlayTrigger>
+      <p> Please create an account by filling out the following form. </p>
         <div>
         <form className="centeredLoginForm">
         

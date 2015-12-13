@@ -17,7 +17,7 @@ export default class CompletedCourseListItem extends Component {
 
     return (
       <tr>
-        <td>{course.title}</td>
+        <td>{course.course_title}</td>
         
         <td>       
             <button

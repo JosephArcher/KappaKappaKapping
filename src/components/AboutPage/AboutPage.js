@@ -3,8 +3,7 @@
 import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './AboutPage.css';
-import {Card} from 'elemental';
-import  Glyph from 'elemental';
+import {Jumbotron} from 'react-bootstrap'; 
 import {Form} from 'react-bootstrap';
 import {Input} from 'react-bootstrap';
 import {Image} from 'react-bootstrap';
@@ -35,8 +34,82 @@ class AboutPage extends Component {
              iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti 
              sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscin.
         </div>
+    );
 
+    const joeInfo = (
+        <div>
+            <p className="memberName">Joe Archer</p>
+            <div className="verticalLine"> </div>
 
+                <p className="indent">Email </p>
+                <p className="centerText">Joseph.Archer1@Marist.edu </p>
+
+                <p className="indent">GitHub </p>
+                <p className="centerText">https://github.com/JosephArcher </p>
+
+                <p className="indent" >linkedin</p>
+                <p className="centerText">https://www.linkedin.com/JosephArcher</p>    
+        </div>
+    );
+    const justinInfo = (
+        <div>
+            <p className="memberName">Justin Esposito</p>
+            <div className="verticalLine"> </div>
+            
+                <p className="indent">Email </p>
+                <p className="centerText">Justin.Esposito1@Marist.edu </p>
+
+                <p className="indent">GitHub </p>
+                <p className="centerText">https://github.com/JustinEsposito </p>
+
+                <p className="indent" >linkedin</p>
+                <p className="centerText">https://www.linkedin.com/JustinEsposito </p>    
+        </div>
+    );
+    const alexInfo = (
+        <div>
+            <p className="memberName">Alex Hochberg</p>
+            <div className="verticalLine"> </div>
+            
+                <p className="indent">Email </p>
+                <p className="centerText">Alex.Hochberg1@Marist.edu </p>
+
+                <p className="indent">GitHub </p>
+                <p className="centerText">https://github.com/AlexHochberg </p>
+
+                <p className="indent" >linkedin</p>
+                <p className="centerText">https://www.linkedin.com/AlexHochberg</p>    
+        </div>
+    );
+    const chrisInfo = (
+        <div>
+            <p className="memberName">Chris DellaDonna</p>
+            <div className="verticalLine"> </div>
+            
+                <p className="indent">Email </p>
+                <p className="centerText">Chris.DellaDonna1@Marist.edu </p>
+
+                <p className="indent">GitHub </p>
+                <p className="centerText">https://github.com/ChrisDellaDonna</p>
+
+                <p className="indent" >linkedin</p>
+                <p className="centerText">https://www.linkedin.com/ChrisDellaDonna</p>    
+        </div>
+    );
+    const johnInfo = (
+        <div>
+            <p className="memberName">John Prisco</p>
+            <div className="verticalLine"> </div>
+            
+                <p className="indent">Email</p>
+                <p className="centerText">John.Prisco1@Marist.edu </p>
+
+                <p className="indent">GitHub </p>
+                <p className="centerText">https://github.com/JohnPrisco </p>
+
+                <p className="indent">linkedin</p>
+                <p className="centerText">https://www.linkedin.com/JohnPrisco </p>    
+        </div>
     );
 
     const title = 'About Us';
@@ -49,137 +122,120 @@ class AboutPage extends Component {
 
      	<Row>
      		<Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      				<Row> 
-     					<Col xs={12} sm={12} md={12} lg={6}> 
+     					<Col xs={12} sm={12} md={12} lg={12}> 
         					<Image className="memberPicture" src={require('./joeAboutPic.jpg')} width="200" height="250" circle responsive />
         				</Col>
-        				<Col xs={12} sm={12} md={12} lg={6} > 
-        					<p className="memberName">Joe Archer</p>
-        					<div className="verticalLine"> </div>
-        					<p>Email:  <span> <a href="Joseph.Archer1@Marist.edu" /> Joseph.Archer1@Marist.edu </span> </p>
-        					<p>GitHub:    <span> <a href="https://github.com/JosephArcher" /> Joseph.Archer1@Marist.edu </span> </p>
-        					<p>linkedin: <span> <a href="https://www.linkedin.com/" /> Joseph.Archer1@Marist.edu </span> </p>
+        				<Col xs={12} sm={12} md={12} lg={12} > 
+                            <Row>
+        					   {joeInfo}
+                            </Row>
         				</Col>
         			</Row>
-     			</Card>
+     			</Jumbotron>
      		</Col>
      		 <Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      			<p className="memberName"> About Joe </p>
      			<div className="verticalLine"> </div>
      			   {johnBlurb}
-     			</Card>
+     			</Jumbotron>
      		</Col>	
      	</Row>
      		<Row>
      		<Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      			<p className="memberName"> About John </p>
      			<div className="verticalLine"> </div>
                 {johnBlurb}
-     			</Card>
+     			</Jumbotron>
      		</Col>
      		 <Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      				<Row> 
-     					<Col xs={12} sm={12} md={12} lg={6}> 
+     					<Col xs={12} sm={12} md={12} lg={12}> 
         					<Image className="memberPicture" src={require('./johnAboutPic.jpg')} width="200" height="250" circle responsive />
         				</Col>
-        				<Col xs={12} sm={12} md={12} lg={6} > 
-        					<p className="memberName">John Prisco</p>
-        					<div className="verticalLine"> 
-        					</div>
-						
-        					<p>Email:  <span> <a href="John.Priso1@Marist.edu" /> John.Prisco1@Marist.edu </span> </p>
-        					<p>GitHub:    <span> <a href="https://github.com/JohnPrisco" /> https:\/\/github.com/JohnPrisco </span> </p>
-        					<p>linkedin: <span> <a href="https://www.linkedin.com/johnprisco" /> www.linkedin.com/johnprisco</span> </p>
+        				<Col xs={12} sm={12} md={12} lg={12}>
+                            <Row>
+                             {johnInfo}
+                            </Row> 
         				</Col>
         			</Row>
-     			</Card>
+     			</Jumbotron>
      		</Col>	
      	</Row>
 
      	<Row>
      		<Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      				<Row> 
-     					<Col xs={12} sm={12} md={12} lg={6}> 
+     					<Col xs={12} sm={12} md={12} lg={12}> 
         					<Image className="memberPicture" src={require('./alexAboutPic.jpg')} width="200" height="250" circle responsive />
         				</Col>
-        				<Col xs={12} sm={12} md={12} lg={6} > 
-        					<p className="memberName">Alex Hochberg</p>
-        					<div className="verticalLine"> 
-        					</div>
-						
-        					<p>Email:  <span> <a href="Joseph.Archer1@Marist.edu" /> Alex.Hochberg1@Marist.edu </span> </p>
-        					<p>GitHub:    <span> <a href="https://github.com/JosephArcher" /> https:\\github.com\AlexHochberg </span> </p>
-        					<p>linkedin: <span> <a href="https://www.linkedin.com/" />  www.linkedin.com\AlexHochberg</span> </p>
+        				<Col xs={12} sm={12} md={12} lg={12} > 
+        					   <Row>
+                                 {alexInfo}
+                              </Row> 
         				</Col>
-        			</Row>
-     			</Card>
+        			     </Row>
+     			</Jumbotron>
      		</Col>
      		 <Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      			<p className="memberName"> About Alex </p>
      			<div className="verticalLine"> </div>
-                   {johnBlurb}
-     			</Card>
+                  Alex Hochberg sleeps all day and always has a rock in his shoe.
+     			</Jumbotron>
      		</Col>	
      	</Row> 	
 
      	<Row>
      		<Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      			<p className="memberName"> About Justin </p>
      			<div className="verticalLine"> </div>
                    {johnBlurb}
-     			</Card>
+     			</Jumbotron>
      		</Col>
      		 <Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      				<Row> 
-     					<Col xs={12} sm={12} md={12} lg={6}> 
+     					<Col xs={12} sm={12} md={12} lg={12}> 
         					<Image className="memberPicture" src={require('./justinAboutPic.jpg')} width="200" height="250" circle responsive />
         				</Col>
-        				<Col xs={12} sm={12} md={12} lg={6} > 
-        					<p className="memberName">Justin Esposito</p>
-        					<div className="verticalLine"> 
-        					</div>
-						
-        					<p>Email:  <span> <a href="John.Priso1@Marist.edu" /> Justin.Esposito1@Marist.edu </span> </p>
-        					<p>GitHub:    <span> <a href="https://github.com/JohnPrisco" /> https:\/\/github.com/JustinEsposito </span> </p>
-        					<p>linkedin: <span> <a href="https://www.linkedin.com/johnprisco" /> www.linkedin.com/Justin Esposito</span> </p>
+        				<Col xs={12} sm={12} md={12} lg={12} > 
+        					 <Row>
+                             {justinInfo}
+                            </Row> 
         				</Col>
         			</Row>
-     			</Card>
+     			</Jumbotron>
      		</Col>	
      	</Row>
 
      	<Row>
      		<Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      				<Row> 
-     					<Col xs={12} sm={12} md={12} lg={6}> 
+     					<Col xs={12} sm={12} md={12} lg={12}> 
         					<Image className="memberPicture" src={require('./chrisAboutPic.jpg')} width="200" height="250" circle responsive />
         				</Col>
-        				<Col xs={12} sm={12} md={12} lg={6} > 
-        					<p className="memberName">Chris DellaDonna</p>
-        					<div className="verticalLine"> 
-        					</div>
-        					<p>Email:  <span> <a href="John.Priso1@Marist.edu" /> Chris.DellaDonna1@Marist.edu </span> </p>
-        					<p>GitHub:  <span> <a href="https://github.com/JohnPrisco" /> https:\/\/github.com/ChrisDellaDonna </span> </p>
-        					<p>linkedin: <span> <a href="https://www.linkedin.com/johnprisco" /> www.linkedin.com/ChrisDellaDonna</span> </p>
+        				<Col xs={12} sm={12} md={12} lg={12} > 
+        					 <Row>
+                             {chrisInfo}
+                            </Row> 
         				</Col>
         			</Row>
-     			</Card>
+     			</Jumbotron>
      		</Col>
      		 <Col xs={6} md={6} lg={6}> 
-     			<Card>
+     			<Jumbotron>
      			<p className="memberName"> About Chris </p>
      			<div className="verticalLine"> </div>
                    {johnBlurb}
-     			</Card>
+     			</Jumbotron>
      		</Col>	
      	</Row>
 

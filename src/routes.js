@@ -36,12 +36,13 @@ const router = new Router(on => {
   on('/admin', async () => <AdminPage />);
 
   on('/courseselectionpage', async() => <CourseSelectionPage/>);
-  
-   on('/creditreportpage', async(req) => {
-    const content = await http.get(`/api/getCreditReport`);
-    console.log(content);
-    return <CreditReportPage CompletedCourses={content} />;
-  });
+
+   on('/creditreportpage', async() => <CreditReportPage />);
+    // console.log(req);
+    // const content = await http.get(`/api/getCreditReport`);
+    // console.log(content);
+   // return <CreditReportPage CompletedCourses={content} />;
+  //});
 
   on('/aboutpage', async() => <AboutPage/>);
 

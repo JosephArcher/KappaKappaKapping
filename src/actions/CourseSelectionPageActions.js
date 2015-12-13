@@ -6,7 +6,15 @@ var CourseSelectionPageActions = {
 
   /**
    * @param  {string} text
-   */
+   */ 
+  submitCourseReport: function(cl) {
+    console.log(cl);
+
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.SUBMIT_COURSE_REPORT,
+      cl: cl
+    });
+  },
   create: function(theCourse) {
     console.log("actions create was found");
     AppDispatcher.dispatch({
@@ -28,6 +36,7 @@ var CourseSelectionPageActions = {
   		course: theCourse
   	})
   }
+
 };
 
 module.exports = CourseSelectionPageActions;

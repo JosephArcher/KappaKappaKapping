@@ -24,8 +24,7 @@ class Welcome extends React.Component{
   };
 
  render() {
-    const userName = "Joe";
-    const title = 'Welcome, ' + userName;
+    const title = 'Welcome';
     this.context.onSetTitle(title);
     return (
    
@@ -33,7 +32,7 @@ class Welcome extends React.Component{
           <Grid>
   
              <Col xs={12} sm={12} md={12} lg={12}> 
-                     <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+                     <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Welcome"> Click <strong> Select Classes </strong> to get a credit report, <strong> Edit Profile </strong> to see your information, and <strong> Log Out </strong> to well.. log out  </Popover>}>
            <p className="topMargin"> <span className="stepHeading">  {title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
            </OverlayTrigger>
       

@@ -53,7 +53,7 @@ return (
 
  <Grid>
         <Col xs={12} sm={12} md={12} lg={12}> 
-            <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+            <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Log In"> Please enter your email and password and then click the <strong> Submit </strong> button </Popover>}>
            <p className="topMargin"> <span className="stepHeading">{title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
            </OverlayTrigger>
           <form className="centeredLoginForm">

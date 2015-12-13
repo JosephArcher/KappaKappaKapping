@@ -22,15 +22,26 @@ import {Modal} from 'react-bootstrap';
 import TransferCoursesTable  from '../TransferCoursesTable';
 import CompletedCoursesTable  from '../CompletedCoursesTable';
 
+// Actions
+import CourseSelectionPageActions from '../../actions/CourseSelectionPageActions';
+
 // Stores
 import CourseSelectionStore from '../../Stores/CourseSelectionStore';
 
 @withStyles(styles)
 class CourseSelectionPage extends React.Component {
 
+  getInitialState() {
+    return {show: false}
+  }
+
   constructor() {
     super();
     this._onChange = this._onChange.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+    this.submitCourseReport = this.submitCourseReport.bind(this);
+    this.activateButton = this.activateButton.bind(this);
     this.state = CourseSelectionStore.getCourseSelectionState();
   }
   componentDidMount() {
@@ -43,6 +54,28 @@ class CourseSelectionPage extends React.Component {
     console.log("A CHANGE HAS OCCURED");
     this.setState( CourseSelectionStore.getCourseSelectionState() );
   }
+  activateButton(){
+    console.log("c");
+      if(this.state.disabled){
+      CourseSelectionPageActions.submitCourseReport("");
+    }
+    this.setState({disabled: false});
+   
+   }
+
+    submitCourseReport() {
+        console.log("Submitting Course Report");
+        //this.activateButton();
+        CourseSelectionPageActions.submitCourseReport("");
+        
+    }
+
+  showModal() {
+    this.setState({show: true});
+  }
+  hideModal() {
+    this.setState({show:false});
+  }
  
   render() {
     console.log("THE PAGE IS BEING RE RENDERED");
@@ -50,16 +83,27 @@ class CourseSelectionPage extends React.Component {
     const step1 = 'Step 1: Choose your current school';
     const step2 = 'Step 2: Select the courses you have completed';
     const step3 =  'Step 3: Calculate your transferable credits';
-    const submitCourseButtonValue = "Submit Completed Courses";
     const DCC = "DCC";
+    const submitCourseButtonValue = "Submit Completed Courses";
+    const seeResultsButtonValue = "See Results";
 
     const backdropStyle = {
-  ...modalStyle,
-  zIndex: 'auto',
-  backgroundColor: '#000',
+     ...modalStyle,
+     zIndex: 'auto',
+      backgroundColor: '#000',
   opacity: 0.5
 };
+ function activateButton(){
+    console.log("c");
+    this.setState({disable: false});
 
+
+   }
+  function submitCourseReport() {
+     console.log("Submitting Course Report");
+       CourseSelectionPageActions.submitCourseReport("");
+       
+   }
 function close(){
     this.setState({ showModal: false });
   }
@@ -96,7 +140,7 @@ const dialogStyle = function() {
     const schoolSelection =  (
       <Col xs={12} sm={12} md={12} lg={12}> 
         <div>
-        <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+        <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
            <p> <span className="stepHeading">{step1} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
            </OverlayTrigger>
          </div>
@@ -113,7 +157,7 @@ const dialogStyle = function() {
     );
     const courseSelection = (
       <Col xs={12} sm={12} md={12} lg={12}> 
-        <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="Course Select"> Select the courses you have taken at your previous college </Popover>}>
+        <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Course Select"> Select the courses you have taken at your previous college </Popover>}>
           <p> <span className="stepHeading">{step2} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
         </OverlayTrigger>
         <Row>
@@ -123,11 +167,6 @@ const dialogStyle = function() {
               </div>
               <div className="submitCourseSection">
                 <TransferCoursesTable availableTransferCourses={this.state.availableTransferCourses}></TransferCoursesTable>
-              </div>
-              <div>
-                <Button>
-                  Report Missing Course
-                </Button>
               </div>
             </Col>
             <Col xs={1} sm={1} md={1} lg={1}>
@@ -139,6 +178,12 @@ const dialogStyle = function() {
               <CompletedCoursesTable CompletedCourses={this.state.completedCourses}  ></CompletedCoursesTable>
             </Col>
           </Row>
+           <div className="spaceMeBB">
+                <Button onClick={this.showModal}>
+                  Report Missing Course
+                </Button>
+              </div>
+
           <div className="verticalLine">
           </div>
       </Col>
@@ -147,12 +192,13 @@ const dialogStyle = function() {
     const submitSection = (
       <Col xs={12} md={12} lg={12}> 
         <div>
-          <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="Submit Courses"> After you have selected all of the courses you plan on transfering, press the blue Submit Completed Courses button </Popover>}>
+          <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Submit Courses"> After you have selected all of the courses you plan on transfering, press the blue Submit Completed Courses button </Popover>}>
             <p> <span className="stepHeading">{step3} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
             </OverlayTrigger>
         </div>
         <div className="submitCourseSection">
-           <Button bsStyle="primary" bsSize="large"  href="/creditreportpage" onClick={Link.handleClick} block>{submitCourseButtonValue}</Button>
+           <Button bsStyle="primary" block bsSize="large"   onClick={this.activateButton}>{submitCourseButtonValue}</Button>
+           <Button id ="sub" bsStyle="primary" bsSize="large" disabled={this.state.disabled}  href="/creditreportpage" onClick={Link.handleClick} block>{seeResultsButtonValue}</Button>
         </div>
       </Col>
     );
@@ -165,20 +211,23 @@ const dialogStyle = function() {
                 {schoolSelection}
             </Row>
              <Row>
-              <Modal
-                aria-labelledby='modal-label'
-                style={modalStyle}
-                backdropStyle={backdropStyle}
-                show={this.state.showModal}
-                onHide={this.close}>
-
-                <div style={dialogStyle()} >
-                <h4 id='modal-label'>Text in a modal</h4>
-                  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                  <input autoFocus/>
-            
-          </div>
-        </Modal>
+              <Modal show={this.state.show} onHide={this.hideModal} dialogClassName="custom-modal" >
+               <Modal.Header>
+               <Modal.Title id="contained-modal-title-lg"> Report Missing Course </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <h4>Transfer Course Request Form</h4>
+                <p> In order to help Marist College gather information about the course please provide us with all of the information you can.</p>
+                <Input type="text" bsSize="large" placeholder="Course Name" />
+                <Input type="text" bsSize="large" placeholder="Course ID" />
+                <Input type="text" bsSize="large" placeholder="Number of Credits" />
+                <Input type="text" bsSize="large" placeholder="Course Description" />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.submitForm}>Submit</Button>
+            <Button onClick={this.hideModal}>Close</Button>
+          </Modal.Footer>
+             </Modal>
                 {courseSelection}
             </Row>
             <Row>

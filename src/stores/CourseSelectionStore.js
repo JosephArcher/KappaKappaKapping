@@ -1,22 +1,63 @@
-
 var AppDispatcher = require('../core/dispatcher');
 var EventEmitter = require('events').EventEmitter;
-var ActionTypes = require('../constants/ActionTypes');
-import {Courses} from '../constants/testdata';
-
-
+import ActionTypes from '../constants/ActionTypes';
 import _ from 'underscore';
-
+var request = require('superagent');
+var prefix = require('superagent-prefix')('/static');
+import {Courses} from '../constants/testdata';
 var CHANGE_EVENT = 'change';
+
 
   let availableTransferCourses = [];
   let completedCourses = [];
-
+  var crr = [];
+  let courseReportResponse = [];
+  let test = "hell";
   loadCourses();
-
+  function loadResponse(){
+    courseReportResponse = crr;
+  }
   function loadCourses() {
-    availableTransferCourses =  Courses;
+ availableTransferCourses = getTransferlCourses();
+ console.log("Hello From Joe ");
+ console.log(availableTransferCourses);
   } 
+
+  function generateReport(completedCourses) {
+    request
+     .post('http://localhost:3000/api/getTransferSchoolCourses')
+       .send({completedCoursesArray: completedCourses })
+       .end(function(err, res){
+      if (err) {
+        console.log("There's been an error.");
+        console.log(err);
+      } else {
+        console.log("No error.");
+        console.log(res);
+        console.log("res avbou");
+      }
+    });
+
+  }
+    function getTransferlCourses() {
+
+   request
+      .get('http://localhost:3000/api/getTransferSchoolCourses')
+      .end(function(err, res) {
+        if (err) {
+          console.log("There's been an error: getting the transfer courses.");
+          console.log(err);
+        } else {
+          console.log("Printing res body: " + res.body.length);
+          for(var i=0; i < res.body.length; i++){
+            console.log(res.body[i]);
+          }
+          availableTransferCourses = res.body;
+            
+       
+        }
+      }.bind(this));
+    }
 
  // Will add the course to the completed course list
 function  markCourseAsCompleted(course) {
@@ -33,7 +74,7 @@ function  markCourseAsCompleted(course) {
     nextCourse = availableTransferCourses[i];
    
     // Compare
-    if(course.title == nextCourse.title) {
+    if(course.course_title == nextCourse.course_title) {
       // Save the index to remove later
       indexToRemove = i;
       break;
@@ -42,6 +83,7 @@ function  markCourseAsCompleted(course) {
 
  // Add the course to the completed courses array
   completedCourses.push(course);
+
  // Remove the transerfable course
 
  console.log("BEFORE " + availableTransferCourses.length);
@@ -56,10 +98,10 @@ function  markCourseAsCompleted(course) {
   for(var i = 0; i < completedCourses.length; i++){
 
     nextCourse = completedCourses[i];
-    console.log("THE COURSE TITLE IS ... " + course.title);
-    console.log("THE NEXT COURSE TITLE IS ... " + nextCourse.title);
+    console.log("THE COURSE TITLE IS ... " + course.course_title);
+    console.log("THE NEXT COURSE TITLE IS ... " + nextCourse.course_title);
     // Compare
-    if(course.title == nextCourse.title) {
+    if(course.course_title == nextCourse.course_title) {
       console.log("JOE THE DELETE MATCH WAS FOUND");
       completedCourses.splice(i,1);
       break;
@@ -71,12 +113,40 @@ function  markCourseAsCompleted(course) {
  function numberOfCompletedCourses() {
 
  }
+ /////
+ function submitCourseReport(cl) {
+   var completedCoursesCrn = [];
+   var completedCoursesSize = completedCourses.length;
+
+   for(var x = 0; completedCoursesSize > x; x++){
+    completedCoursesCrn.push(completedCourses[x].transfer_course_id);
+   }
+console.log(completedCoursesCrn);
+   request
+     .post('/api/getCreditReport')
+     .send({cl: completedCoursesCrn })
+     .end(function(err, res){
+       if (err) {
+         console.log("There's been an error.");
+         console.log(err);
+       } else {
+         console.log("No error.");
+         console.log(res.text);
+         courseReportResponse.push(res.text);
+         crr = res.text;
+       }
+  loadResponse();
+      
+     } );
+ 
+ }
  // Extend Cart Store with EventEmitter to add eventing capabilities
 var CourseSelectionStore = _.extend({}, EventEmitter.prototype, {
 
   getAllCompletedCourses: function () {
-    console.log("Returning all of the complted courses + " + completedCourses.length);
+    console.log("Returning all of the completed courses + " + completedCourses.length);
     console.log(completedCourses);
+
     return completedCourses;
   },
 
@@ -86,12 +156,15 @@ var CourseSelectionStore = _.extend({}, EventEmitter.prototype, {
     return availableTransferCourses;
 
   },
+  getCourseReport: function (){
+    return {cl: courseReportResponse};
+  },
   getCurrentSChool: function() {
     console.log("Getting the current school");
   },
   getAllTransferCourses: function () {
-      console.log("Getting all the transfer courses");
-      return availableTransferCourses;
+     return availableTransferCourses;
+    
   },
   // Emit Change event
   emitChange: function() {
@@ -116,6 +189,7 @@ var CourseSelectionStore = _.extend({}, EventEmitter.prototype, {
    // allTransferSchools: CourseSelectionStore.getAllTransferSchools(),
     currentTransferSchool: this.getCurrentSChool(),
     availableTransferCourses: this.getAllTransferCourses(),
+        disabled : true,
     completedCourses: this.getAllCompletedCourses()
   };
   }
@@ -137,6 +211,10 @@ AppDispatcher.register(function(action) {
      markCourseAsCompleted(action.course);
      CourseSelectionStore.emitChange();
     break;
+
+    case ActionTypes.SUBMIT_COURSE_REPORT:
+      submitCourseReport(action.cl);
+      break;
 
     default:
       return true;
