@@ -16,10 +16,10 @@ module.exports = function(passport){
 
     //log in
     router.post('/api/login', passport.authenticate('login', function(req, res) {
-    	res.redirect
-    }
+    	res.redirect('/login');
+    }));
 
-	));
+    
 
     //sign up
     router.post('/api/signup', passport.authenticate('signup', {
