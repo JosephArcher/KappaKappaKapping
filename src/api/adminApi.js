@@ -30,7 +30,9 @@ router.post('/register', function(req, res) {
     client.query('INSERT INTO people(user_id, password, is_admin) ' +
                  'values($1, $2, $3)',
                  [username, password, true], function(err, result) {
-        if (handleError(err)) return;
+        if (handleError(err)) {
+          return;
+        }
       });
     done();
   });
@@ -83,7 +85,11 @@ router.post('/addCourseToProgram', function(req, res) {
 
     client.query('INSERT INTO program_requirements(program_id, marist_crn) ' +
                  'VALUES($1, $2)',
-                  ['99999', course]);
+                  ['99999', course], function(err, result) {
+        if (handleError(err)) {
+          return;
+        }
+      });
       done();
   });
 });
@@ -110,7 +116,9 @@ router.post('/removeCourseFromProgram', function(req, res) {
 
     client.query('DELETE FROM program_requirements WHERE program_id = $1 AND marist_crn = $2',
                  ['99999', course], function(err, result) {
-        if (handleError(err)) return;
+        if (handleError(err)) {
+          return;
+        }
       });
     done();
   });
@@ -141,7 +149,9 @@ router.post('/addCourseEquivalency', function(req, res) {
 
     client.query('INSERT INTO course_equivalents(marist_crn, transfer_course_id, number_of_credits) ' +
                  'VALUES($1, $2, $3)', [program.toString(), transfer.toString(), credits.toString()], function(err, result) {
-      if (handleError(err)) return;
+      if (handleError(err)) {
+        return;
+      }
     });
     done();
   });
@@ -170,7 +180,9 @@ router.post('/removeCourseEquivalency', function(req, res) {
     }
 
     client.query('DELETE FROM course_equivalents WHERE marist_crn = $1 and transfer_course_id = $2', [marist, transfer], function(err, result) {
-      if (handleError(err)) return;
+      if (handleError(err)) {
+        return;
+      }
     });
     done();
   });
@@ -233,6 +245,30 @@ router.get('/getCourseEquivalents', function(req, res) {
       return res.json(results);
     });
   });
+});
+
+router.get('/getSubmittedCourses', function(req, res) {
+  var results = [];
+
+  pg.connect(conString, function(err, client, done) {
+    if (err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+
+    var query = client.query('select course_title, course_description, number_of_credits ' +
+                             'from student_submitted_courses;');
+
+    query.on('row', function(row) {
+      results.push(row);
+    });
+
+    query.on('end', function() {
+      done();
+      return res.json(results);
+    });
+  })
 });
 
 export default router;
