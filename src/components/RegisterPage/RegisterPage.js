@@ -31,7 +31,7 @@ class RegisterPage extends Component {
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
   };
-  
+
 
 static  progressPercent = 0;
 
@@ -52,7 +52,7 @@ static  progressPercent = 0;
 
      <div desktop={true} width={320}>
  <div id="test" value= "0"></div>
-      <div className="RegisterPage-container ">   
+      <div className="RegisterPage-container ">
       <Grid>
         <div>
         <form className="centeredLoginForm">
@@ -60,27 +60,26 @@ static  progressPercent = 0;
 
 
         <Row>
-          <Col xs={6} md={6} lg={6}> 
-                <Input type="text" bsSize="large" placeholder="Userame" id="userName" onChange={this.fnInput}  />
+          <Col xs={6} md={6} lg={6}>
+                <Input type="text" bsSize="large" placeholder="Username" id="userName" onChange={this.fnInput}  />
                 <Input type="text" bsSize="large" placeholder="First Name" id="firstName"  />
                 <Input type="text" bsSize="large" placeholder="Last Name" id="lastName"/>
-                <Input type="text" bsSize="large" placeholder="Password" id="password"/>
+                <Input type="password" bsSize="large" placeholder="Password" id="password"/>
                 <Input type="text" bsSize="large" placeholder="Email" id="email"/>
                 <Input type="text" bsSize="large" placeholder="Phone Number" id ="phoneNumber"/>
-                <Input type="text" bsSize="large" placeholder="Birthdate" id= "birthDate"/>
           </Col>
-           <Col xs={6} md={6} lg={6}> 
+           <Col xs={6} md={6} lg={6}>
 
                     <Input bsSize="large" type="select" id= "major">
                      <option value="Not Selected">Intended Major</option>
                      <option value="Not Sure Yet">Not Sure Yet</option>
-                      <option value="Computer Science">Computer Science</option> 
+                      <option value="Computer Science">Computer Science</option>
                       <option value="Math">Math</option>
                       <option value="Fashion">Fashion</option>
                       <option value="Business">Business</option>
-                      <option value="Communications">Communications</option> 
+                      <option value="Communications">Communications</option>
                   </Input>
-  
+
                 <Input bsSize="large" type="select" id= "startDate" >
                      <option value="01-01-01">Intended Start Date</option>
                      <option value="02-01-16">Spring 2016</option>
@@ -118,20 +117,19 @@ static  progressPercent = 0;
       var pw = document.getElementById("password").value;
       var em   = document.getElementById("email").value;
       var pn = document.getElementById("phoneNumber").value;
-      var bd   = document.getElementById("birthDate").value;
       var ma   = document.getElementById("major").value;
       var sd = document.getElementById("startDate").value;
       var cs   = document.getElementById("currentSchool").value;
-      UserActions.registerUser(us, fn, ln, pw, em, pn, bd, ma, sd, cs);
+      UserActions.registerUser(us, fn, ln, pw, em, pn, ma, sd, cs);
     }else{
       console.log("Not completed");
       // BootstrapDialog.
       alert("Registration Not Complete.");
         }
-    } 
+    }
 
-      
-    
+
+
 
        fnInput() {
 
@@ -149,10 +147,10 @@ static  progressPercent = 0;
       console.log(document.getElementById("pc").value);
 
     }
-  
 
 
- 
+
+
 
 }
 

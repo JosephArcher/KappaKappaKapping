@@ -4,7 +4,7 @@ var UserActions = {
 
   // This is called by the submit button on the register page,
   // and is given the field values as parameters.
-  registerUser: function(us, fn, ln, pw, em, pn, bd, ma , sd, cs) {
+  registerUser: function(us, fn, ln, pw, em, pn, ma, sd, cs) {
     console.log("In register user in actions.");
     console.log("Actions: fn: " + fn);
     console.log("Actions: fn: " + ln);
@@ -18,7 +18,6 @@ var UserActions = {
       pw: pw,
       em: em,
       pn: pn,
-      bd: bd,
       ma: ma,
       sd: sd,
       cs: cs
@@ -35,6 +34,19 @@ var UserActions = {
       up: up
     });
   },
+
+  updateProfile: function(user, firstName, lastName, email, phone, major, startDate) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.UPDATE_PROFILE,
+      user: user,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      major: major,
+      startDate: startDate
+    });
+  }
 
 
 };

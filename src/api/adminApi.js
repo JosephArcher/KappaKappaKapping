@@ -1,10 +1,12 @@
 import pg from 'pg';
 import Router from 'express';
 import AdminStore from '../stores/AdminStore';
+var bCrypt = require('bcrypt-nodejs');
 var bodyParser = require('body-parser');
 let router = new Router();
 router.use(bodyParser.json());
 let conString = "postgres://priscoj:alpha29@localhost/capping";
+//let conString = 'postgres://justin:swag@10.10.7.182/transfer';
 
 router.post('/register', function(req, res) {
   var username = req.body.username;
@@ -29,7 +31,7 @@ router.post('/register', function(req, res) {
 
     client.query('INSERT INTO people(user_id, password, is_admin) ' +
                  'values($1, $2, $3)',
-                 [username, password, true], function(err, result) {
+                 [username, createHash(password), true], function(err, result) {
         if (handleError(err)) {
           return;
         }
@@ -270,5 +272,9 @@ router.get('/getSubmittedCourses', function(req, res) {
     });
   })
 });
+
+var createHash = function(password){
+  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+};
 
 export default router;

@@ -54,10 +54,6 @@ var AdminActions = {
       transferCourse: transferCourse
     });
   }
-
-
-
-
 };
 
 export default AdminActions;
