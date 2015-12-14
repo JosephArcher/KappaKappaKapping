@@ -13,7 +13,7 @@ import AdminStore from '../../stores/AdminStore';
 import AdminActions from '../../actions/AdminActions';
 var request = require('superagent');
 var injectTapEventPlugin = require("react-tap-event-plugin");
-
+import userStore from '../../stores/userStore';
 @withStyles(styles)
 class AdminPage extends React.Component {
 
@@ -27,6 +27,11 @@ class AdminPage extends React.Component {
   }
 
   componentDidMount() {
+    if (!sessionStorage.getItem('admin')) {
+      window.location.href = '/welcome';
+      return;
+    }
+
     request
       .get('/api/adminApi/getStudents')
       .end(function(err, res) {
@@ -34,7 +39,7 @@ class AdminPage extends React.Component {
           console.log("There's been an error: getting students.");
           console.log(err);
         } else {
-          console.log("Printing res body: " + res.body);
+          //console.log("Printing res body: " + res.body);
           this.setState({
             students: res.body
           });

@@ -111,6 +111,8 @@ function removeCourseEquivalency(maristCourse, transferCourse) {
     });
 }
 
+
+
 var AdminStore = _.extend({}, EventEmitter.prototype, {
 
   registrationSuccess: null,
