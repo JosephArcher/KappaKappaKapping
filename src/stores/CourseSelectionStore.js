@@ -21,7 +21,7 @@ var CHANGE_EVENT = 'change';
  availableTransferCourses = getTransferlCourses();
  console.log("Hello From Joe ");
  console.log(availableTransferCourses);
-  } 
+  }
 
   function generateReport(completedCourses) {
     request
@@ -48,13 +48,14 @@ var CHANGE_EVENT = 'change';
           console.log("There's been an error: getting the transfer courses.");
           console.log(err);
         } else {
-          console.log("Printing res body: " + res.body.length);
-          for(var i=0; i < res.body.length; i++){
-            console.log(res.body[i]);
-          }
+
+          //console.log("Printing res body: " + res.body.length);
+          //for(var i=0; i < res.body.length; i++){
+          //  console.log(res.body[i]);
+          //}
           availableTransferCourses = res.body;
-            
-       
+
+
         }
       }.bind(this));
     }
@@ -72,7 +73,7 @@ function  markCourseAsCompleted(course) {
   for(var i = 0; i < availableTransferCourses.length; i++){
 
     nextCourse = availableTransferCourses[i];
-   
+
     // Compare
     if(course.course_title == nextCourse.course_title) {
       // Save the index to remove later
@@ -115,6 +116,7 @@ function  markCourseAsCompleted(course) {
  }
  /////
  function submitCourseReport(cl) {
+   CourseSelectionStore.clearUp();
    var completedCoursesCrn = [];
    var completedCoursesSize = completedCourses.length;
 
@@ -136,10 +138,32 @@ console.log(completedCoursesCrn);
          crr = res.text;
        }
   loadResponse();
-      
+
      } );
- 
+
  }
+
+function submitNewCourse(name, id, credits, descrip) {
+  console.log("SUBMITTING")
+
+  request
+    .post('/api/newCourse')
+    .send({name : name, id : id, credits : credits, descrip : descrip})
+    .end(function(err, res){
+      if (err) {
+        console.log("There's been an error.");
+        console.log(err);
+      } else {
+        console.log("No error.");
+        console.log(res.text);
+
+      }
+
+
+    } );
+
+
+}
  // Extend Cart Store with EventEmitter to add eventing capabilities
 var CourseSelectionStore = _.extend({}, EventEmitter.prototype, {
 
@@ -151,7 +175,7 @@ var CourseSelectionStore = _.extend({}, EventEmitter.prototype, {
   },
 
   getAllTransferSchools: function()  {
-    
+
     console.log("Getting all transfer schools");
     return availableTransferCourses;
 
@@ -164,8 +188,14 @@ var CourseSelectionStore = _.extend({}, EventEmitter.prototype, {
   },
   getAllTransferCourses: function () {
      return availableTransferCourses;
-    
+
   },
+
+  clearUp: function(){
+    crr = [];
+    courseReportResponse = [];
+  },
+
   // Emit Change event
   emitChange: function() {
     console.log("a change is being emitted");
@@ -214,6 +244,13 @@ AppDispatcher.register(function(action) {
 
     case ActionTypes.SUBMIT_COURSE_REPORT:
       submitCourseReport(action.cl);
+      CourseSelectionStore.emitChange();
+      break;
+
+    //ah
+    case ActionTypes.NEW_COURSE:
+      submitNewCourse(action.user, action.name, action.id, action.credits, action.descrip);
+      CourseSelectionStore.emitChange();
       break;
 
     default:

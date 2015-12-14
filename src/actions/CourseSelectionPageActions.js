@@ -6,7 +6,7 @@ var CourseSelectionPageActions = {
 
   /**
    * @param  {string} text
-   */ 
+   */
   submitCourseReport: function(cl) {
     console.log(cl);
 
@@ -35,6 +35,18 @@ var CourseSelectionPageActions = {
   		actionType: ActionTypes.Course_DESTROY,
   		course: theCourse
   	})
+  },
+
+  submitNewCourse: function(user, name, id, credits, descrip) {
+    console.log("Submit in actions");
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.NEW_COURSE,
+      user: user,
+      name : name,
+      id : id,
+      credits : credits,
+      descrip : descrip
+    });
   }
 
 };

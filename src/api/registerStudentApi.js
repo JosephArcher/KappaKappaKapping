@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 let router = new Router();
 router.use(bodyParser.json());
 
-let conString = "postgres://postgres:ja5125@localhost/postgres";
+let conString = "postgres://priscoj:alpha29@localhost/capping";
 
 
 
@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
 
   // Set up the connection
   var results = [];
- 
+
  // console.log(res);
 
   pg.connect(conString, function(err, client, done) {
@@ -67,7 +67,7 @@ router.post('/', function(req, res) {
       + "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)", [_userId, _school_id, _first_name, _last_name, _email,  _phone_number, _birthday, _intended_major, _intended_start_date]);
 
 
-    
+
     // This query.on() call will run as many times as rows there are
     query.on('row', function(row, result) {
       console.log("Students:");

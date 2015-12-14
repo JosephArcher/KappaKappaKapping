@@ -10,7 +10,7 @@ class StudentSubmission extends Component {
     const submission = this.props.submission;
     return (
       <tr>
-        <td>{submission.course_title}</td>
+        <td>{submission.name}</td>
         <td>{submission.course_description}</td>
         <td>{submission.number_of_credits}</td>
         <td>Dutchess County Community College</td>

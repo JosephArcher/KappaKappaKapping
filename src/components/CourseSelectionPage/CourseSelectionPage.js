@@ -18,7 +18,7 @@ import {Popover} from 'react-bootstrap';
 import {OverlayTrigger} from 'react-bootstrap';
 import {Modal} from 'react-bootstrap';
 
-// Components 
+// Components
 import TransferCoursesTable  from '../TransferCoursesTable';
 import CompletedCoursesTable  from '../CompletedCoursesTable';
 
@@ -43,6 +43,7 @@ class CourseSelectionPage extends React.Component {
     this.submitCourseReport = this.submitCourseReport.bind(this);
     this.activateButton = this.activateButton.bind(this);
     this.state = CourseSelectionStore.getCourseSelectionState();
+    this.submitCourseForm = this.submitCourseForm.bind(this);
   }
   componentDidMount() {
     CourseSelectionStore.addChangeListener(this._onChange);
@@ -54,20 +55,41 @@ class CourseSelectionPage extends React.Component {
     console.log("A CHANGE HAS OCCURED");
     this.setState( CourseSelectionStore.getCourseSelectionState() );
   }
+
+  submitCourseForm(){
+    console.log("Submitting New Course");
+    var user = sessionStorage.getItem('user');
+    var name = document.getElementById("NewCourseName").value;
+    var id = document.getElementById("NewCourseID").value;
+    var credits   = document.getElementById("NewCourseCredits").value;
+    var descrip = document.getElementById("NewCourseDescription").value;
+
+    CourseSelectionPageActions.submitNewCourse(user, name, id, credits, descrip);
+
+    this.setState({show:false});
+
+  }
+
   activateButton(){
     console.log("c");
-      if(this.state.disabled){
+    if(this.state.disabled){
+      // API CALL
       CourseSelectionPageActions.submitCourseReport("");
     }
-    this.setState({disabled: false});
-   
-   }
+    var intervalID = window.setInterval(myCallback.bind(this), 1500);
+
+    function myCallback() {
+      this.setState({disabled: false});
+    }
+
+
+  }
 
     submitCourseReport() {
         console.log("Submitting Course Report");
         //this.activateButton();
         CourseSelectionPageActions.submitCourseReport("");
-        
+
     }
 
   showModal() {
@@ -76,7 +98,7 @@ class CourseSelectionPage extends React.Component {
   hideModal() {
     this.setState({show:false});
   }
- 
+
   render() {
     console.log("THE PAGE IS BEING RE RENDERED");
     const title = 'Course Selection Pag';
@@ -99,10 +121,12 @@ class CourseSelectionPage extends React.Component {
 
 
    }
+
+
   function submitCourseReport() {
      console.log("Submitting Course Report");
        CourseSelectionPageActions.submitCourseReport("");
-       
+
    }
 function close(){
     this.setState({ showModal: false });
@@ -138,11 +162,14 @@ const dialogStyle = function() {
     console.log("hey");
     console.log(this.state.completedCourses);
     const schoolSelection =  (
-      <Col xs={12} sm={12} md={12} lg={12}> 
+      <Col xs={12} sm={12} md={12} lg={12}>
         <div>
-        <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
-           <p> <span className="stepHeading">{step1} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
-           </OverlayTrigger>
+          <h1>
+            {step1}
+            <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="School Selection"> Select the school you wish to transfer credits from </Popover>}>
+               <span className="helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span>
+            </OverlayTrigger>
+          </h1>
          </div>
         <div>
           <Input bsSize="large" type="select" className="textCenter">
@@ -156,10 +183,13 @@ const dialogStyle = function() {
       </Col>
     );
     const courseSelection = (
-      <Col xs={12} sm={12} md={12} lg={12}> 
-        <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Course Select"> Select the courses you have taken at your previous college </Popover>}>
-          <p> <span className="stepHeading">{step2} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
-        </OverlayTrigger>
+      <Col xs={12} sm={12} md={12} lg={12}>
+        <h1>
+          {step2}
+          <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Course Select"> Select the courses you have taken at your previous college </Popover>}>
+            <span className="helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span>
+          </OverlayTrigger>
+        </h1>
         <Row>
             <Col xs={5} sm={5} md={6} lg={6}>
               <div>
@@ -178,23 +208,26 @@ const dialogStyle = function() {
               <CompletedCoursesTable CompletedCourses={this.state.completedCourses}  ></CompletedCoursesTable>
             </Col>
           </Row>
-           <div className="spaceMeBB">
-                <Button onClick={this.showModal}>
-                  Report Missing Course
-                </Button>
-              </div>
-
+          <div>
+             <Button onClick={this.showModal}>
+               Report Missing Course
+             </Button>
+             <Input type="checkbox" label="Contact me with more information"  />
+           </div>
           <div className="verticalLine">
           </div>
       </Col>
     );
 
     const submitSection = (
-      <Col xs={12} md={12} lg={12}> 
+      <Col xs={12} md={12} lg={12}>
         <div>
-          <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Submit Courses"> After you have selected all of the courses you plan on transfering, press the blue Submit Completed Courses button </Popover>}>
-            <p> <span className="stepHeading">{step3} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
+          <h1>
+            {step3}
+            <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Submit Courses"> After you have selected all of the courses you plan on transfering, press the blue Submit Completed Courses button </Popover>}>
+              <span className="helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span>
             </OverlayTrigger>
+          </h1>
         </div>
         <div className="submitCourseSection">
            <Button bsStyle="primary" block bsSize="large"   onClick={this.activateButton}>{submitCourseButtonValue}</Button>
@@ -205,7 +238,7 @@ const dialogStyle = function() {
 
     return (
       <div desktop={true} width={320}>
-        <div className="CourseSelectionPage-container">   
+        <div className="CourseSelectionPage-container">
          <Grid>
             <Row>
                 {schoolSelection}
@@ -218,13 +251,13 @@ const dialogStyle = function() {
               <Modal.Body>
                 <h4>Transfer Course Request Form</h4>
                 <p> In order to help Marist College gather information about the course please provide us with all of the information you can.</p>
-                <Input type="text" bsSize="large" placeholder="Course Name" />
-                <Input type="text" bsSize="large" placeholder="Course ID" />
-                <Input type="text" bsSize="large" placeholder="Number of Credits" />
-                <Input type="text" bsSize="large" placeholder="Course Description" />
+                <Input type="text" bsSize="large" placeholder="Course Name" id="NewCourseName"/>
+                <Input type="text" bsSize="large" placeholder="Course ID" id="NewCourseID"/>
+                <Input type="text" bsSize="large" placeholder="Number of Credits" id="NewCourseCredits"/>
+                <Input type="text" bsSize="large" placeholder="Course Description" id="NewCourseDescription"/>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.submitForm}>Submit</Button>
+            <Button onClick={this.submitCourseForm}>Submit</Button>
             <Button onClick={this.hideModal}>Close</Button>
           </Modal.Footer>
              </Modal>

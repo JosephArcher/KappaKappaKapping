@@ -259,7 +259,7 @@ router.get('/getSubmittedCourses', function(req, res) {
       return res.status(500).json({success: false, data: err});
     }
 
-    var query = client.query('select course_title, course_description, number_of_credits ' +
+    var query = client.query('select name, course_description, number_of_credits ' +
                              'from student_submitted_courses;');
 
     query.on('row', function(row) {

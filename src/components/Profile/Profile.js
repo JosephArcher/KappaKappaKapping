@@ -35,10 +35,12 @@ class Profile extends Component {
      const inputSizeInstance = (
     <div>
      <Grid>
+       <h1>
      <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Profile"> To edit your profile, change the fields you wish to edit and then click the <strong> Save Profile </strong> button </Popover>}>
-           <p className="topMargin"> <span className="stepHeading">{title} </span>  <span className="pull-right helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span> </p>
-           </OverlayTrigger>
-      <p> If you wish to edit your profile information simply edit the appropriate field and click the save profile button to keep the changes. </p>
+           <span className="helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span>
+     </OverlayTrigger>
+      </h1>
+         <p> If you wish to edit your profile information simply edit the appropriate field and click the save profile button to keep the changes. </p>
         <div>
           <div id="prof-msg"></div>
         <form className="centeredLoginForm">

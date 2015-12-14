@@ -15,6 +15,11 @@ export default keyMirror({
   Course_DESTROY_COMPLETED: null,
   REMOVE_COURSE_FROM_PROGRAM: null,
   ADD_COURSE_EQUIVALENCY: null,
-  REMOVE_COURSE_EQUIVALENCY: null
-  
+  REMOVE_COURSE_EQUIVALENCY: null,
+  REGISTER_USER: null,
+  LOG_USER: null,
+  UPDATE_PROFILE: null,
+  NEW_COURSE: null,
+  SUBMIT_COURSE_REPORT: null
+
 });

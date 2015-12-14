@@ -47,6 +47,7 @@ function logUser(un, up) {
       } else {
         console.log("No error.");
         console.log(res);
+        document.cookie = "user";
         if (res.body.admin) {
           //req.session.admin = true
           sessionStorage.setItem('admin', true);

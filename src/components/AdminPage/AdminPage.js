@@ -27,8 +27,8 @@ class AdminPage extends React.Component {
   }
 
   componentDidMount() {
-    if (!sessionStorage.getItem('admin')) {
-      window.location.href = '/welcome';
+    if (sessionStorage.getItem('admin') === 'false' || sessionStorage.length === 0) {
+      window.location.href = '/login';
       return;
     }
 

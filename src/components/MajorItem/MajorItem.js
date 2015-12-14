@@ -26,32 +26,53 @@ class MajorItem extends Component {
 
   static propTypes = {
     majorTitle: PropTypes.string.isRequired,
-    majorPercent: PropTypes.number.isRequired
+    majorPercent: PropTypes.number.isRequired,
+    courseList: PropTypes.array
   };
 
   render() {
 
     const majorTitle = this.props.majorTitle;
-	  const majorPercent = this.props.majorPercent;
+    const majorPercent = this.props.majorPercent;
+
+    // Get the Course List from the props
+    const courseList = this.props.courseList;
+
+    // Break up the array and create nice string for output
+    const dataString = createDataString(courseList);
+
+
+    function createDataString(courseList) {
+
+      // Initalize variables
+      var x = "Transferable Courses: ";
+
+      for(var i = 0; i < courseList.length; i++) {
+
+        x = x + courseList[i].course_title;
+
+        if(i != courseList.length - 1){
+          x = x + ", ";
+        }
+      }
+      return x;
+    }
+
     return (
-
-    	<Row className='majorItems'>
+      <Row className='majorItems'>
         <Col xs={12} sm={12} md={12} lg={12}>
-         <p className="majorTitle"> {majorTitle} <span className="downArrowIcon"> <a onClick={ ()=> this.setState({ open: !this.state.open })  }> <Glyphicon glyph="glyphicon glyphicon-chevron-down" />  </a> </span> </p>        
+          <p className="majorTitle"> {majorTitle} <span className="downArrowIcon"> <a onClick={ ()=> this.setState({ open: !this.state.open })  }> <Glyphicon glyph="glyphicon glyphicon-chevron-down" />  </a> </span> </p>
         </Col>
-
-
-          <Col xs={12} sm={12} md={12}>
-           <ProgressBar striped bsStyle="success" now={majorPercent} label="%(percent)s%" /> 
-           <Collapse in={this.state.open}>
+        <Col xs={12} sm={12} md={12}>
+          <ProgressBar striped bsStyle="success" now={majorPercent} label="%(percent)s%" />
+          <Collapse in={this.state.open}>
             <div>
-            <Well>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-            </Well>
-          </div>
+              <Well>
+                {dataString}
+              </Well>
+            </div>
           </Collapse>
-          </Col>
+        </Col>
       </Row>
 
     );
