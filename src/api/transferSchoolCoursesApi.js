@@ -9,7 +9,7 @@ let _transfer_school_id = "";
 
 
 let router = new Router();
-let conString = "postgres://postgres:ja5125@localhost/postgres";
+let conString = "postgres://priscoj:alpha29@localhost/capping";
 
 // If the route matches /api/getTransferSchools...
 router.get('/', function(req, res) {

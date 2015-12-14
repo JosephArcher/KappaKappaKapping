@@ -12,6 +12,7 @@ import transferSchoolsApi from './api/transferSchoolsApi';
 import transferSchoolCoursesApi from './api/transferSchoolCoursesApi';
 import registerStudentApi from './api/registerStudentApi';
 import creditReportApi from './api/creditReportApi';
+import newCourseApi from './api/newCourseApi';
 var passport = require('passport');
 var session = require('express-session');
 
@@ -42,6 +43,7 @@ server.use('/api/getCreditReport', creditReportApi);
 server.use('/api/getTransferSchoolCourses', transferSchoolCoursesApi);
 server.use('/api/content', require('./api/content'));
 server.use('/auth', authenticate);
+server.use('/api/newCourse', newCourseApi);
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------

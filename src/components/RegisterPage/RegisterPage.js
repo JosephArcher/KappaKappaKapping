@@ -3,14 +3,7 @@
 import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './RegisterPage.css';
-import {Form} from 'react-bootstrap';
-import {Input} from 'react-bootstrap';
-import {Button} from 'react-bootstrap';
-import {Grid} from 'react-bootstrap';
-import {Row} from 'react-bootstrap';
-import {Col} from 'react-bootstrap';
-import {MenuItem} from 'react-bootstrap';
-import DropdownButton from 'react-bootstrap';
+import { Form, Input, Button, Grid, Row, Col, MenuItem, Glyphicon, OverlayTrigger, Popover, DropdownButton } from 'react-bootstrap';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 import Link from '../Link';
 import Welcome from '../Welcome';
@@ -55,9 +48,14 @@ static  progressPercent = 0;
       <div className="RegisterPage-container ">
       <Grid>
         <div>
+        <h1>
+          {title}
+            <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Registration"> Fill out the following fields and then press the <strong> Submit </strong> button </Popover>}>
+              <span className="helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span>
+            </OverlayTrigger>
+        </h1>
+            <p> If you wish to edit your profile information simply edit the appropriate field and click the save profile button to keep the changes. </p>
         <form className="centeredLoginForm">
-        <h1>{title}</h1>
-
 
         <Row>
           <Col xs={6} md={6} lg={6}>

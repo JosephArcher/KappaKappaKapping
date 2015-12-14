@@ -17,6 +17,8 @@ import AboutPage from './components/AboutPage';
 import CourseSelectionPage from './components/CourseSelectionPage'; // Added Course Selection Page
 import CreditReportPage from './components/CreditReportPage'; // Added Credit Report Page
 
+
+
 const router = new Router(on => {
   on('*', async (state, next) => {
     const component = await next();

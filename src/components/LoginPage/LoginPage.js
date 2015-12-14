@@ -3,13 +3,7 @@
 import React, { PropTypes, Component } from 'react';
 import styles from './LoginPage.css';
 import withStyles from '../../decorators/withStyles';
-import {Form} from 'react-bootstrap';
-import {Input} from 'react-bootstrap';
-import {Button} from 'react-bootstrap';
-import {Grid} from 'react-bootstrap';
-import {Row} from 'react-bootstrap';
-import {Col} from 'react-bootstrap';
-import {MenuItem} from 'react-bootstrap';
+import { Form, Input, Button, Grid, Row, Col, MenuItem, OverlayTrigger, Popover, Glyphicon } from 'react-bootstrap';
 import UserActions from '../../actions/UserActions';
 import userStore from '../../stores/userStore';
 
@@ -32,9 +26,14 @@ class LoginPage extends Component {
    <div>
     <Grid>
       <Row>
-        <Col xs={12} sm={12} md={12} lg={12} >
+        <Col xs={6} sm={6} md={6} lg={6} >
+          <h1>
+            {title}
+            <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Log In"> Enter your username and password into the form and then press the <strong> Submit </strong> button </Popover>}>
+              <span className="helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span>
+            </OverlayTrigger>
+          </h1>
           <form className="centeredLoginForm">
-            <h1> {title} </h1>
             <Input className="test" type="text" bsSize="large" placeholder="Username" id="userID" />
             <Input className="test" type="password" bsSize="large" placeholder="Password" id="userPassword" />
             <Button className="test"bsStyle="primary" block bsSize="large" onClick={this.logUser}>Submit</Button>
