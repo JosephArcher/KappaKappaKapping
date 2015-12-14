@@ -3,7 +3,7 @@
 import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './Profile.css';
-
+import ReactDOM from 'react-dom';
 import {Form} from 'react-bootstrap';
 import {Input} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
@@ -15,6 +15,7 @@ import {Popover} from 'react-bootstrap';
 import {OverlayTrigger} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 import Link from '../Link';
 import Welcome from '../Welcome';
@@ -39,6 +40,7 @@ class Profile extends Component {
            </OverlayTrigger>
       <p> If you wish to edit your profile information simply edit the appropriate field and click the save profile button to keep the changes. </p>
         <div>
+          <div id="prof-msg"></div>
         <form className="centeredLoginForm">
         <Row>
 
@@ -94,6 +96,12 @@ class Profile extends Component {
   }
 
   updateProfile() {
+    var success = (
+      <Alert bsStyle="success" dismissAfter={2000}>
+        <strong>Success!</strong> The profile has been updated.
+      </Alert>
+    );
+
     var user = sessionStorage.getItem('user');
     var firstName = document.getElementById('first-name').value;
     var lastName = document.getElementById('last-name').value;
@@ -109,7 +117,7 @@ class Profile extends Component {
 
     UserActions.updateProfile(user, firstName, lastName, email, phone, major, startDate);
 
-
+    ReactDOM.render(success,document.getElementById("prof-msg"));
   }
 
 }
