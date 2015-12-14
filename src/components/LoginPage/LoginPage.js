@@ -26,24 +26,24 @@ class LoginPage extends Component {
   render() {
 
   const title = 'Log In';
- 
+
 
    const inputSizeInstance = (
    <div>
     <Grid>
       <Row>
-        <Col xs={12} sm={12} md={12} lg={12} > 
+        <Col xs={12} sm={12} md={12} lg={12} >
           <form className="centeredLoginForm">
             <h1> {title} </h1>
             <Input className="test" type="text" bsSize="large" placeholder="Username" id="userID" />
-            <Input className="test"type="text" bsSize="large" placeholder="Password" id="userPassword" />
+            <Input className="test" type="password" bsSize="large" placeholder="Password" id="userPassword" />
             <Button className="test"bsStyle="primary" block bsSize="large" onClick={this.logUser}>Submit</Button>
           </form>
       </Col>
     </Row>
    </Grid>
   </div>
-   
+
 );
 
     this.context.onSetTitle(title);
@@ -56,7 +56,6 @@ class LoginPage extends Component {
     );
 
   }
-
 
   logUser() {
     console.log("THIS WORKS")
