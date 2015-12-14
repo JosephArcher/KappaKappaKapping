@@ -6,7 +6,7 @@ import Router from 'express';
 var bodyParser = require('body-parser');
 let router = new Router();
 router.use(bodyParser.json());
-let conString = "postgres://priscoj:alpha29@localhost/capping";
+let conString = 'postgres://justin:swag@10.10.7.182/transfer';
 
 //var results = [];
 

@@ -3,7 +3,7 @@ import pg from 'pg';
 var bCrypt = require('bcrypt-nodejs');
 var router = express.Router();
 var bodyParser = require('body-parser');
-let conString = "postgres://priscoj:alpha29@localhost/capping";
+let conString = 'postgres://justin:swag@10.10.7.182/transfer';
 router.use(bodyParser.json());
 
 module.exports = function(passport){
