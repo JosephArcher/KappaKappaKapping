@@ -140,7 +140,7 @@ class AboutPage extends Component {
      			<Jumbotron>
      			<p className="memberName"> About Joe </p>
      			<div className="verticalLine"> </div>
-     			   {johnBlurb}
+     			   <p>Joe likes drinking coffee, listening to music, and playing video games.</p>
      			</Jumbotron>
      		</Col>
      	</Row>
@@ -227,7 +227,7 @@ class AboutPage extends Component {
         				</Col>
         				<Col xs={12} sm={12} md={12} lg={12} >
         					 <Row>
-                             {chrisInfo}
+                            {chrisInfo}
                             </Row>
         				</Col>
         			</Row>
@@ -237,7 +237,7 @@ class AboutPage extends Component {
      			<Jumbotron>
      			<p className="memberName"> About Chris </p>
      			<div className="verticalLine"> </div>
-                   {johnBlurb}
+                   <p>Chris likes the Miami Dolphins, drinking coffee, and making music.</p>
      			</Jumbotron>
      		</Col>
      	</Row>

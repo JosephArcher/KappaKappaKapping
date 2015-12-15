@@ -13,7 +13,7 @@ import CourseItem from '../CourseItem';
 import MajorItem from '../MajorItem';
 const DoughnutChart = require("react-chartjs").Doughnut;
 
-import CourseSelectionStore from '../../Stores/CourseSelectionStore';
+import CourseSelectionStore from '../../stores/CourseSelectionStore';
 import CourseSelectionPageActions from '../../actions/CourseSelectionPageActions';
 
 

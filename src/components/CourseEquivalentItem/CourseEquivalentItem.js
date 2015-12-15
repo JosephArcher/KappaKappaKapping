@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import AdminActions from '../../actions/AdminActions';
+import AdminActions from '../../actions/adminActions';
 
 export default class CourseEquivalentItem extends Component {
   static propTypes = {

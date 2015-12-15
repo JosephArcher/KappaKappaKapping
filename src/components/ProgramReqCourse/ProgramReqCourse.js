@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from 'react-bootstrap';
-import AdminActions from '../../actions/AdminActions';
+import AdminActions from '../../actions/adminActions';
 
 class ProgramReqCourse extends Component {
   static propTypes = {

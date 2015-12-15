@@ -8,7 +8,7 @@ import { Button } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 import Link from '../Link';
-import Profile from '../profile';
+import Profile from '../Profile';
 import {Grid} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
@@ -35,7 +35,7 @@ class Welcome extends React.Component{
               <h1>
                {title}
                <span style={{paddingLeft: "10px"}}>
-                  <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="Update Programs">Here you can remove requirements from a program or add a requirement by entering its CRN in the menu below.</Popover>}>
+                  <OverlayTrigger trigger="hover" placement="right" overlay={<Popover title="Update Programs">Click <strong>Select Classes</strong> to get a credit report, <strong>Edit Profile</strong> to see your information, and <strong>Log Out</strong> to log out.</Popover>}>
                     <Glyphicon glyph="glyphicon glyphicon-question-sign" />
                   </OverlayTrigger>
                </span>

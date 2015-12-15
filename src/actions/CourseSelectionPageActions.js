@@ -1,4 +1,4 @@
-var AppDispatcher = require('../core/dispatcher');
+var AppDispatcher = require('../core/Dispatcher');
 var ActionTypes = require('../constants/ActionTypes');
 
 

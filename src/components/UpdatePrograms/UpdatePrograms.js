@@ -8,7 +8,7 @@ import { DropDownMenu, RaisedButton } from 'material-ui';
 import { Avatar, Card, CardActions, CardHeader, CardText } from 'material-ui';
 import { Table, DropdownButton, MenuItem, OverlayTrigger, Glyphicon, Popover, Input, Alert } from 'react-bootstrap';
 let Colors = require('material-ui/lib/styles/colors');
-import AdminActions from '../../actions/AdminActions';
+import AdminActions from '../../actions/adminActions';
 import ProgramReqCourse from '../ProgramReqCourse';
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
@@ -86,7 +86,7 @@ class UpdatePrograms extends Component {
 
         </div>
 
-        <div className="table" style={{paddingTop: "15px"}}>
+        <div className="overflow" style={{paddingTop: "15px"}}>
 
           <Table striped hover responsive>
 

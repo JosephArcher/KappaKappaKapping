@@ -36,6 +36,7 @@ class Profile extends Component {
     <div>
      <Grid>
        <h1>
+         {title}
      <OverlayTrigger trigger="click" placement="right" overlay={<Popover title="Profile"> To edit your profile, change the fields you wish to edit and then click the <strong> Save Profile </strong> button </Popover>}>
            <span className="helpIcon">  <Glyphicon glyph="glyphicon glyphicon-question-sign" /> </span>
      </OverlayTrigger>

@@ -1,4 +1,4 @@
-var AppDispatcher = require('../core/dispatcher');
+var AppDispatcher = require('../core/Dispatcher');
 var EventEmitter = require('events').EventEmitter;
 import ActionTypes from '../constants/ActionTypes';
 import _ from 'underscore';

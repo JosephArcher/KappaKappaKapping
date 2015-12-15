@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './StudentSubmissionsTable.css';
 import { Table } from 'react-bootstrap';
-import AdminStore from '../../stores/AdminStore';
+import AdminStore from '../../stores/adminStore';
 import StudentSubmission from '../StudentSubmission';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 

@@ -1,6 +1,6 @@
 import pg from 'pg';
 import Router from 'express';
-import AdminStore from '../stores/AdminStore';
+import AdminStore from '../stores/adminStore';
 var bCrypt = require('bcrypt-nodejs');
 var bodyParser = require('body-parser');
 let router = new Router();

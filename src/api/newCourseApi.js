@@ -36,7 +36,7 @@ console.log("joe");
     }
     //query
 
-    var query = client.query("INSERT INTO student_submitted_courses (user_id, name, course_description, course_id, number_of_credits) VALUES ($1, $2, $3, $4, $5)", [username, _name, _id, _credits, _descrip]);
+    var query = client.query("INSERT INTO student_submitted_courses (user_id, name, course_description, course_id, number_of_credits) VALUES ($1, $2, $3, $4, $5)", [username, _name, _descrip, _id, _credits]);
 
     // This query.on() call will run as many times as rows there are
     query.on('row', function(row, result) {

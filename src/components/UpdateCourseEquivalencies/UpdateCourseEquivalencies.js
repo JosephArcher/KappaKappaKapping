@@ -10,8 +10,8 @@ import { Avatar, Card, CardHeader, CardText, CardActions } from 'material-ui';
 let Colors = require('material-ui/lib/styles/colors');
 const injectTapEventPlugin = require("react-tap-event-plugin");
 import CourseEquivalentItem from '../CourseEquivalentItem';
-import AdminActions from '../../actions/AdminActions';
-import AdminStore from '../../stores/AdminStore';
+import AdminActions from '../../actions/adminActions';
+import AdminStore from '../../stores/adminStore';
 
 @withStyles(styles)
 class UpdateCourseEquivalencies extends Component {
@@ -75,7 +75,7 @@ class UpdateCourseEquivalencies extends Component {
           </Card>
         </div>
 
-        <div className="table" style={{paddingTop: "15px"}}>
+        <div className="overflow" style={{paddingTop: "15px"}}>
 
           <Table striped hover responsive>
 

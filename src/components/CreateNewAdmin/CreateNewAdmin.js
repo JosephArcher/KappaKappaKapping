@@ -4,8 +4,8 @@ import withStyles from '../../decorators/withStyles';
 import styles from './CreateNewAdmin.css';
 import * as types from '../../constants/ActionTypes';
 const injectTapEventPlugin = require("react-tap-event-plugin");
-import AdminActions from '../../actions/AdminActions';
-import AdminStore from '../../stores/AdminStore';
+import AdminActions from '../../actions/adminActions';
+import AdminStore from '../../stores/adminStore';
 import { OverlayTrigger, Popover, Glyphicon, Input, Button, Alert } from 'react-bootstrap';
 
 @withStyles(styles)

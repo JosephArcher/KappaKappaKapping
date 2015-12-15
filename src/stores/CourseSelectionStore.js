@@ -1,4 +1,4 @@
-var AppDispatcher = require('../core/dispatcher');
+var AppDispatcher = require('../core/Dispatcher');
 var EventEmitter = require('events').EventEmitter;
 import ActionTypes from '../constants/ActionTypes';
 import _ from 'underscore';
@@ -25,7 +25,7 @@ var CHANGE_EVENT = 'change';
 
   function generateReport(completedCourses) {
     request
-     .post('http://localhost:3000/api/getTransferSchoolCourses')
+     .post('/api/getTransferSchoolCourses')
        .send({completedCoursesArray: completedCourses })
        .end(function(err, res){
       if (err) {
@@ -42,7 +42,7 @@ var CHANGE_EVENT = 'change';
     function getTransferlCourses() {
 
    request
-      .get('http://localhost:3000/api/getTransferSchoolCourses')
+      .get('/api/getTransferSchoolCourses')
       .end(function(err, res) {
         if (err) {
           console.log("There's been an error: getting the transfer courses.");
@@ -119,6 +119,11 @@ function  markCourseAsCompleted(course) {
    CourseSelectionStore.clearUp();
    var completedCoursesCrn = [];
    var completedCoursesSize = completedCourses.length;
+  
+   if (!(completedCoursesSize > 0)) {
+     return;
+   }
+
 
    for(var x = 0; completedCoursesSize > x; x++){
     completedCoursesCrn.push(completedCourses[x].transfer_course_id);
@@ -143,12 +148,12 @@ console.log(completedCoursesCrn);
 
  }
 
-function submitNewCourse(name, id, credits, descrip) {
+function submitNewCourse(user, name, id, credits, descrip) {
   console.log("SUBMITTING")
 
   request
     .post('/api/newCourse')
-    .send({name : name, id : id, credits : credits, descrip : descrip})
+    .send({user: user, name : name, id : id, credits : credits, descrip : descrip})
     .end(function(err, res){
       if (err) {
         console.log("There's been an error.");

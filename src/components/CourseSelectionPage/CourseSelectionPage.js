@@ -26,7 +26,7 @@ import CompletedCoursesTable  from '../CompletedCoursesTable';
 import CourseSelectionPageActions from '../../actions/CourseSelectionPageActions';
 
 // Stores
-import CourseSelectionStore from '../../Stores/CourseSelectionStore';
+import CourseSelectionStore from '../../stores/CourseSelectionStore';
 
 @withStyles(styles)
 class CourseSelectionPage extends React.Component {
@@ -81,8 +81,6 @@ class CourseSelectionPage extends React.Component {
     function myCallback() {
       this.setState({disabled: false});
     }
-
-
   }
 
     submitCourseReport() {
